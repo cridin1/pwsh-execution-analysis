@@ -1,0 +1,1 @@
+curl https://github.com/cridin1/pwsh-execution-analysis/tree/main

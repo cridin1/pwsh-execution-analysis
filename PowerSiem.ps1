@@ -38,7 +38,7 @@ $maxRecordId = (Get-WinEvent -Provider $LogName -max 1).RecordID
 while ($true)
 {
     Start-Sleep 1
-
+    #Get-WinEvent -Provider Microsoft-Windows-Sysmon -FilterXPath "*[EventData[ProcessId  7608]]"
     $xPath = "*[System[EventRecordID > $maxRecordId]]"
     $logs = Get-WinEvent -Provider $LogName -FilterXPath $xPath | Sort-Object RecordID
 

@@ -1,5 +1,4 @@
 # Inspired SilentBreakSecurity DSOPS 1 Course - (SilentBreakSecurity has since been acquired by NetSPI)
-
 $ErrorActionPreference = "SilentlyContinue"
 
 Function Parse-Event {
@@ -31,15 +30,40 @@ Function Write-Alert ($alerts) {
     write-host "-----"
 }
 
-$LogName = "Microsoft-Windows-Sysmon"
+Function Create-PowerShell-Process($command, $output_file){
+    $Process = New-Object System.Diagnostics.Process
+    $ProcessStartInfoParam = [ordered]@{
+        Arguments              = "-c $command >> $output_file"
+        CreateNoWindow         = $False
+        FileName               = 'powershell'
+        WindowStyle            = 'Normal'
+        LoadUserProfile        = $False
+        UseShellExecute        = $False
+    }
 
+    $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam
+    $Process.StartInfo = $ProcessStartInfo
+    $StartResult = $Process.Start()
+    $Process.WaitForExit()
+
+    return $Process
+}
+
+$LogName = "Microsoft-Windows-Sysmon"
 $maxRecordId = (Get-WinEvent -Provider $LogName -max 1).RecordID
 
-while ($true)
+$lines = Get-Content -Path "example.txt"
+foreach ($line in $lines)
 {
     Start-Sleep 1
-    #Get-WinEvent -Provider Microsoft-Windows-Sysmon -FilterXPath "*[EventData[ProcessId  7608]]"
-    $xPath = "*[System[EventRecordID > $maxRecordId]]"
+
+    Write-Host "Executing: $line"
+    $Process = Create-PowerShell-Process $line "$pwd\output.txt"
+    $id = $Process.Id
+    
+    exit
+
+    $xPath="*[EventData[Data[@Name='ProcessId'] = $id]]"
     $logs = Get-WinEvent -Provider $LogName -FilterXPath $xPath | Sort-Object RecordID
 
     foreach ($log in $logs) {

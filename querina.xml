@@ -1,5 +1,0 @@
-<QueryList>
-  <Query Id="0" Path="Microsoft-Windows-Sysmon/Operational">
-    <Select Path="Microsoft-Windows-Sysmon/Operational">*[EventData.Data]</Select>
-  </Query>
-</QueryList>

@@ -1,6 +1,1 @@
-curl https://github.com/cridin1/pwsh-execution-analysis/tree/main
-curl https://github.com/cridin1/pwsh-execution-analysis/tree/main
-curl https://github.com/cridin1/pwsh-execution-analysis/tree/main
-curl https://github.com/cridin1/pwsh-execution-analysis/tree/main
-curl https://github.com/cridin1/pwsh-execution-analysis/tree/main
-curl https://github.com/cridin1/pwsh-execution-analysis/tree/main
+Get-ChildItem .

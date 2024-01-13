@@ -1,4 +1,6 @@
-$ErrorActionPreference = "SilentlyContinue"
+param(
+    [string]$config_file = "sysmonconfig-excludes-only.xml"
+)
 
 function Export-WinEvent {
     <#
@@ -95,7 +97,6 @@ function Export-WinEvent {
     }
 }
 
-
 Function Parse-Event {
     # Credit: https://github.com/RamblingCookieMonster/PowerShell/blob/master/Get-WinEventData.ps1
     param(
@@ -125,52 +126,7 @@ Function Write-Alert ($alerts) {
     write-host "-----"
 }
 
-Function Create-PowerShell-Process($command, $output_file){
-    $Process = New-Object System.Diagnostics.Process
-    $ProcessStartInfoParam = [ordered]@{
-        Arguments              = "-Command $command > $output_file"
-        CreateNoWindow         = $False
-        FileName               = 'powershell'
-        WindowStyle            = 'Hidden'
-        LoadUserProfile        = $False
-        UseShellExecute        = $False
-    }
-
-    $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam
-    $Process.StartInfo = $ProcessStartInfo
-    $StartResult = $Process.Start()
-    $Process.WaitForExit()
-
-    return $Process
-}
-
-if (!(Test-Path "$pwd\evtx")) {
-    New-Item -ItemType Directory -Path "$pwd\evtx2"
-}
-
-if (!(Test-Path "$pwd\txt")) {
-    New-Item -ItemType Directory -Path "$pwd\txt"
-}
-
-$LogName = "Microsoft-Windows-Sysmon"
-$maxRecordId = (Get-WinEvent -Provider $LogName -max 1).RecordID
-
-$lines = Get-Content -Path "example.txt"
-$i = 0
-foreach ($line in $lines)
-{
-    $i = $i + 1
-    Start-Sleep 1
-
-    Write-Host "Executing {$i}: $line"
-    $Process = Create-PowerShell-Process $line "$pwd\txt\output$i.txt"
-    $id = $Process.Id
-    $image = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
-
-    $xPath="*[EventData[Data[@Name='ProcessId'] = $id and Data[@Name='Image'] = '$image']]"
-    Export-WinEvent -SourcePath "Microsoft-Windows-Sysmon/Operational" -Path "$pwd\evtx2\output$i.evtx" -Query $XPath
-    $logs = Get-WinEvent -Path "$pwd\evtx2\output$i.evtx"
-
+Function Print-Logs($logs){
     foreach ($log in $logs) {
         $evt = $log | Parse-Event
         if ($evt.id -eq 1) {
@@ -340,4 +296,73 @@ foreach ($line in $lines)
         }
         $maxRecordId = $evt.RecordId
     }
+
 }
+
+Function Create-PowerShell-Process($command, $output_file){
+    $Process = New-Object System.Diagnostics.Process
+    $ProcessStartInfoParam = [ordered]@{
+        Arguments              = " { $command } > $output_file | out-null"
+        CreateNoWindow         = $False
+        FileName               = 'pwsh'
+        WindowStyle            = 'Hidden'
+        LoadUserProfile        = $False
+        UseShellExecute        = $False
+        
+    }
+
+    $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam
+    $Process.StartInfo = $ProcessStartInfo
+    $StartResult = $Process.Start()
+    $Process.WaitForExit()
+
+    return $Process
+}
+
+Function Export-Logs($lines){
+    $i = 0
+    $LogName = "Microsoft-Windows-Sysmon/Operational"
+
+    foreach ($line in $lines)
+    {
+        $i = $i + 1
+        Start-Sleep 1
+
+        Write-Host "Executing {$i}: $line"
+        $Process = Create-PowerShell-Process $line "$pwd\txt\output$i.txt"
+        $id = $Process.Id
+        $image = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
+
+        $xPath="*[EventData[Data[@Name='ProcessId'] = $id and Data[@Name='Image'] = '$image']]"
+        Export-WinEvent -SourcePath $LogName -Path "$pwd\evtx\output$i.evtx" -Query $XPath
+        $logs = Get-WinEvent -Path "$pwd\evtx\output$i.evtx"
+        Print-Logs $logs
+
+    }
+
+}
+
+Function Start-Analysis(){
+    if (!(Test-Path "$pwd\evtx")) {
+        New-Item -ItemType Directory -Path "$pwd\evtx"
+    }
+
+    if (!(Test-Path "$pwd\txt")) {
+        New-Item -ItemType Directory -Path "$pwd\txt"
+    }
+
+    Write-Host "Executing sysmon: "
+    sysmon.exe -accepteula -i $config_file
+
+    $lines = Get-Content -Path "example.txt"
+    Export-Logs($lines)
+
+    Write-Host "Uninstalling sysmon: "
+    sysmon.exe -u force
+}
+
+Start-Analysis
+
+
+
+

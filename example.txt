@@ -1,1 +1,3 @@
 Get-ChildItem .
+ipconfig
+curl https://www.youtube.com/

@@ -227,41 +227,75 @@ Function Create-PowerShell-Process($command, $output_file){
 Function Export-Logs($lines){
     $i = 0
     $LogName = "Microsoft-Windows-Sysmon/Operational"
-
+    $Provider = "Microsoft-Windows-Sysmon"
+    $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
+    
     foreach ($line in $lines)
     {
+        Start-Sleep 1
         $i = $i + 1
         
         Write-Host "Executing {$i}: $line"
         $Process = Create-PowerShell-Process $line "$pwd\txt\output$i.txt"
         $id = $Process.Id
         Write-Host "Executed {$i}: {$($Process.HasExited)} "
+        
 
-        $image = "C:\Program Files\PowerShell\7\pwsh.exe"
-
-        $xPath="*[EventData[Data[@Name='ProcessId'] = $id and Data[@Name='Image'] = '$image']]" #
-        #Export-WinEvent -SourcePath $LogName -Path "$pwd\evtx\output$i.evtx" -Query $XPath
-
+        #$image = "C:\Program Files\PowerShell\7\pwsh.exe"
+        
+        $XPath="*[System[EventRecordID > $maxRecordId]]"
+        try{
+            $XPath_child = "*[System[EventRecordID > $maxRecordId] and EventData[Data[@Name='ParentProcessId'] = $id]]"
+            $child_logs = Get-WinEvent -Provider $Provider -FilterXPath  $XPath_child -ErrorAction Stop | Select-Object -Property @{Name="Process Id";Expression={$_.Properties[3].Value}}
+            $ids = $child_logs."Process Id"
+            
+            $XPath = "*[System[EventRecordID > $maxRecordId] and EventData[ Data[@Name='ProcessId'] = $id or "
+            $j = 0
+            foreach($id in $ids){
+                if($j -eq 0){
+                    $XPath += "Data[@Name='ProcessId'] = $id "
+                }
+                else{
+                    $XPath += " or Data[@Name='ProcessId'] = $id "
+                }
+                $j++
+            }
+            $XPath += "]]"
+            Write-Host $XPath
+        
+        }
+        catch{
+             $XPath = "*[System[EventRecordID > $maxRecordId] and EventData[Data[@Name='ParentProcessId'] = $id or Data[@Name='ProcessId'] = $id]]"
+        }
+ 
         $SourceType = "LogName"
         $EvtSession = [System.Diagnostics.Eventing.Reader.EventLogSession]::New()
-        $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$pwd\evtx\output$i.evtx")
-        $EvtSession.Dispose()
+        try{
+            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$pwd\evtx\output$i.evtx")
+        }
+        catch{
+            Write-Host("Error")
+            $EvtSession.Dispose()
+            return
+        }
 
-        Start-Sleep 1
+        $EvtSession.Dispose()
         $logs = Get-WinEvent -Path "$pwd\evtx\output$i.evtx"
 
         $xml = [xml]((wevtutil query-events "$pwd\evtx\output$i.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
         $xml.Save("$pwd\xml\output$i.xml")
 
         Print-Logs $logs
-
     }
-
 }
 
 Function Start-Analysis(){
     if (!(Test-Path "$pwd\evtx")) {
         New-Item -ItemType Directory -Path "$pwd\evtx"
+    }
+    else{
+        Write-Host "Alreadyy present evtx directory"
+        return
     }
 
     if (!(Test-Path "$pwd\txt")) {
@@ -273,7 +307,7 @@ Function Start-Analysis(){
     }
 
     Write-Host "Executing sysmon: "
-    sysmon.exe -accepteula -i $config_file
+    sysmon -accepteula -i $config_file
 
     $lines = Get-Content -Path "example.txt"
     Export-Logs($lines)
@@ -281,7 +315,7 @@ Function Start-Analysis(){
     
 
     Write-Host "Uninstalling sysmon: "
-    sysmon.exe -u
+    sysmon -u
 }
 
 Start-Analysis

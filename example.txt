@@ -1,3 +1,4 @@
 Get-ChildItem .
 ipconfig
-curl https://www.youtube.com/
+curl https://arcewrsfsdfsfe
+sleep 10

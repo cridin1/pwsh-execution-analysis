@@ -1,44 +1,46 @@
-import xml.etree as etree
+import xml.etree.ElementTree as etree
 import pandas as pd
 
-def read_xml(FILENAME):
-    parser = etree.XMLParser(recover=True)
-    with open(FILENAME) as file:
-        data = file.readlines()
-    # ignore XML documentation's tag (1st line), 
-    # so taking only data[1:]
-    raw = etree.fromstring(data[1:], parser=parser)
-    return raw
+def parse_xml(path):
+    tree = etree.parse(path)
+    root = tree.getroot()
+    ns = "{http://schemas.microsoft.com/win/2004/08/events/event}"
 
-def events_to_df(eventlist):
-    df = pd.DataFrame()
-    # you may need to tune this tag according to your XML format
-    tag = '{http://schemas.microsoft.com/win/2004/08/events/event}'
-    for idx, event in enumerate(eventlist):
-        edict = {}
-        for element in event.iterdescendants():
-            # filter out empty fields
-            if any(x in element.tag for x in ["Provider",
-                                              "System",
-                                              "Correlation"]):
-                pass
-            elif any(x in element.tag for x in ['TimeCreated',\
-                                                'Execution',\
-                                                'Security']):
-                for item in element.items():
-                    edict[item[0]] = item[1]
-            elif 'Data' in element.tag:
-                for item in element.items():
-                    edict[item[1]] = element.text
-            else:
-                edict[element.tag.replace(tag,'')] = element.text
-        
-        # add raw text event to have ability 
-        # always access full value of eventlog
-        edict['raw'] = etree.tostring(event,\
-                             pretty_print=True).decode()
-    
-        edf = pd.DataFrame(edict, index=[idx])
-        df = df.append(edf, sort=True)    
+    data = []
+    keys = ["ProcessId", "Image", "ParentProcessId", "CommandLine", "TargetFilename", "ImageLoaded", "PipeName", "QueryName", "EventType", "UtcTime"]
+    for eventID in root.findall(".//"):
+        row = {}
+        if eventID.tag == f"{ns}EventData":
+            for attr in eventID.iter():
+                if attr.tag == f'{ns}Data':
+                    row[attr.get('Name')] = attr.text
+            if(row != {}):
+                data.append(row)
+
+    output = []
+    for row in data:
+        row_out = []
+        for key in keys:
+            if key not in row:
+                row[key] = "-"
+            row_out.append(row[key])
+        output.append(row_out)
+
+
+    df = pd.DataFrame(output, columns=keys)
     return df
 
+
+    
+    
+
+# import json, xmltodict
+
+# with open("xml\output1.xml") as xml_file:
+#     data_dict = xmltodict.parse(xml_file.read())
+    
+# json_data = json.dumps(data_dict)
+# print(json_data)
+
+# with open("data.json", "w") as json_file:
+#         json_file.write(json_data)

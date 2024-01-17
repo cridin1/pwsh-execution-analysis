@@ -3,17 +3,24 @@ import pandas as pd
 import os
 import re
 
+def filter_entries(text) -> bool:
+    raw_text = r"{}".format(text)
+    patterns = r"(output\d+\.txt$)|(__PSScriptPolicyTest)"
+    found = re.search(patterns,raw_text)
+    if( found == None): return True
+    else: return False
+
 def parse_xml(path) -> pd.DataFrame:
     tree = etree.iterparse(path)
     ns = "{http://schemas.microsoft.com/win/2004/08/events/event}"
 
     data = []
     
-    keys = ["Task", "Image", "ParentProcessId", "CommandLine", "TargetFilename", 
+    keys = ["Task", "Image", "CommandLine", "TargetFilename", 
             "ImageLoaded", "PipeName", "QueryName", "EventType"]
     
     #for debug
-    # keys.append("ProcessId","UtcTime")
+    # keys.append("ProcessId","UtcTime", "ParentProcessId")
 
     for _,eventID in tree:
         row = {}
@@ -30,9 +37,7 @@ def parse_xml(path) -> pd.DataFrame:
             if next_element.tag == f"{ns}EventData":
                 for attr in next_element.iter():
                     if attr.tag == f'{ns}Data':
-                        text = r"{}".format(attr.text)
-                        pattern = r"output\d+\.txt$"
-                        if(re.search(pattern,text) == None): #skipping output.txt events
+                        if(filter_entries(attr.text)):
                             row[attr.get('Name')] = attr.text
             if(row != {}):
                 data.append(row)
@@ -50,7 +55,11 @@ def parse_xml(path) -> pd.DataFrame:
     return df
 
 def compare_df(df1,df2):
-    return
+    df_diff=pd.concat([df1,df2]).drop_duplicates(keep=False)
+    print(df_diff.shape[0], df1.shape[0], df2.shape[0])
+    df_diff.to_csv("out_diff.csv", index=False)
+    return(df_diff.shape[0]/(df1.shape[0] + df2.shape[0]))
+    
 
 def parse_folder(path):
     elems = os.listdir(path)
@@ -60,11 +69,11 @@ def parse_folder(path):
         path_elem = os.path.join(path,elem)
         dfs.append(parse_xml(path_elem))
     
-    dfs[0].to_csv("out1.csv", index=False)
-    dfs[1].to_csv("out2.csv", index=False)
-    df_diff=pd.concat([dfs[0],dfs[1]]).drop_duplicates(keep=False)
-    df_diff.to_csv("out_diff.csv", index=False)
-parse_folder("xml")
+    print(compare_df(dfs[0], dfs[3]))
+    print(compare_df(dfs[1], dfs[4]))
+    print(compare_df(dfs[2], dfs[5]))
+   
+parse_folder("xml1")
 
 
 

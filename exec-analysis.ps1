@@ -1,6 +1,7 @@
 param(
-    [string]$config_file = "configs/sysmonconfig-excludes-only.xml",
-    [string]$output_index = "2"
+    [string]$path_commands = "example.txt",
+    [string]$outdir = "$pwd\output",
+    [string]$config_file = "configs/sysmonconfig-excludes-only.xml"
 )
 
 Function Parse-Event {
@@ -245,7 +246,7 @@ Function Export-Logs($lines){
         $scriptBlock = [Scriptblock]::Create($line)
         Set-Content -Path "$pwd\bufferone.ps1" -Value $scriptBlock
 
-        $Process = Create-PowerShell-Process "$pwd\txt$output_index\output$i.txt"
+        $Process = Create-PowerShell-Process "$outdir\txt\output$i.txt"
         $id = $Process.Id
         Write-Host "Executed {$i}: {$($Process.HasExited)} "
     
@@ -279,7 +280,7 @@ Function Export-Logs($lines){
         $SourceType = "LogName"
         $EvtSession = [System.Diagnostics.Eventing.Reader.EventLogSession]::New()
         try{
-            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$pwd\evtx$output_index\output$i.evtx")
+            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$i.evtx")
         }
         catch{
             Write-Host("Error")
@@ -288,51 +289,50 @@ Function Export-Logs($lines){
         }
 
         $EvtSession.Dispose()
-        $logs = Get-WinEvent -Path "$pwd\evtx$output_index\output$i.evtx"
+        $logs = Get-WinEvent -Path "$outdir\evtx\output$i.evtx"
 
-        $xml = [xml]((wevtutil query-events "$pwd\evtx$output_index\output$i.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
-        $xml.Save("$pwd\xml$output_index\output$i.xml")
+        $xml = [xml]((wevtutil query-events "$outdir\evtx\output$i.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
+        $xml.Save("$outdir\xml\output$i.xml")
 
         Print-Logs $logs
     }
 }
 
-Function Start-Analysis(){
-    if (!(Test-Path "$pwd\evtx$output_index")) {
-        New-Item -ItemType Directory -Path "$pwd\evtx$output_index"
+Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd\output"){
+    if (!(Test-Path "$outdir")) {
+        New-Item -ItemType Directory -Path "$outdir"
+    }
+
+    if (!(Test-Path "$outdir\evtx")) {
+        New-Item -ItemType Directory -Path "$outdir\evtx"
     }
     else{
         Write-Host "Alreadyy present evtx directory"
         return
     }
 
-    if (!(Test-Path "$pwd\txt$output_index")) {
-        New-Item -ItemType Directory -Path "$pwd\txt$output_index"
+    if (!(Test-Path "$outdir\txt")) {
+        New-Item -ItemType Directory -Path "$outdir\txt"
     }
 
-    if (!(Test-Path "$pwd\xml$output_index")) {
-        New-Item -ItemType Directory -Path "$pwd\xml$output_index"
+    if (!(Test-Path "$outdir\xml")) {
+        New-Item -ItemType Directory -Path "$outdir\xml"
     }
+
+    #clearing dns
+    ipconfig /flushdns
 
     Write-Host "Executing sysmon: "
     sysmon.exe -accepteula -i $config_file
 
-    $lines = Get-Content -Path "example3.txt"
+    $lines = Get-Content -Path $path_commands
     Export-Logs($lines)
 
+    cp $path_commands "$outdir\input.txt" 
     
-
     Write-Host "Uninstalling sysmon: "
     sysmon.exe -u
     Remove-Item "bufferone.ps1"
 }
 
-Start-Analysis
-#Create-PowerShell-Process "test.txt"
-
-# $lines = Get-Content -Path "example.txt"
-# foreach ($line in $lines)
-# {
-#     $scriptBlock = [Scriptblock]::Create($line)
-#     Set-Content -Path "$pwd\bufferone.ps1" -Value $scriptBlock
-# }
+Start-Analysis $path_commands $outdir

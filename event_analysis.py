@@ -119,9 +119,4 @@ if __name__ == "__main__":
         #df_comm.to_csv(f"./out_common_{metric}.csv", index=False)
 
         i +=1
-        
-# final_df = reduce(lambda  left,right: pd.merge(left,right,
-#                                             how='inner'), dfs).drop_duplicates()
-# final_df.to_csv(f"./out_common.csv", index=False)
-
     

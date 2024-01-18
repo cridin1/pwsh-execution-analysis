@@ -1,6 +1,6 @@
 param(
-    [string]$config_file = "sysmonconfig-excludes-only.xml",
-    [string]$output_index = "1"
+    [string]$config_file = "configs/sysmonconfig-excludes-only.xml",
+    [string]$output_index = "2"
 )
 
 Function Parse-Event {
@@ -205,11 +205,11 @@ Function Print-Logs($logs){
 
 }
 
-Function Create-PowerShell-Process($command, $output_file){
+Function Create-PowerShell-Process($output_file){
     $Process = New-Object System.Diagnostics.Process
 
     $ProcessStartInfoParam = [ordered]@{
-        Arguments              = " -File bufferone.ps1"
+        Arguments              = " -File $pwd\bufferone.ps1"
         CreateNoWindow         = $False
         FileName               = 'pwsh'
         WindowStyle            = 'Hidden'
@@ -245,7 +245,7 @@ Function Export-Logs($lines){
         $scriptBlock = [Scriptblock]::Create($line)
         Set-Content -Path "$pwd\bufferone.ps1" -Value $scriptBlock
 
-        $Process = Create-PowerShell-Process $scriptBlock "$pwd\txt$output_index\output$i.txt"
+        $Process = Create-PowerShell-Process "$pwd\txt$output_index\output$i.txt"
         $id = $Process.Id
         Write-Host "Executed {$i}: {$($Process.HasExited)} "
     
@@ -317,7 +317,7 @@ Function Start-Analysis(){
     Write-Host "Executing sysmon: "
     sysmon.exe -accepteula -i $config_file
 
-    $lines = Get-Content -Path "example.txt"
+    $lines = Get-Content -Path "example3.txt"
     Export-Logs($lines)
 
     
@@ -328,6 +328,7 @@ Function Start-Analysis(){
 }
 
 Start-Analysis
+#Create-PowerShell-Process "test.txt"
 
 # $lines = Get-Content -Path "example.txt"
 # foreach ($line in $lines)

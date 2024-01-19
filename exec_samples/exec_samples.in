@@ -22,19 +22,15 @@
 44 Retrieve browser information, including history, for a specified user and search term.
 46 Execute a PowerShell command with bypassed execution policy and download a script from a specified URL.
 47 Execute a hidden PowerShell command with bypassed execution policy and download a script from a specified URL.
-50 Execute a hidden PowerShell command with bypassed execution policy and download a script from a GitHub repository.
 54 Retrieve information about Win32 groups using WMI.
 55 Get the current date in a specific format.
 59 Create a payload with Unicode-encoded Mimikatz command.
 63 Invoke-Mimikatz cmdlet with bypassed execution policy.
 68 Download PowerShell script and execute it using Invoke-Expression.
 69 Retrieve information about Win32_UserAccount using WMI.
-73 Invoke shellcode with specified shellcode bytes.
 77 Execute PowerShell with specific options and download script from a URL using Invoke-WebRequest.
 79 Set a property in the Windows registry related to Winlogon with the specified values.
 81 List the contents of the current directory.
-84 Invoke the execution of MSBuild.
-85 Get the wininit process and perform token manipulation to create a new process for 'cmd.exe'.
 88 Perform password spraying attack (assuming that passwords might be re-used elsewhere), Search for string pattern in registry, The following PowerShell command will sift through the selected registry hives (HKCR, HKCU, HKLM, HKU, and HKCC) and recursively search for any chosen pattern within the registry key names or data values. In this case we are searching for the 'password' pattern:
 90 String Obfuscation, Obfuscates a string (e.g., a command) using Base64 encoding to evade detection by security tools.
 91 Here's an example of dumping local password hashes (hashdump) using nishang Get-PassHashes module:

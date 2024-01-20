@@ -10,13 +10,9 @@
 27 Invoke PowerShell expression to download and execute a script from a specified URL.
 29 Download a file from a specified URL and save it to a local path.
 30 Perform RID Hijacking with a specified user (alice) and RID (500).
-31 Create a PSBypass object and use it to execute Invoke-Mimikatz to dump credentials.
 32 Download and execute a PowerShell script with hidden window style.
 34 Invoke-Mimikatz cmdlet with bypassed execution policy.
 35 Invoke Expression to download and execute an obfuscated PowerShell script from a GitHub repository.
-38 Use NinjaCopy to copy a file from a source path to a local destination.
-39 Invoke Mimikatz to dump credentials and execute a Meterpreter payload with specified host and port.
-41 Download and execute a script using Invoke-Command with Invoke-Expression.
 42 Invoke PowerShell expression to download and execute a script from a specified URL.
 43 Execute a PowerShell command with bypassed execution policy and download a script from a specified URL.
 44 Retrieve browser information, including history, for a specified user and search term.
@@ -35,7 +31,6 @@
 90 String Obfuscation, Obfuscates a string (e.g., a command) using Base64 encoding to evade detection by security tools.
 91 Here's an example of dumping local password hashes (hashdump) using nishang Get-PassHashes module:
 95 Get GPO of an OU
-96 Capturing Keystrokes, Captures and logs keystrokes to a file, which can be used for gathering sensitive information like passwords.
 97 PortForwarding Since we have Local Administrator on the intermediate target bizintel: 10.35.8.17, you can add a port forwarding rule to send your requests to the final/third server secdev: 10.35.8.23.  Can quickly use netsh to rip out a one-liner and add the rule.
 98 Find configuration files containing 'password' string, With this command we can locate files containing a certain pattern, e.g. here were are looking for a 'password' pattern in various textual configuration files:
 99 Search readable shares

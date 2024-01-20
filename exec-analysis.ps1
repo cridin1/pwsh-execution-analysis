@@ -298,6 +298,19 @@ Function Export-Logs($lines){
     }
 }
 
+function Load-Module ($m) {
+	$m = [io.path]::GetFileNameWithoutExtension($m)
+
+    # If module is imported say that and do nothing
+    if (Get-Module | Where-Object {$_.Name -eq $m}) {
+        write-host "Module $m is already imported."
+    }
+    else {
+        Import-Module $m
+    }
+}
+
+
 Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd\output"){
     if (!(Test-Path "$outdir")) {
         New-Item -ItemType Directory -Path "$outdir"
@@ -321,6 +334,16 @@ Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd\output")
 
     #clearing dns
     ipconfig /flushdns
+
+	$modulesFolder = "$pwd\cmds"
+	foreach ($module in Get-Childitem $modulesFolder -Name -Filter "*.ps1"){
+		Write-Host "Importing $modulesFolder\$module"
+		Load-Module "$modulesFolder\$module"
+	}
+	Write-Host "Importing Powersploit"
+	Load-Module Powersploit
+	write-host "All imported"
+	
 
     Write-Host "Executing sysmon: "
     sysmon.exe -accepteula -i $config_file

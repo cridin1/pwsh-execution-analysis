@@ -11,7 +11,7 @@ $setup_path = "$base_path\setup.ps1"
 $analysis_path = "$base_path\exec-analysis.ps1"
 
 #Starting the test
-VBoxManage snapshot $VMName restore 81b4953e-36b3-4c49-9950-c5ec905c0316
+VBoxManage snapshot $VMName restore 9c60e767-bfd1-4ecf-a8fe-b6297936b340
 VBoxManage startvm $VMName --type headless
 
 Start-Sleep -Seconds 10

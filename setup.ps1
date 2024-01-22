@@ -1,4 +1,4 @@
-cd \ 
+push-location \ 
 $directoryToAdd = "$pwd\mimikatz\x64"
 
 # Check if the directory is already in the PATH
@@ -26,7 +26,7 @@ if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\PowerSpl
     Write-Host "Powersploit found, skipping"
 }
 
-
+pop-location
 
 
 

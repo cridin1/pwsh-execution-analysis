@@ -1,8 +1,13 @@
 param(
     [string]$path_commands = "example.txt",
-    [string]$outdir = "$pwd\output",
-    [string]$config_file = "configs/sysmonconfig-excludes-only.xml"
+    [string]$outdir = "output",
+    [string]$config_file = "configs\sysmonconfig-excludes-only.xml"
 )
+
+$pwd_base="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
+$path_commands = "$pwd_base\$path_commands"
+$outdir = "$pwd_base\$outdir"
+$config_file = "$pwd_base\$config_file"
 
 Function Parse-Event {
     # Credit: https://github.com/RamblingCookieMonster/PowerShell/blob/master/Get-WinEventData.ps1
@@ -25,12 +30,12 @@ Function Parse-Event {
 }
 
 Function Write-Alert ($alerts) {
-    Write-Host "Type: $($alerts.Type)"
+    Write-Output "Type: $($alerts.Type)"
     $alerts.Remove("Type")
     foreach($alert in $alerts.GetEnumerator()) {
-        write-host "$($alert.Name): $($alert.Value)"
+        Write-Output "$($alert.Name): $($alert.Value)"
     }
-    write-host "-----"
+    Write-Output "-----"
 }
 
 Function Print-Logs($logs){
@@ -210,7 +215,7 @@ Function Create-PowerShell-Process($output_file){
     $Process = New-Object System.Diagnostics.Process
 
     $ProcessStartInfoParam = [ordered]@{
-        Arguments              = " -File $pwd\bufferone.ps1"
+        Arguments              = " -File $pwd_base\bufferone.ps1"
         CreateNoWindow         = $False
         FileName               = 'pwsh'
         WindowStyle            = 'Hidden'
@@ -242,13 +247,13 @@ Function Export-Logs($lines){
         Start-Sleep 1
         $i = $i + 1
         
-        Write-Host "Executing {$i}: $line"
+        Write-Output "Executing {$i}: $line"
         $scriptBlock = [Scriptblock]::Create($line)
-        Set-Content -Path "$pwd\bufferone.ps1" -Value $scriptBlock
+        Set-Content -Path "$pwd_base\bufferone.ps1" -Value $scriptBlock
 
         $Process = Create-PowerShell-Process "$outdir\txt\output$i.txt"
         $id = $Process.Id
-        Write-Host "Executed {$i}: {$($Process.HasExited)} "
+        Write-Output "Executed {$i}: {$($Process.HasExited)} "
     
         #$image = "C:\Program Files\PowerShell\7\pwsh.exe"
         
@@ -270,7 +275,7 @@ Function Export-Logs($lines){
                 $j++
             }
             $XPath += "]]"
-            Write-Host $XPath
+            Write-Output $XPath
         
         }
         catch{
@@ -283,7 +288,7 @@ Function Export-Logs($lines){
             $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$i.evtx")
         }
         catch{
-            Write-Host("Error")
+            Write-Output("Error")
             $EvtSession.Dispose()
             return
         }
@@ -303,15 +308,16 @@ function Load-Module ($m) {
 
     # If module is imported say that and do nothing
     if (Get-Module | Where-Object {$_.Name -eq $m}) {
-        write-host "Module $m is already imported."
+        Write-Output "Module $m is already imported."
     }
     else {
-        Import-Module $m
+        Import-Module "$pwd_base\cmds\$m.ps1"
     }
 }
 
 
-Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd\output"){
+Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd_base\output"){
+	
     if (!(Test-Path "$outdir")) {
         New-Item -ItemType Directory -Path "$outdir"
     }
@@ -320,7 +326,7 @@ Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd\output")
         New-Item -ItemType Directory -Path "$outdir\evtx"
     }
     else{
-        Write-Host "Alreadyy present evtx directory"
+        Write-Output "Alreadyy present evtx directory"
         return
     }
 
@@ -335,17 +341,18 @@ Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd\output")
     #clearing dns
     ipconfig /flushdns
 
-	$modulesFolder = "$pwd\cmds"
+	$modulesFolder = "$pwd_base\cmds"
 	foreach ($module in Get-Childitem $modulesFolder -Name -Filter "*.ps1"){
-		Write-Host "Importing $modulesFolder\$module"
+		Write-Output "Importing $modulesFolder\$module"
 		Load-Module "$modulesFolder\$module"
 	}
-	Write-Host "Importing Powersploit"
-	Load-Module Powersploit
-	write-host "All imported"
+	Write-Output "Importing Powersploit"
+	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Powersploit
+
+	Write-Output "All imported"
 	
 
-    Write-Host "Executing sysmon: "
+    Write-Output "Executing sysmon: "
     sysmon.exe -accepteula -i $config_file
 
     $lines = Get-Content -Path $path_commands
@@ -353,9 +360,9 @@ Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd\output")
 
     cp $path_commands "$outdir\input.txt" 
     
-    Write-Host "Uninstalling sysmon: "
+    Write-Output "Uninstalling sysmon: "
     sysmon.exe -u
-    Remove-Item "bufferone.ps1"
+    Remove-Item "$pwd_base\bufferone.ps1"
 }
 
 Start-Analysis $path_commands $outdir

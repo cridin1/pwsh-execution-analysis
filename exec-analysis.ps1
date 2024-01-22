@@ -312,12 +312,13 @@ function Load-Module ($m) {
     }
     else {
         Import-Module "$pwd_base\cmds\$m.ps1"
+        Get-Module | Where-Object {$_.Name -eq $m}
     }
 }
 
 
 Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd_base\output"){
-	
+    whoami
     if (!(Test-Path "$outdir")) {
         New-Item -ItemType Directory -Path "$outdir"
     }
@@ -341,11 +342,9 @@ Function Start-Analysis($path_commands = "example.txt", $outdir = "$pwd_base\out
     #clearing dns
     ipconfig /flushdns
 
-	$modulesFolder = "$pwd_base\cmds"
-	foreach ($module in Get-Childitem $modulesFolder -Name -Filter "*.ps1"){
-		Write-Output "Importing $modulesFolder\$module"
-		Load-Module "$modulesFolder\$module"
-	}
+    Write-Output "Importing cmds"
+	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds
+
 	Write-Output "Importing Powersploit"
 	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Powersploit
 

@@ -31,6 +31,17 @@ if (-not ($env:PATH -like "*$directoryToAdd*")) {
 #     Write-Host "Directory is already in PATH: $directoryToAdd"
 # }
 
+#check if cmds is in modules
+if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds")) {
+    Write-Host "Cmds not found, installing"
+
+    cp -r C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\cmds C:\Windows\System32\WindowsPowerShell\v1.0\Modules
+} else {
+    Write-Host "Cmds found, skipping"
+}
+
+pop-location
+
 
 #check if powersploit is in modules
 if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\PowerSploit")) {

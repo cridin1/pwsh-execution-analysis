@@ -11,10 +11,10 @@ $setup_path = "$base_path\setup.ps1"
 $analysis_path = "$base_path\exec-analysis.ps1"
 
 #Starting the test
-VBoxManage snapshot $VMName restore 9c60e767-bfd1-4ecf-a8fe-b6297936b340
+VBoxManage snapshot $VMName restore 5c51683a-3bf2-4c03-9523-cc621b8e9675
 VBoxManage startvm $VMName --type headless
 
-Start-Sleep -Seconds 10
+Start-Sleep -Seconds 30
 
 VBOxManage guestcontrol $VMName copyto --username Administrator --password unina --target-directory="$base_path\" $pwd\$path_commands
 VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /file $setup_path  --wait-stdout

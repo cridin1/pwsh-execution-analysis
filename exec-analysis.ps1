@@ -248,12 +248,14 @@ Function Export-Logs($lines){
         $i = $i + 1
         
         Write-Output "Executing {$i}: $line"
+        Write-Host "Executing {$i}: $line"
         $scriptBlock = [Scriptblock]::Create($line)
         Set-Content -Path "$pwd_base\bufferone.ps1" -Value $scriptBlock
 
         $Process = Create-PowerShell-Process "$outdir\txt\output$i.txt"
         $id = $Process.Id
         Write-Output "Executed {$i}: {$($Process.HasExited)} "
+        Write-Host "Executed {$i}: {$($Process.HasExited)} "
     
         #$image = "C:\Program Files\PowerShell\7\pwsh.exe"
         

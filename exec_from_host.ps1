@@ -14,10 +14,25 @@ $analysis_path = "$base_path\exec-analysis.ps1"
 VBoxManage snapshot $VMName restore 5c51683a-3bf2-4c03-9523-cc621b8e9675
 VBoxManage startvm $VMName --type headless
 
-Start-Sleep -Seconds 30
-
-VBOxManage guestcontrol $VMName copyto --username Administrator --password unina --target-directory="$base_path\" $pwd\$path_commands
+$started = $false
+while($started -eq $false){
+    try{
+        Write-Host "Trying to start VM..."
+        $result = VBOxManage guestcontrol $VMName copyto --username Administrator --password unina --target-directory="$base_path\" $pwd\$path_commands 2>&1 | Out-String
+        $started = (-not ($result -Match "error"))
+        Write-Host "VM started? " $started $result
+        Start-Sleep -Seconds 10
+    }
+    catch{
+        Write-Host $error[0].Exception.Message
+        Write-Host "VM not yet started..."
+        Start-Sleep -Seconds 10
+    }
+}
+Write-Host "Vm Started and ready to execute commands"
 VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /file $setup_path  --wait-stdout
+
+Write-Host "Executing the analysis..."
 VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $path_commands > $base_path\log.txt" --wait-stdout
 
 #--exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "& {Start-Process powershell -Verb RunAs -Command '$analysis_path $path_commands > $base_path\log.txt'}" --wait-stdout

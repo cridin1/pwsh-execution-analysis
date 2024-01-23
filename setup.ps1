@@ -40,9 +40,6 @@ if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds")) 
     Write-Host "Cmds found, skipping"
 }
 
-pop-location
-
-
 #check if powersploit is in modules
 if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\PowerSploit")) {
     Write-Host "Powersploit not found, installing"

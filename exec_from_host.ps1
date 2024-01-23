@@ -1,6 +1,6 @@
 param(
     [string]$outdir = "output",
-    [string]$path_commands = "example.txt"
+    [string]$path_commands = "example.out"
 )
 
 mkdir $pwd\$outdir
@@ -11,7 +11,7 @@ $setup_path = "$base_path\setup.ps1"
 $analysis_path = "$base_path\exec-analysis.ps1"
 
 #Starting the test
-VBoxManage snapshot $VMName restore 5c51683a-3bf2-4c03-9523-cc621b8e9675
+VBoxManage snapshot $VMName restore e87ea332-d6ec-4e0b-bcc1-8b34697431ad
 VBoxManage startvm $VMName --type headless
 
 $started = $false
@@ -29,11 +29,14 @@ while($started -eq $false){
         Start-Sleep -Seconds 10
     }
 }
+
 Write-Host "Vm Started and ready to execute commands"
 VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /file $setup_path  --wait-stdout
+Start-Sleep -Seconds 3
 
+$commands = Split-Path $path_commands -leaf
 Write-Host "Executing the analysis..."
-VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $path_commands > $base_path\log.txt" --wait-stdout
+VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --wait-stdout
 
 #--exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "& {Start-Process powershell -Verb RunAs -Command '$analysis_path $path_commands > $base_path\log.txt'}" --wait-stdout
 
@@ -42,8 +45,7 @@ VBOxManage guestcontrol $VMName --username Administrator --password unina run --
 #VBoxManage guestcontrol $VMName execute --image "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" --username unina --password unina --wait-exit --wait-stdout --powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\setup.ps1"
 #VBoxManage guestcontrol $VMName run --exe "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" --username $Username --password $Password --wait-stdout --powershell -NoProfile -ExecutionPolicy Bypass -File "$ScriptPath"
 
-
-sleep 2
+Start-Sleep -Seconds 3
 #saving files
 VBOxManage guestcontrol $VMName copyfrom --username Administrator --password unina --verbose --recursive --target-directory="$pwd\$outdir" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output
 VBOxManage guestcontrol $VMName copyfrom --username Administrator --password unina --verbose --target-directory="$pwd\$outdir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt

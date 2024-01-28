@@ -20,11 +20,11 @@ def parse_xml(path) -> pd.DataFrame:
             "ImageLoaded", "PipeName", "QueryName", "EventType",
             "TargetObject", "DestinationIp" ,"DestinationPort" ]
     
-    common_events = pd.read_csv("common_event_filter.csv")
+    common_events = pd.read_csv("common_events_filter.csv")
     images = list(common_events["ImageLoaded"].unique())[1:] #skipping "-"
     
     #for debug
-    # keys.append("ProcessId","UtcTime", "ParentProcessId")
+    #keys+=["ProcessId","UtcTime", "ParentProcessId"]
 
     for _,eventID in tree:
         row = {}
@@ -65,21 +65,24 @@ def parse_xml(path) -> pd.DataFrame:
             row_out.append(row[key])
         output.append(row_out)
 
-    df = pd.DataFrame(output, columns=keys)
+    df = pd.DataFrame(output, columns=keys).drop_duplicates()
     df = df[df["CommandLine"] != common_events["CommandLine"][0]]
     return df
 
 def compare_df(df1,df2):
     df_intersection = pd.merge(df1, df2, how='inner')
     
+    if(df_intersection.shape[0] == 0):
+        return 0,0, df_intersection
+    
     #precision is the fraction of relevant instances among the retrieved instances
     p = df_intersection.shape[0]/df1.shape[0]
     #recall is the fraction of relevant instances that were retrieved.
     r = df_intersection.shape[0]/df2.shape[0]
     
-    f1_score = round(2*(p*r)/(p+r),2)
+    #f1_score = round(2*(p*r)/(p+r),2)
     
-    return f1_score, df_intersection
+    return round(p,2), round(r,2), df_intersection
 
 def parse_folder(path):
     elems = os.listdir(path)
@@ -110,13 +113,19 @@ if __name__ == "__main__":
     
     i = 0
     for df1,df2 in lista:
-        metric, df_comm = compare_df(df1,df2)
+        p,r, df_comm = compare_df(df1,df2)
         
+        print(i+1)
         print(f"command1: {commands_1[i].strip()}")
         print(f"command2: {commands_2[i].strip()}")
-        print(metric, df_comm.shape[0], df1.shape[0], df2.shape[0])
+        print(p,r, df_comm.shape[0], df1.shape[0], df2.shape[0])
+        
         print("\n")
-        #df_comm.to_csv(f"./out_common_{metric}.csv", index=False)
+        # df_comm.to_csv(f"./test2/out_common_{i}.csv", index=False)
+        # df1.to_csv(f"./test2/out_{i}_1.csv", index=False)
+        # df2.to_csv(f"./test2/out_{i}_2.csv", index=False)
+        
+        i+=1
 
-        i +=1
+    
     

@@ -11,7 +11,7 @@ $setup_path = "$base_path\setup.ps1"
 $analysis_path = "$base_path\exec-analysis.ps1"
 
 #Starting the test
-VBoxManage snapshot $VMName restore e87ea332-d6ec-4e0b-bcc1-8b34697431ad
+VBoxManage snapshot $VMName restore cc5a3651-141f-4212-8b04-4742a5465368
 VBoxManage startvm $VMName --type headless
 
 $started = $false
@@ -32,18 +32,11 @@ while($started -eq $false){
 
 Write-Host "Vm Started and ready to execute commands"
 VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /file $setup_path  --wait-stdout
-Start-Sleep -Seconds 3
+Start-Sleep -Seconds 5
 
 $commands = Split-Path $path_commands -leaf
 Write-Host "Executing the analysis..."
-VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --wait-stdout
-
-#--exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "& {Start-Process powershell -Verb RunAs -Command '$analysis_path $path_commands > $base_path\log.txt'}" --wait-stdout
-
-#"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\setup.ps1""' -Verb RunAs"
-
-#VBoxManage guestcontrol $VMName execute --image "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" --username unina --password unina --wait-exit --wait-stdout --powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\setup.ps1"
-#VBoxManage guestcontrol $VMName run --exe "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" --username $Username --password $Password --wait-stdout --powershell -NoProfile -ExecutionPolicy Bypass -File "$ScriptPath"
+VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout
 
 Start-Sleep -Seconds 10
 #saving files

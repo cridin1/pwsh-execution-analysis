@@ -1,7 +1,6 @@
 8 Invoke a credential phishing attack.
 12 Invoke PowerShell expression to download and execute a script from a specified URL.
 17 Invoke Expression to download and execute an obfuscated PowerShell script from a GitHub repository.
-18 List files recursively using different aliases of the Get-ChildItem cmdlet.
 21 Download and execute a script using Invoke-Command with a defined script block.
 23 Execute Invoke-Mimikatz cmdlet with bypass execution policy.
 24 Retrieve information using Get-WmiObject and export the results to a CSV file.

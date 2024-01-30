@@ -6,7 +6,7 @@ import argparse
 
 def filter_entries(text) -> bool:
     raw_text = r"{}".format(text)
-    patterns = r"(output\d+\.txt$)|(__PSScriptPolicyTest)"
+    patterns = r"(output\d+\.txt$)|(__PSScriptPolicyTest)|(C:\\Users\\unina\\AppData\\Local\\Temp)|(\\dotnet-diagnostic-\d+)|(\\PSHost.\d+.\d+.DefaultAppDomain)"
     found = re.search(patterns,raw_text)
     if(found == None): return True
     else: return False
@@ -80,18 +80,17 @@ def compare_df(df1,df2):
     #recall is the fraction of relevant instances that were retrieved.
     r = df_intersection.shape[0]/df2.shape[0]
     
-    #f1_score = round(2*(p*r)/(p+r),2)
-    
     return round(p,2), round(r,2), df_intersection
 
 def parse_folder(path):
     elems = os.listdir(path)
-    dfs = []
+    dfs = {}
 
     for elem in elems:
         path_elem = os.path.join(path,elem)
-        print(path_elem)
-        dfs.append(parse_xml(path_elem))
+        #print(path_elem)
+        number = int(re.search(r"\d+",elem).group())
+        dfs[number] = parse_xml(path_elem)
     
     return dfs 
 
@@ -111,14 +110,20 @@ if __name__ == "__main__":
     print("dfs extracted : ",len(dfs1), len(dfs2))
     lista = list(zip(dfs1,dfs2))
     
+    overall_p = 0
+    overall_r = 0
+    
     i = 0
-    for df1,df2 in lista:
+    for i in range(len(commands_1)):
+        df1 = dfs1[i+1]
+        df2 = dfs2[i+1]
+        
         p,r, df_comm = compare_df(df1,df2)
         
         print(i+1)
         print(f"command1: {commands_1[i].strip()}")
         print(f"command2: {commands_2[i].strip()}")
-        print(p,r, df_comm.shape[0], df1.shape[0], df2.shape[0])
+        print("\n precision: {} recall: {} \ncommon entries: {} \ntarget entries: {} \nground truth entries: {}".format(p,r,df_comm.shape[0], df1.shape[0], df2.shape[0]))
         
         print("\n")
         # df_comm.to_csv(f"./test2/out_common_{i}.csv", index=False)
@@ -126,6 +131,17 @@ if __name__ == "__main__":
         # df2.to_csv(f"./test2/out_{i}_2.csv", index=False)
         
         i+=1
+        
+        overall_p += p
+        overall_r += r
+    
+    overall_p = round(overall_p/len(commands_1),2)
+    overall_r = round(overall_r/len(commands_1),2)
+    
+    overall_f1 = round(2*(overall_p)*(overall_r)/((overall_p)+(overall_r)),2)
+    
+    print("overall precision: {} overall recall: {}".format(overall_p, overall_r))
+    print("overall f1 score: {}".format(overall_f1))
 
     
     

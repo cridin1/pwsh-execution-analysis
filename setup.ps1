@@ -1,3 +1,6 @@
+cd C:\Users\unina\Desktop\tesi\pwsh-execution-analysis
+git pull
+
 push-location \ 
 $directoryToAdd = "$pwd\mimikatz\x64"
 

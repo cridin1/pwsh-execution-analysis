@@ -246,6 +246,7 @@ Function Export-Logs($lines){
     {
         Start-Sleep 1
         $i = $i + 1
+        $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID #testare se funziona
         
         Write-Output "Executing {$i}: $line"
         Write-Host "Executing {$i}: $line"

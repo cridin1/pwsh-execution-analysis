@@ -296,6 +296,7 @@ Function Export-Logs($lines){
             return
         }
 
+        $EvtSession.ClearLog($LogName)
         $EvtSession.Dispose()
         $logs = Get-WinEvent -Path "$outdir\evtx\output$i.evtx"
 

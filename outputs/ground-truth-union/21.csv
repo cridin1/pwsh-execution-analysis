@@ -53,3 +53,4 @@ Task,Image,CommandLine,TargetFilename,ImageLoaded,PipeName,QueryName,EventType,T
 13,C:\Program Files\PowerShell\7\pwsh.exe,-,-,-,-,-,SetValue,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.Reflection.Metadata.dll,-,-,-,-,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.Collections.Immutable.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.IO.Compression.dll,-,-,-,-,-,-

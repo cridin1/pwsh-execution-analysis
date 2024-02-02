@@ -64,3 +64,5 @@ Task,Image,CommandLine,TargetFilename,ImageLoaded,PipeName,QueryName,EventType,T
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\ntasn1.dll,-,-,-,-,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\ncrypt.dll,-,-,-,-,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\ncryptsslp.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.IO.Compression.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.Reflection.Metadata.dll,-,-,-,-,-,-

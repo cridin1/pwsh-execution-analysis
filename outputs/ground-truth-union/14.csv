@@ -59,3 +59,4 @@ Task,Image,CommandLine,TargetFilename,ImageLoaded,PipeName,QueryName,EventType,T
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\wbemcomn.dll,-,-,-,-,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\wbem\wbemsvc.dll,-,-,-,-,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\wbem\fastprox.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.IO.Compression.dll,-,-,-,-,-,-

@@ -101,3 +101,7 @@ Task,Image,CommandLine,TargetFilename,ImageLoaded,PipeName,QueryName,EventType,T
 7,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,-,-,C:\Windows\System32\dhcpcsvc6.dll,-,-,-,-,-,-
 7,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,-,-,C:\Windows\System32\dhcpcsvc.dll,-,-,-,-,-,-
 7,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,-,-,C:\Windows\System32\winnsi.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.IO.Compression.dll,-,-,-,-,-,-
+13,C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,-,-,-,-,-,SetValue,HKLM\System\CurrentControlSet\Services\bam\State\UserSettings\S-1-5-21-3191581004-3819144844-3633199379-1002\\Device\HarddiskVolume3\Windows\System32\WindowsPowerShell\v1.0\powershell.exe,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.Reflection.Metadata.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Program Files\PowerShell\7\System.Collections.Immutable.dll,-,-,-,-,-,-

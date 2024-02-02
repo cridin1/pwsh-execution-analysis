@@ -51,3 +51,5 @@ Task,Image,CommandLine,TargetFilename,ImageLoaded,PipeName,QueryName,EventType,T
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\secur32.dll,-,-,-,-,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\sspicli.dll,-,-,-,-,-,-
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\mpr.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.23110.3-0\MpClient.dll,-,-,-,-,-,-
+7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\gpapi.dll,-,-,-,-,-,-

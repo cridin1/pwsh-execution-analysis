@@ -86,3 +86,4 @@ Task,Image,CommandLine,TargetFilename,ImageLoaded,PipeName,QueryName,EventType,T
 7,C:\Program Files\PowerShell\7\pwsh.exe,-,-,C:\Windows\System32\cryptnet.dll,-,-,-,-,-,-
 3,C:\Program Files\PowerShell\7\pwsh.exe,-,-,-,-,-,-,-,185.199.109.133,443
 3,C:\Program Files\PowerShell\7\pwsh.exe,-,-,-,-,-,-,-,185.199.108.133,443
+22,C:\Program Files\PowerShell\7\pwsh.exe,-,-,-,-,raw.githubusercontent.com,-,-,-,-

@@ -13,6 +13,7 @@ $analysis_path = "$base_path\exec-analysis.ps1"
 #Starting the test
 VBoxManage snapshot $VMName restore b7a5cb3a-3952-4703-a1db-cbcf93357f6e
 VBoxManage startvm $VMName --type headless
+Start-Sleep -Seconds 30
 
 $started = $false
 while($started -eq $false){

@@ -11,14 +11,14 @@ $setup_path = "$base_path\setup.ps1"
 $analysis_path = "$base_path\exec-analysis.ps1"
 
 #Starting the test
-VBoxManage snapshot $VMName restore cc5a3651-141f-4212-8b04-4742a5465368
+VBoxManage snapshot $VMName restore b7a5cb3a-3952-4703-a1db-cbcf93357f6e
 VBoxManage startvm $VMName --type headless
 
 $started = $false
 while($started -eq $false){
     try{
         Write-Host "Trying to start VM..."
-        $result = VBOxManage guestcontrol $VMName copyto --username Administrator --password unina --target-directory="$base_path\" $path_commands 2>&1 | Out-String
+        $result = VBOxManage guestcontrol $VMName copyto --username unina --password unina --target-directory="$base_path\" $path_commands 2>&1 | Out-String
         $started = (-not ($result -Match "error"))
         Write-Host "VM started? " $started $result
         Start-Sleep -Seconds 30
@@ -31,18 +31,21 @@ while($started -eq $false){
 }
 
 Write-Host "Vm Started and ready to execute commands"
-VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /file $setup_path  --wait-stdout
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /file $setup_path  --wait-stdout
 Start-Sleep -Seconds 5
 
 $commands = Split-Path $path_commands -leaf
 Write-Host "Executing the analysis..."
-VBOxManage guestcontrol $VMName --username Administrator --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout
 
 Start-Sleep -Seconds 10
 #saving files
-VBOxManage guestcontrol $VMName copyfrom --username Administrator --password unina --verbose --recursive --target-directory="$pwd\$outdir" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output
-VBOxManage guestcontrol $VMName copyfrom --username Administrator --password unina --verbose --target-directory="$pwd\$outdir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt
+VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\$outdir" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output
+VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --target-directory="$pwd\$outdir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt
 
 #save snapshot
 #VBoxManage snapshot "Malware-VM-Windows" take $1 --description "Execution of test $1"
 VBoxManage controlvm $VMName acpipowerbutton --verbose
+
+
+#VBOxManage guestcontrol "Malware-VM-Windows" copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\ground-truth-last" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output

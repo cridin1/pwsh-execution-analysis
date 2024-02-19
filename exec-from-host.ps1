@@ -14,7 +14,7 @@ write-host
 
  
 """
-exit
+
 mkdir $pwd\$outdir
 
 $VMName = "Malware-VM-Windows"

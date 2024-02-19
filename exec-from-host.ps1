@@ -3,6 +3,18 @@ param(
     [string]$path_commands = "example.out"
 )
 
+write-host 
+@"
+                                                                                                      
+                                                                           
+ ._        _ |_ __ _      _   _    _|_ o  _  ._ __ _. ._   _. |     _ o  _ 
+ |_) \/\/ _> | |  (/_ >< (/_ (_ |_| |_ | (_) | |  (_| | | (_| | \/ _> | _> 
+ |                                                              /          
+
+
+
+"@
+
 mkdir $pwd\$outdir
 
 $VMName = "Malware-VM-Windows"
@@ -45,8 +57,5 @@ VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --ver
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --target-directory="$pwd\$outdir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt
 
 #save snapshot
-#VBoxManage snapshot "Malware-VM-Windows" take $1 --description "Execution of test $1"
 VBoxManage controlvm $VMName acpipowerbutton --verbose
 
-
-#VBOxManage guestcontrol "Malware-VM-Windows" copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\ground-truth-last" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output

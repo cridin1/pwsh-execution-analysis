@@ -9,17 +9,33 @@
 
 ```
 
-Inspired by:
+# PowerShell Execution Analysis
 
-https://github.com/IppSec/PowerSiem.git 
+This repository contains scripts and configurations for analyzing PowerShell execution on Windows systems. It is inspired by the work of [IppSec's PowerSiem](https://github.com/IppSec/PowerSiem) and [Neo23x0's sysmon-config](https://github.com/Neo23x0/sysmon-config).
 
-https://github.com/Neo23x0/sysmon-config.git 
+## Overview
 
-Working with PSVersion  5.1.19041.1645
+The provided scripts and configurations are designed to enhance visibility into PowerShell activity on Windows systems. By leveraging PowerShell logging and Sysmon configurations, this analysis tool helps in identifying potentially malicious or suspicious PowerShell commands and activities.
 
 ![Overview](https://github.com/cridin1/pwsh-execution-analysis/blob/main/exec-analysis.png)
 
-Make sure to use pwsh as admin:
+PowerShell version: 5.1.19041.1645 (or compatible)
 
-`.\exec-from-host.ps1 DIRPATH COMMANDS_PATH`
+## Usage
 
+### Virtual Machine Setup
+1. Ensure that you have VirtualBox and VBoxManage installed.
+2. Install a Windows virtual machine with the following name `Malware-VM-Windows`.
+3. Clone the repository on the target VM and install Sysmon.
+4. Ensure that PowerShell (`pwsh`) is running with administrative privileges.
+5. Save a snapshot and update the id in `exec-from-host.ps1` script.
+
+To utilize the tools in this repository, follow these steps:
+1. Clone or download this repository to your local machine.
+2. Run the `exec-from-host.ps1` script with the appropriate parameters:
+
+```powershell
+.\exec-from-host.ps1 OUTPUT_DIR_PATH COMMANDS_PATH
+```
+
+Update 

@@ -26,7 +26,7 @@ PowerShell version: 5.1.19041.1645 (or compatible)
 ### Virtual Machine Setup
 1. Ensure that you have VirtualBox and VBoxManage installed.
 2. Install a Windows virtual machine with the following name `Malware-VM-Windows`.
-3. Clone the repository on the target VM and install Sysmon.
+3. Clone the repository on the target VM.
 4. Ensure that PowerShell (`pwsh`) is running with administrative privileges.
 5. Save a snapshot and update the id in `exec-from-host.ps1` script.
 

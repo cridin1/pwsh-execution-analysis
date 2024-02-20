@@ -27,18 +27,28 @@ PowerShell version: 5.1.19041.1645 (or compatible)
 1. Ensure that you have VirtualBox and VBoxManage installed.
 2. Install a Windows virtual machine with the following name `Malware-VM-Windows`.
 3. Clone the repository on the target VM.
-4. Ensure that PowerShell (`pwsh`) is running with administrative privileges.
-5. Save a snapshot and update the id in `exec-from-host.ps1` script.
+4. Ensure that VM username and password match in `exec-from-host.ps1`.
+5. Ensure that PowerShell (`pwsh`) is running with administrative privileges.
+6. Save a snapshot and update the id in `exec-from-host.ps1` script.
 
 To utilize the tools in this repository, follow these steps:
 1. Clone or download this repository to your local machine.
 2. Run the `exec-from-host.ps1` script with the appropriate parameters:
 
-```powershell
+```PowerShell
 .\exec-from-host.ps1 OUTPUT_DIR_PATH COMMANDS_PATH
 ```
 
-In utils you can find different scripts:
-`common_events_parser.py` extracts common events in different executions of the ground truth commands.
-`intersection_ground_truth.py` profiles the ground truth executions.
-`event_analysis.py` extracts precision and recall for each command, then calculates the overall execution f1-score.
+In utils, you can find different scripts: <br />
+`common_events_parser.py` extracts common events in different executions of the ground truth commands.<br />
+`intersection_ground_truth.py` profiles the ground truth executions.<br />
+`event_analysis.py` extracts precision and recall for each command, then calculates the overall execution f1-score.<br />
+
+To execute the analysis you need to generate the outputs for both ground truth and generated commands through `exec-from-host.ps1`. For example: <br />
+```
+.\exec-from-host.ps1 output_folder1 commands.out
+.\exec-from-host.ps1 output_folder2 commands_groundtruth.out
+python utils\event_analysis.py --folder1 output_folder1 --folder2 output_folder2
+```
+
+

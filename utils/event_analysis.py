@@ -143,6 +143,8 @@ if __name__ == "__main__":
         print("\n precision: {} recall: {} \ncommon entries: {} \ntarget entries: {} \nground truth entries: {}".format(p,r,df_comm.shape[0], df1.shape[0], df2.shape[0]))
         
         print("\n")
+
+        #for debug
         # df_comm.to_csv(f"./temp/out_common_{i+1}.csv", index=False)
         # dfdiff = pd.concat([df1,df2]).drop_duplicates(keep=False)
         # dfdiff.to_csv(f"./temp/out_diff_{i+1}.csv", index=False)

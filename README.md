@@ -11,11 +11,11 @@
 
 # PowerShell Execution Analysis
 
-This repository contains scripts and configurations for analyzing PowerShell execution on Windows systems. It is inspired by the work of [IppSec's PowerSiem](https://github.com/IppSec/PowerSiem) and [Neo23x0's sysmon-config](https://github.com/Neo23x0/sysmon-config).
+This repository contains scripts and configurations for analyzing PowerShell execution on Windows systems. It is inspired by the work of [IppSec's PowerSiem](https://github.com/IppSec/PowerSiem) and [Neo23x0's sysmon-config](https://github.com/Neo23x0/sysmon-config). The objective is to analyze dynamically the execution of AI-generated PowerShell commands or short scripts, then compare this execution with ground truth snippets.
 
 ## Overview
 
-The provided scripts and configurations are designed to enhance visibility into PowerShell activity on Windows systems. By leveraging PowerShell logging and Sysmon configurations, this analysis tool helps in identifying potentially malicious or suspicious PowerShell commands and activities.
+The provided scripts and configurations are designed to enhance visibility into PowerShell activity on Windows systems. By leveraging PowerShell logging and Sysmon configurations, this analysis tool helps in identifying PowerShell commands and activities. After the recording phase for reference and generated commands, there is an event filtering phase, then for each command precision and recall are computed by determining the correspondence between ground truth events (from the reference command) and target events (from the generated command). 
 
 ![Overview](https://github.com/cridin1/pwsh-execution-analysis/blob/main/exec-analysis.png)
 
@@ -38,4 +38,7 @@ To utilize the tools in this repository, follow these steps:
 .\exec-from-host.ps1 OUTPUT_DIR_PATH COMMANDS_PATH
 ```
 
-Update 
+In utils you can find different scripts:
+`common_events_parser.py` extracts common events in different executions of the ground truth commands.
+`intersection_ground_truth.py` profiles the ground truth executions.
+`event_analysis.py` extracts precision and recall for each command, then calculates the overall execution f1-score.

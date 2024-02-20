@@ -56,3 +56,6 @@ Maybe you need to update `common_events_filter_merged.csv` with common events to
 
 ### Commands integration
 In `cmds`, you can find a custom module to integrate malicious/custom commands into the PowerShell default configuration. You can easily add new commands to be executed.
+
+### Results
+In `results`, there are some of the results from different models.

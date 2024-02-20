@@ -31,6 +31,7 @@ PowerShell version: 5.1.19041.1645 (or compatible)
 5. Ensure that PowerShell (`pwsh`) is running with administrative privileges.
 6. Save a snapshot and update the id in `exec-from-host.ps1` script.
 
+###Using the tool
 To utilize the tools in this repository, follow these steps:
 1. Clone or download this repository to your local machine.
 2. Run the `exec-from-host.ps1` script with the appropriate parameters:
@@ -53,3 +54,5 @@ python utils\event_analysis.py --folder1 output_folder1 --folder2 output_folder2
 
 Maybe you need to update `common_events_filter_merged.csv` with common events to filter out on your VM.
 
+### Commands integration
+In `cmds`, you can find a custom module to integrate malicious/custom commands into the PowerShell default configuration. You can easily add new commands to be executed.

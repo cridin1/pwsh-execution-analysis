@@ -27,7 +27,7 @@ PowerShell version: 5.1.19041.1645 (or compatible)
 1. Ensure that you have VirtualBox and VBoxManage installed.
 2. Install a Windows virtual machine with the following name `Malware-VM-Windows`.
 3. Clone the repository on the target VM.
-4. Ensure that VM username and password match in `exec-from-host.ps1`.
+4. Ensure that the VM username and password match in `exec-from-host.ps1`.
 5. Ensure that PowerShell (`pwsh`) is running with administrative privileges.
 6. Save a snapshot and update the id in `exec-from-host.ps1` script.
 
@@ -51,4 +51,5 @@ To execute the analysis you need to generate the outputs for both ground truth a
 python utils\event_analysis.py --folder1 output_folder1 --folder2 output_folder2
 ```
 
+Maybe you need to update `common_events_filter_merged.csv` with common events to filter out on your VM.
 

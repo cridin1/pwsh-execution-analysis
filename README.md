@@ -9,8 +9,6 @@
 
 ```
 
-
-
 Inspired by:
 
 https://github.com/IppSec/PowerSiem.git 
@@ -19,7 +17,9 @@ https://github.com/Neo23x0/sysmon-config.git
 
 Working with PSVersion  5.1.19041.1645
 
+![Overview](https://github.com/cridin1/pwsh-execution-analysis/blob/main/exec-analysis.png)
+
 Make sure to use pwsh as admin:
 
-`.\exec-analysis.ps1 $pwd\example2.txt $pwd\output1`
+`.\exec-from-host.ps1 DIRPATH COMMANDS_PATH`
 

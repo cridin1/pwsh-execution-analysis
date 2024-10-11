@@ -15,21 +15,19 @@ if (-not ($env:PATH -like "*$directoryToAdd*")) {
     Write-Host "Directory is already in PATH: $directoryToAdd"
 }
 
-# $directoryToAdd = "$pwd\Sysmon"
-# # Check if the directory is already in the PATH
-# if (-not ($env:PATH -like "*$directoryToAdd*")) {
-#     # Add the directory to the PATH
-#     Invoke-WebRequest -Uri https://download.sysinternals.com/files/Sysmon.zip -Outfile Sysmon.zip
-#     Expand-Archive Sysmon.zip
-#     $env:PATH += ";$directoryToAdd"
-
-#     # Optionally, update the system PATH as well (requires elevated privileges)
-#     [System.Environment]::SetEnvironmentVariable("PATH", $env:PATH, [System.EnvironmentVariableTarget]::Machine)
-
-#     Write-Host "Directory added to PATH: $directoryToAdd"
-# } else {
-#     Write-Host "Directory is already in PATH: $directoryToAdd"
-# }
+$directoryToAdd = "$pwd\Sysmon"
+# Check if the directory is already in the PATH
+if (-not ($env:PATH -like "*$directoryToAdd*")) {
+    # Add the directory to the PATH
+    Invoke-WebRequest -Uri https://download.sysinternals.com/files/Sysmon.zip -Outfile Sysmon.zip
+    Expand-Archive Sysmon.zip
+    $env:PATH += ";$directoryToAdd"
+    # Optionally, update the system PATH as well (requires elevated privileges)
+    [System.Environment]::SetEnvironmentVariable("PATH", $env:PATH, [System.EnvironmentVariableTarget]::Machine)
+    Write-Host "Directory added to PATH: $directoryToAdd"
+} else {
+    Write-Host "Directory is already in PATH: $directoryToAdd"
+}
 
 #check if cmds is in modules
 if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds")) {

@@ -20,7 +20,7 @@ mkdir $pwd\$outdir
 $VMName = "Malware-VM-Windows"
 $base_path="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
 $setup_path = "$base_path\setup.ps1"
-$analysis_path = "$base_path\exec-analysis.ps1"
+$analysis_path = "$base_path\exec-analysis-scripts.ps1"
 
 #Starting the test
 VBoxManage snapshot $VMName restore b7a5cb3a-3952-4703-a1db-cbcf93357f6e

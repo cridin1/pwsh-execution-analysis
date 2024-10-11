@@ -4,7 +4,7 @@ param(
     [string]$config_file = "configs\sysmonconfig-excludes-only.xml"
 )
 
-$pwd_base="C:\Users\super\Desktop\zircolite-test\prova"
+$pwd_base="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
 $path_scripts = "$pwd_base\$path_scripts"
 $outdir = "$pwd_base\$outdir"
 $config_file = "$pwd_base\$config_file"
@@ -359,7 +359,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     sysmon.exe -accepteula -i $config_file
 
     $lines = Get-ChildItem -Path $path_scripts -File | Select-Object FullName 
-    Export-Logs($lines)
+    #Export-Logs($lines)
     
     Write-Output "Uninstalling sysmon: "
     sysmon.exe -u

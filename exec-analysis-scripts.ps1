@@ -343,6 +343,9 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
         New-Item -ItemType Directory -Path "$outdir\xml"
     }
 
+    Write-Output "Pulling latest changes from GitHub"
+    git pull
+
     #clearing dns
     ipconfig /flushdns
 

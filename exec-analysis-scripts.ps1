@@ -1,5 +1,5 @@
 param(
-    [string]$path_scripts = "inputs",
+    [string]$path_scripts = "input-scripts",
     [string]$outdir = "output",
     [string]$config_file = "configs\sysmonconfig-excludes-only.xml"
 )
@@ -215,7 +215,7 @@ Function Create-PowerShell-Process ($input_file, $output_file){
     $Process = New-Object System.Diagnostics.Process
 
     $ProcessStartInfoParam = [ordered]@{
-        Arguments              = " -File $input_file"
+        Arguments              = "-NonInteractive -File $input_file"
         CreateNoWindow         = $False
         FileName               = 'pwsh'
         WindowStyle            = 'Hidden'
@@ -244,7 +244,7 @@ Function Export-Logs($directory){
     
     foreach ($input_file in $directory)
     {
-        $name = $input_file.Name
+        $name = $input_file.FullName
 
         Start-Sleep 1
         $i = $i + 1
@@ -350,6 +350,9 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     ipconfig /flushdns
 
     Write-Output "Importing cmds"
+    if (!(Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds")) {
+        cp -r .\cmds C:\Windows\System32\WindowsPowerShell\v1.0\Modules
+    }
 	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds
 
 	Write-Output "Importing Powersploit"

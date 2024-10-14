@@ -256,8 +256,8 @@ Function Export-Logs($directory){
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\output$i.txt" > $null 2>&1
         $id = $Process.Id
-        Write-Output "Executed {$i}: {$($Process.HasExited)} "
-        Write-Host "Executed {$i}: {$($Process.HasExited)} "
+        Write-Output "Executed {$id_sample}: {$($Process.HasExited)} "
+        Write-Host "Executed {$id_sample}: {$($Process.HasExited)} "
     
         $XPath="*[System[EventRecordID > $maxRecordId]]"
         try{

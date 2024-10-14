@@ -251,8 +251,8 @@ Function Export-Logs($directory){
         $i = $i + 1
         $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID #testare se funziona
         
-        Write-Output "Executing {$i}: $name"
-        Write-Host "Executing {$i}: $name"
+        Write-Output "Executing {$id_sample}: $name"
+        Write-Host "Executing {$id_sample}: $name"
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\output$i.txt" > $null 2>&1
         $id = $Process.Id

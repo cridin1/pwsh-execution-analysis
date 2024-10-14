@@ -35,14 +35,15 @@ $analysis_path = "$base_path\exec-analysis-scripts.ps1"
 
 #Starting the test
 VBoxManage snapshot $VMName restore $snapshot
-VBoxManage startvm $VMName --type headless
+VBoxManage startvm $VMName --type headless 
 Start-Sleep -Seconds 30
 
+Write-Host "Waiting the VM..."
 $started = $false
 while($started -eq $false){
     try{
         Write-Host "Waiting the VM..."
-        $result = VBOxManage guestcontrol $VMName --username unina --password unina run --exe cmd.exe /c "git --git-dir=$base_path\.git --work-tree=$base_path pull" --no-wait-stdout > $null 2>&1
+        $result = VBOxManage guestcontrol $VMName --username unina --password unina run --exe cmd.exe /c "git --git-dir=$base_path\.git --work-tree=$base_path pull"
         $started = (-not ($result -Match "error"))
         Write-Host "VM started? " $started $result
         Start-Sleep -Seconds 10
@@ -64,14 +65,14 @@ Start-Sleep -Seconds 10
 
 $commands = Split-Path $input_dir -leaf
 Write-Host "VM Executing the analysis..."
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt"
 
 Start-Sleep -Seconds 10
 #saving files
 
 VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command  "Compress-Archive $base_path\output -DestinationPath $base_path\output.zip"
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip
-Expand-Archive -Path "$pwd\output.zip"
+Expand-Archive -Path "$pwd\output.zip" -Force
 rm "$pwd\output.zip"
 
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --target-directory="$pwd\$output_dir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt

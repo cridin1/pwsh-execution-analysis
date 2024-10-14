@@ -215,7 +215,7 @@ Function Create-PowerShell-Process ($input_file, $output_file){
     $Process = New-Object System.Diagnostics.Process
 
     $ProcessStartInfoParam = [ordered]@{
-        Arguments              = "-ErrorAction 'silentlycontinue' -NonInteractive -File $input_file"
+        Arguments              = "-NonInteractive -File $input_file"
         CreateNoWindow         = $False
         FileName               = 'pwsh'
         WindowStyle            = 'Hidden'

@@ -6,7 +6,7 @@ param(
      [string]$input_dir = "input-scripts",
 
      [Parameter()]
-     [string]$snapshot = "b7a5cb3a-3952-4703-a1db-cbcf93357f6e"
+     [string]$snapshot = "471e4cae-2512-4955-86ef-c1ffdadd06b0"
 
  )
 
@@ -23,11 +23,21 @@ write-host
  
 """
 
-mkdir $pwd\$output_dir
+
+
+
+
 
 $VMName = "Malware-VM-Windows"
 $base_path="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
 $analysis_path = "$base_path\exec-analysis-scripts.ps1"
+
+
+if (!(Test-Path "$pwd\$outdir")) {
+    mkdir $pwd\$output_dir
+}
+
+
 
 #Starting the test
 VBoxManage snapshot $VMName restore $snapshot
@@ -37,11 +47,11 @@ Start-Sleep -Seconds 30
 $started = $false
 while($started -eq $false){
     try{
-        Write-Host "Trying to start VM..."
-        $result = VBOxManage guestcontrol $VMName copyto --R --username unina --password unina --target-directory="$base_path\" $input_dir 2>&1 | Out-String
+        Write-Host "Waiting the VM..."
+        $result = VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "git -C $base_path pull" --no-wait-stdout > $null 2>&1
         $started = (-not ($result -Match "error"))
         Write-Host "VM started? " $started $result
-        Start-Sleep -Seconds 30
+        Start-Sleep -Seconds 10
     }
     catch{
         Write-Host $error[0].Exception.Message
@@ -50,17 +60,25 @@ while($started -eq $false){
     }
 }
 
-Write-Host "Vm Started and ready to execute commands"
+Write-Host "Vm Started and copying inputs..."
+VBOxManage guestcontrol $VMName copyto --recursive --username unina --password unina --target-directory="$base_path\" $pwd\$input_dir 2>&1 | Out-String
+Start-Sleep -Seconds 10
 
 $commands = Split-Path $input_dir -leaf
 Write-Host "Executing the analysis..."
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout >$null 2>&1
 
 Start-Sleep -Seconds 10
 #saving files
-VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\$output_dir" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output
+
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command  "Compress-Archive $base_path\output -DestinationPath $base_path\output.zip"
+
+
+VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --target-directory="$pwd\$output_dir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt
 
 #save snapshot
 VBoxManage controlvm $VMName acpipowerbutton --verbose
+Expand-Archive -Path "$pwd\output.zip"
+rm "$pwd\output.zip"
 

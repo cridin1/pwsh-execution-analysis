@@ -245,6 +245,7 @@ Function Export-Logs($directory){
     foreach ($input_file in $directory)
     {
         $name = $input_file.FullName
+        $id_sample = $input_file.BaseName
 
         Start-Sleep 1
         $i = $i + 1
@@ -253,13 +254,11 @@ Function Export-Logs($directory){
         Write-Output "Executing {$i}: $name"
         Write-Host "Executing {$i}: $name"
 
-        $Process = Create-PowerShell-Process $name "$outdir\txt\output$i.txt"
+        $Process = Create-PowerShell-Process $name "$outdir\txt\output$i.txt" > $null 2>&1
         $id = $Process.Id
         Write-Output "Executed {$i}: {$($Process.HasExited)} "
         Write-Host "Executed {$i}: {$($Process.HasExited)} "
     
-        #$image = "C:\Program Files\PowerShell\7\pwsh.exe"
-        
         $XPath="*[System[EventRecordID > $maxRecordId]]"
         try{
             $XPath_child = "*[System[EventRecordID > $maxRecordId] and EventData[Data[@Name='ParentProcessId'] = $id]]"
@@ -288,7 +287,7 @@ Function Export-Logs($directory){
         $SourceType = "LogName"
         $EvtSession = [System.Diagnostics.Eventing.Reader.EventLogSession]::New()
         try{
-            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$i.evtx")
+            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$id_sample.evtx")
         }
         catch{
             Write-Output("Error")
@@ -298,10 +297,10 @@ Function Export-Logs($directory){
 
         $EvtSession.ClearLog($LogName)
         $EvtSession.Dispose()
-        $logs = Get-WinEvent -Path "$outdir\evtx\output$i.evtx"
+        $logs = Get-WinEvent -Path "$outdir\evtx\output$id_sample.evtx"
 
-        $xml = [xml]((wevtutil query-events "$outdir\evtx\output$i.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
-        $xml.Save("$outdir\xml\output$i.xml")
+        $xml = [xml]((wevtutil query-events "$outdir\evtx\output$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
+        $xml.Save("$outdir\xml\output$id_sample.xml")
 
         Print-Logs $logs
     }
@@ -358,7 +357,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     Write-Output "Executing sysmon: "
     sysmon.exe -accepteula -i $config_file
 
-    $lines = Get-ChildItem -Path $path_scripts -File | Select-Object FullName 
+    $lines = Get-ChildItem -Path $path_scripts -File
     Export-Logs($lines)
     
     Write-Output "Uninstalling sysmon: "

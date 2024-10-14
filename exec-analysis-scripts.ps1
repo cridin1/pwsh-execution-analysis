@@ -245,7 +245,7 @@ Function Export-Logs($directory){
     foreach ($input_file in $directory)
     {
         $name = $input_file.FullName
-        $id_sample = $input_file.BaseName
+        $id_sample = $input_file.BaseName | Select-String
 
         Start-Sleep 1
         $i = $i + 1
@@ -256,8 +256,8 @@ Function Export-Logs($directory){
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\output$i.txt" > $null 2>&1
         $id = $Process.Id
-        Write-Output "Executed {$id_sample}: {$($Process.HasExited)} "
-        Write-Host "Executed {$id_sample}: {$($Process.HasExited)} "
+        Write-Output "Executed {$id_sample} "
+        Write-Host "Executed {$id_sample} "
     
         $XPath="*[System[EventRecordID > $maxRecordId]]"
         try{
@@ -290,7 +290,7 @@ Function Export-Logs($directory){
             $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$id_sample.evtx")
         }
         catch{
-            Write-Output("Error")
+            Write-Output("Error on exportation of evtx") #####debug
             $EvtSession.Dispose()
             return
         }

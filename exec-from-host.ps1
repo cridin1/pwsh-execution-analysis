@@ -42,7 +42,7 @@ $started = $false
 while($started -eq $false){
     try{
         Write-Host "Waiting the VM..."
-        $result = VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "git -C $base_path pull" --no-wait-stdout > $null 2>&1
+        $result = VBOxManage guestcontrol $VMName --username unina --password unina run --exe cmd.exe /c "git --git-dir=$base_path\.git --work-tree=$base_path pull" --no-wait-stdout > $null 2>&1
         $started = (-not ($result -Match "error"))
         Write-Host "VM started? " $started $result
         Start-Sleep -Seconds 10
@@ -59,7 +59,7 @@ VBOxManage guestcontrol $VMName copyto --recursive --username unina --password u
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing setup script"
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$setup_path"
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path" --no-wait-stdout
 Start-Sleep -Seconds 10
 
 $commands = Split-Path $input_dir -leaf

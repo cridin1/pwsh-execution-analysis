@@ -346,6 +346,9 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     Write-Output "Pulling latest changes from GitHub"
     git pull
 
+    Write-Output "Executing setup script"
+    .\setup.ps1
+
     #clearing dns
     ipconfig /flushdns
 

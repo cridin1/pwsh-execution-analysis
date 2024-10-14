@@ -19,7 +19,6 @@ mkdir $pwd\$outdir
 
 $VMName = "Malware-VM-Windows"
 $base_path="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
-$setup_path = "$base_path\setup.ps1"
 $analysis_path = "$base_path\exec-analysis-scripts.ps1"
 
 #Starting the test
@@ -44,8 +43,6 @@ while($started -eq $false){
 }
 
 Write-Host "Vm Started and ready to execute commands"
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /file $setup_path  --wait-stdout
-Start-Sleep -Seconds 5
 
 $commands = Split-Path $path_commands -leaf
 Write-Host "Executing the analysis..."

@@ -343,9 +343,6 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
         New-Item -ItemType Directory -Path "$outdir\xml"
     }
 
-    Write-Output "Executing setup script"
-    .\setup.ps1
-
     #clearing dns
     ipconfig /flushdns
 

@@ -250,8 +250,8 @@ Function Export-Logs($directory){
         $i = $i + 1
         $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID #testare se funziona
         
-        Write-Output "Executing {$i}: $line"
-        Write-Host "Executing {$i}: $line"
+        Write-Output "Executing {$i}: $name"
+        Write-Host "Executing {$i}: $name"
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\output$i.txt"
         $id = $Process.Id
@@ -350,9 +350,6 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     ipconfig /flushdns
 
     Write-Output "Importing cmds"
-    if (!(Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds")) {
-        cp -r .\cmds C:\Windows\System32\WindowsPowerShell\v1.0\Modules
-    }
 	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds
 
 	Write-Output "Importing Powersploit"
@@ -365,7 +362,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     sysmon.exe -accepteula -i $config_file
 
     $lines = Get-ChildItem -Path $path_scripts -File | Select-Object FullName 
-    #Export-Logs($lines)
+    Export-Logs($lines)
     
     Write-Output "Uninstalling sysmon: "
     sysmon.exe -u

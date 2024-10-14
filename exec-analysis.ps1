@@ -215,7 +215,7 @@ Function Create-PowerShell-Process($output_file){
     $Process = New-Object System.Diagnostics.Process
 
     $ProcessStartInfoParam = [ordered]@{
-        Arguments              = " -File $pwd_base\bufferone.ps1"
+        Arguments              = " -NonInteractive -File $pwd_base\bufferone.ps1"
         CreateNoWindow         = $False
         FileName               = 'pwsh'
         WindowStyle            = 'Hidden'

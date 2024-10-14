@@ -6,7 +6,7 @@ param(
      [string]$input_dir = "input-scripts",
 
      [Parameter()]
-     [string]$snapshot = "471e4cae-2512-4955-86ef-c1ffdadd06b0"
+     [string]$snapshot = "d32e78f5-df4e-498f-9750-e6db64901097"
 
  )
 
@@ -30,14 +30,8 @@ write-host
 
 $VMName = "Malware-VM-Windows"
 $base_path="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
+$setup_path = "$base_path\setup.ps1"
 $analysis_path = "$base_path\exec-analysis-scripts.ps1"
-
-
-if (!(Test-Path "$pwd\$outdir")) {
-    mkdir $pwd\$output_dir
-}
-
-
 
 #Starting the test
 VBoxManage snapshot $VMName restore $snapshot
@@ -60,25 +54,28 @@ while($started -eq $false){
     }
 }
 
-Write-Host "Vm Started and copying inputs..."
+Write-Host "VM Started and copying inputs..."
 VBOxManage guestcontrol $VMName copyto --recursive --username unina --password unina --target-directory="$base_path\" $pwd\$input_dir 2>&1 | Out-String
 Start-Sleep -Seconds 10
 
+Write-Host "VM Executing setup script"
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$setup_path"
+Start-Sleep -Seconds 10
+
 $commands = Split-Path $input_dir -leaf
-Write-Host "Executing the analysis..."
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout >$null 2>&1
+Write-Host "VM Executing the analysis..."
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt" --no-wait-stdout
 
 Start-Sleep -Seconds 10
 #saving files
 
 VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command  "Compress-Archive $base_path\output -DestinationPath $base_path\output.zip"
-
-
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip
+Expand-Archive -Path "$pwd\output.zip"
+rm "$pwd\output.zip"
+
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --target-directory="$pwd\$output_dir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt
 
 #save snapshot
 VBoxManage controlvm $VMName acpipowerbutton --verbose
-Expand-Archive -Path "$pwd\output.zip"
-rm "$pwd\output.zip"
 

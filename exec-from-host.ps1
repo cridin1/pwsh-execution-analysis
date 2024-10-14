@@ -6,7 +6,7 @@ param(
      [string]$input_dir = "input-scripts",
 
      [Parameter()]
-     [string]$snapshot = "d32e78f5-df4e-498f-9750-e6db64901097"
+     [string]$snapshot = "a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a"
 
  )
 
@@ -59,7 +59,7 @@ VBOxManage guestcontrol $VMName copyto --recursive --username unina --password u
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing setup script"
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path" --no-wait-stdout
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path"
 Start-Sleep -Seconds 10
 
 $commands = Split-Path $input_dir -leaf

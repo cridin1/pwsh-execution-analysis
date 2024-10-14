@@ -1,4 +1,4 @@
-push-location \ 
+push-location \
 $directoryToAdd = "$pwd\mimikatz\x64"
 
 # Check if the directory is already in the PATH

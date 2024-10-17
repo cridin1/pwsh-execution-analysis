@@ -225,7 +225,7 @@ Function Create-PowerShell-Process ($input_file, $output_file){
         
     }
 
-    $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam
+    $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam 
     $Process.StartInfo = $ProcessStartInfo
     $Process.Start()
     $Output = $Process.StandardOutput.ReadToEnd()
@@ -249,13 +249,12 @@ Function Export-Logs($directory){
 
         Start-Sleep 1
         $i = $i + 1
-        $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID #testare se funziona
+        $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
         
         Write-Output "Executing {$id_sample}: $name"
         Write-Host "Executing {$id_sample}: $name"
 
-        $Process = Create-PowerShell-Process $name "$outdir\txt\output$i.txt"
-        $id = $Process.Id
+        ($Process = Create-PowerShell-Process($name,"$outdir\txt\output$i.txt")) | out-null
         Write-Output "Executed {$id_sample} "
         Write-Host "Executed {$id_sample} "
     
@@ -290,7 +289,7 @@ Function Export-Logs($directory){
             $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$id_sample.evtx")
         }
         catch{
-            Write-Output("Error on exportation of evtx") #####debug
+            Write-Output("Error on exportation of evtx")
             $EvtSession.Dispose()
             return
         }

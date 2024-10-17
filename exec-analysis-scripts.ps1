@@ -287,7 +287,7 @@ Function Export-Logs($directory){
         $SourceType = "LogName"
         $EvtSession = [System.Diagnostics.Eventing.Reader.EventLogSession]::New()
         try{
-            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$id_sample.evtx")
+            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$id.evtx")
         }
         catch{
             Write-Output("Error on exportation of evtx") #####debug

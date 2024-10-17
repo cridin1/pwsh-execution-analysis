@@ -229,7 +229,7 @@ Function Create-PowerShell-Process ($input_file, $output_file){
     $Process.StartInfo = $ProcessStartInfo
     $Process.Start()
     $Output = $Process.StandardOutput.ReadToEnd()
-    $Output | Out-File -FilePath $output_file
+    $Output | Out-File -FilePath $output_file | Out-Null
 
     $Process.WaitForExit()
 
@@ -254,7 +254,7 @@ Function Export-Logs($directory){
         Write-Output "Executing {$id_sample}: $name"
         Write-Host "Executing {$id_sample}: $name"
 
-        ($Process = Create-PowerShell-Process($name,"$outdir\txt\output$i.txt")) | out-null
+        $Process = Create-PowerShell-Process $name "$outdir\txt\output$id_sample.txt"
         Write-Output "Executed {$id_sample} "
         Write-Host "Executed {$id_sample} "
     

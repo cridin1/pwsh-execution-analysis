@@ -255,6 +255,7 @@ Function Export-Logs($directory){
         Write-Host "Executing {$id_sample}: $name"
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\output$id_sample.txt"
+        $id = $Process.Id
         Write-Output "Executed {$id_sample} "
         Write-Host "Executed {$id_sample} "
     

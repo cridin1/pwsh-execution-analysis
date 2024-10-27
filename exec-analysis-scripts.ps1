@@ -211,7 +211,7 @@ Function Print-Logs($logs){
 
 }
 
-Function Create-PowerShell-Process ($input_file, $output_file){
+Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000){
     $Process = New-Object System.Diagnostics.Process
 
     $ProcessStartInfoParam = [ordered]@{
@@ -228,10 +228,20 @@ Function Create-PowerShell-Process ($input_file, $output_file){
     $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam 
     $Process.StartInfo = $ProcessStartInfo
     $Process.Start()
-    $Output = $Process.StandardOutput.ReadToEnd()
-    $Output | Out-File -FilePath $output_file | Out-Null
 
-    $Process.WaitForExit()
+    $Output = $null
+
+    if ($Process.WaitForExit($timeout)) {
+        # Process exited within the timeout
+        $Output = $Process.StandardOutput.ReadToEnd()
+        $Output | Out-File -FilePath $output_file | Out-Null
+    } else {
+        # Process timed out
+        Write-Warning "Process did not complete within the timeout period. Terminating process."
+        $Process.Kill()
+        $Process.WaitForExit()  # Ensure it fully exits after being killed
+    }
+
 
     return $Process
 }
@@ -254,7 +264,7 @@ Function Export-Logs($directory){
         Write-Output "Executing {$id_sample}: $name"
         Write-Host "Executing {$id_sample}: $name"
 
-        $Process = Create-PowerShell-Process $name "$outdir\txt\output$id_sample.txt"
+        $Process = Create-PowerShell-Process $name "$outdir\txt\$id_sample.txt"
         $id = $Process.Id
         Write-Output "Executed {$id_sample} "
         Write-Host "Executed {$id_sample} "
@@ -287,7 +297,7 @@ Function Export-Logs($directory){
         $SourceType = "LogName"
         $EvtSession = [System.Diagnostics.Eventing.Reader.EventLogSession]::New()
         try{
-            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\output$id_sample.evtx")
+            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\$id_sample.evtx")
         }
         catch{
             Write-Output("Error on exportation of evtx")
@@ -297,9 +307,9 @@ Function Export-Logs($directory){
 
         $EvtSession.ClearLog($LogName)
         $EvtSession.Dispose()
-        $logs = Get-WinEvent -Path "$outdir\evtx\output$id_sample.evtx"
+        $logs = Get-WinEvent -Path "$outdir\evtx\$id_sample.evtx"
 
-        $xml = [xml]((wevtutil query-events "$outdir\evtx\output$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
+        $xml = [xml]((wevtutil query-events "$outdir\evtx\$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
         $xml.Save("$outdir\xml\output$id_sample.xml")
 
         Print-Logs $logs

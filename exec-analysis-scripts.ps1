@@ -16,7 +16,7 @@ Add-LoggingTarget -Name File @{
     Path            = './log.txt'                                             
     PrintBody       = $false             
     PrintException  = $false              
-    Append          = $false              
+    Append          = $true              
     Encoding        = 'ascii'            
     Level           = $level            
   
@@ -65,7 +65,7 @@ Function Print-Logs($logs){
             $output.add("ParentImage", $evt.ParentImage)
             $output.add("ParentCommandLine", $evt.ParentCommandLine)
             $output.add("ParentUser", $evt.ParentUser)
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 2) {
             $output = @{}
@@ -75,7 +75,7 @@ Function Print-Logs($logs){
             $output.add("TargetFilename", $evt.TargetFileName)
             $output.add("CreationUtcTime", $evt.CreationUtcTime)
             $output.add("PreviousCreationUtcTime", $evt.PreviousCreationUtcTime)
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 3) {
             $output = @{}
@@ -84,7 +84,7 @@ Function Print-Logs($logs){
             $output.add("DestinationIp", $evt.DestinationIp)
             $output.add("DestinationPort", $evt.DestinationPort)
             $output.add("DestinationHost", $evt.DestinationHostname)
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 5) {
             $output = @{}
@@ -97,32 +97,32 @@ Function Print-Logs($logs){
             $output.add("ParentImage", $evt.ParentImage)
             $output.add("ParentCommandLine", $evt.ParentCommandLine)
             $output.add("ParentUser", $evt.ParentUser)
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 6) {
             $output = @{}
             $output.add("Type", "Driver Loaded")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 7) {
             $output = @{}
             $output.add("Type", "DLL Loaded By Process")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 8) {
             $output = @{}
             $output.add("Type", "Remote Thread Created")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 9) {
             $output = @{}
             $output.add("Type", "Raw Disk Access")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 10) {
             $output = @{}
             $output.add("Type", "Inter-Process Access")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 11) {
             $output = @{}
@@ -132,27 +132,27 @@ Function Print-Logs($logs){
             $output.add("User", $evt.User)
             $output.add("Process", $evt.Image)
             $output.add("PID", $evt.ProcessID)
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 12) {
             $output = @{}
             $output.add("Type", "Registry Added or Deleted")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 13) {
             $output = @{}
             $output.add("Type", "Registry Set")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 14) {
             $output = @{}
             $output.add("Type", "Registry Object Renamed")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 15) {
             $output = @{}
             $output.add("Type", "ADFS Created")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 16) {
             $output = @{}
@@ -162,32 +162,32 @@ Function Print-Logs($logs){
         if ($evt.id -eq 17) {
             $output = @{}
             $output.add("Type", "Pipe Created")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 18) {
             $output = @{}
             $output.add("Type", "Pipe Connected")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 19) {
             $output = @{}
             $output.add("Type", "WMI Event Filter Activity")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 20) {
             $output = @{}
             $output.add("Type", "WMI Event Consumer Activity")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 21) {
             $output = @{}
             $output.add("Type", "WMI Event Consumer To Filter Activity")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 22) {
             $output = @{}
             $output.add("Type", "DNS Query")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 23) {
             $output = @{}
@@ -197,17 +197,17 @@ Function Print-Logs($logs){
             $output.add("User", $evt.User)
             $output.add("Process", $evt.Image)
             $output.add("PID", $evt.ProcessID)
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 24) {
             $output = @{}
             $output.add("Type", "Clipboard Event Monitor")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 25) {
             $output = @{}
             $output.add("Type", "Process Tamper")
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         if ($evt.id -eq 26) {
             $output = @{}
@@ -217,7 +217,7 @@ Function Print-Logs($logs){
             $output.add("User", $evt.User)
             $output.add("Process", $evt.Image)
             $output.add("PID", $evt.ProcessID)
-            Write-Log -Level "DEBUG" -Message  $output
+            Write-Log -Level "DEBUG" -Message  $output.type -Body $output 
         }
         $maxRecordId = $evt.RecordId
     }

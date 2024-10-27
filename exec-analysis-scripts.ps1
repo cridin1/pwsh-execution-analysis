@@ -13,7 +13,7 @@ Import-Module Logging
 $level = 'INFO'
 Set-LoggingDefaultLevel -Level $level
 Add-LoggingTarget -Name File @{
-    Path            = './log.txt'                                             
+    Path            = './output/log.txt'                                             
     PrintBody       = $false             
     PrintException  = $false              
     Append          = $true              

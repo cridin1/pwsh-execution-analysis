@@ -49,6 +49,9 @@ if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\PowerSpl
     Write-Host "Powersploit found, skipping"
 }
 
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Install-Module Logging -Force
+
 pop-location
 
 

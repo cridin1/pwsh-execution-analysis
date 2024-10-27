@@ -24,10 +24,6 @@ write-host
 """
 
 
-
-
-
-
 $VMName = "Malware-VM-Windows"
 $base_path="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
 $setup_path = "$base_path\setup.ps1"

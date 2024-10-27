@@ -9,6 +9,19 @@ $path_scripts = "$pwd_base\$path_scripts"
 $outdir = "$pwd_base\$outdir"
 $config_file = "$pwd_base\$config_file"
 
+Import-Module Logging
+$level = 'INFO'
+Set-LoggingDefaultLevel -Level $level
+Add-LoggingTarget -Name File @{
+    Path            = './log.txt'                                             
+    PrintBody       = $false             
+    PrintException  = $false              
+    Append          = $false              
+    Encoding        = 'ascii'            
+    Level           = $level            
+  
+}
+
 Function Parse-Event {
     # Credit: https://github.com/RamblingCookieMonster/PowerShell/blob/master/Get-WinEventData.ps1
     param(
@@ -29,13 +42,13 @@ Function Parse-Event {
     }
 }
 
-Function Write-Alert ($alerts) {
-    Write-Output "Type: $($alerts.Type)"
+Function Write-alert($alerts) {
+    Write-Log -Level "INFO" -Message  "Type: $($alerts.Type)"
     $alerts.Remove("Type")
     foreach($alert in $alerts.GetEnumerator()) {
-        Write-Output "$($alert.Name): $($alert.Value)"
+        Write-Log -Level "INFO" -Message  "$($alert.Name): $($alert.Value)"
     }
-    Write-Output "-----"
+    Write-Log -Level "INFO" -Message  "-----"
 }
 
 Function Print-Logs($logs){
@@ -52,7 +65,7 @@ Function Print-Logs($logs){
             $output.add("ParentImage", $evt.ParentImage)
             $output.add("ParentCommandLine", $evt.ParentCommandLine)
             $output.add("ParentUser", $evt.ParentUser)
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 2) {
             $output = @{}
@@ -62,7 +75,7 @@ Function Print-Logs($logs){
             $output.add("TargetFilename", $evt.TargetFileName)
             $output.add("CreationUtcTime", $evt.CreationUtcTime)
             $output.add("PreviousCreationUtcTime", $evt.PreviousCreationUtcTime)
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 3) {
             $output = @{}
@@ -71,7 +84,7 @@ Function Print-Logs($logs){
             $output.add("DestinationIp", $evt.DestinationIp)
             $output.add("DestinationPort", $evt.DestinationPort)
             $output.add("DestinationHost", $evt.DestinationHostname)
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 5) {
             $output = @{}
@@ -84,32 +97,32 @@ Function Print-Logs($logs){
             $output.add("ParentImage", $evt.ParentImage)
             $output.add("ParentCommandLine", $evt.ParentCommandLine)
             $output.add("ParentUser", $evt.ParentUser)
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 6) {
             $output = @{}
             $output.add("Type", "Driver Loaded")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 7) {
             $output = @{}
             $output.add("Type", "DLL Loaded By Process")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 8) {
             $output = @{}
             $output.add("Type", "Remote Thread Created")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 9) {
             $output = @{}
             $output.add("Type", "Raw Disk Access")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 10) {
             $output = @{}
             $output.add("Type", "Inter-Process Access")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 11) {
             $output = @{}
@@ -119,62 +132,62 @@ Function Print-Logs($logs){
             $output.add("User", $evt.User)
             $output.add("Process", $evt.Image)
             $output.add("PID", $evt.ProcessID)
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 12) {
             $output = @{}
             $output.add("Type", "Registry Added or Deleted")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 13) {
             $output = @{}
             $output.add("Type", "Registry Set")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 14) {
             $output = @{}
             $output.add("Type", "Registry Object Renamed")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 15) {
             $output = @{}
             $output.add("Type", "ADFS Created")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 16) {
             $output = @{}
             $output.add("Type", "Sysmon Configuration Change")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message $output
         }
         if ($evt.id -eq 17) {
             $output = @{}
             $output.add("Type", "Pipe Created")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 18) {
             $output = @{}
             $output.add("Type", "Pipe Connected")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 19) {
             $output = @{}
             $output.add("Type", "WMI Event Filter Activity")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 20) {
             $output = @{}
             $output.add("Type", "WMI Event Consumer Activity")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 21) {
             $output = @{}
             $output.add("Type", "WMI Event Consumer To Filter Activity")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 22) {
             $output = @{}
             $output.add("Type", "DNS Query")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 23) {
             $output = @{}
@@ -184,17 +197,17 @@ Function Print-Logs($logs){
             $output.add("User", $evt.User)
             $output.add("Process", $evt.Image)
             $output.add("PID", $evt.ProcessID)
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 24) {
             $output = @{}
             $output.add("Type", "Clipboard Event Monitor")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 25) {
             $output = @{}
             $output.add("Type", "Process Tamper")
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         if ($evt.id -eq 26) {
             $output = @{}
@@ -204,7 +217,7 @@ Function Print-Logs($logs){
             $output.add("User", $evt.User)
             $output.add("Process", $evt.Image)
             $output.add("PID", $evt.ProcessID)
-            write-alert $output
+            Write-Log -Level "DEBUG" -Message  $output
         }
         $maxRecordId = $evt.RecordId
     }
@@ -234,10 +247,10 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
     if ($Process.WaitForExit($timeout)) {
         # Process exited within the timeout
         $Output = $Process.StandardOutput.ReadToEnd()
-        $Output | Out-File -FilePath $output_file | Out-Null
+        $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-Null
     } else {
         # Process timed out
-        Write-Warning "Process did not complete within the timeout period. Terminating process."
+        Write-Log -Level 'WARNING' -Message "Process did not complete within the timeout period. Terminating process."
         $Process.Kill()
         $Process.WaitForExit()  # Ensure it fully exits after being killed
     }
@@ -261,12 +274,12 @@ Function Export-Logs($directory){
         $i = $i + 1
         $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
         
-        Write-Output "Executing {$id_sample}: $name"
+        Write-Log -Level "INFO" -Message  "Executing {$id_sample}: $name"
         Write-Host "Executing {$id_sample}: $name"
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\$id_sample.txt"
         $id = $Process.Id
-        Write-Output "Executed {$id_sample} "
+        Write-Log -Level "INFO" -Message  "Executed {$id_sample} "
         Write-Host "Executed {$id_sample} "
     
         $XPath="*[System[EventRecordID > $maxRecordId]]"
@@ -287,7 +300,7 @@ Function Export-Logs($directory){
                 $j++
             }
             $XPath += "]]"
-            Write-Output $XPath
+            Write-Log -Level "DEBUG" -Message "{0}" -Arguments $XPath
         
         }
         catch{
@@ -300,7 +313,7 @@ Function Export-Logs($directory){
             $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\$id_sample.evtx")
         }
         catch{
-            Write-Output("Error on exportation of evtx")
+            Write-Log -Level "ERROR" -Message "Error on exportation of evtx"
             $EvtSession.Dispose()
             return
         }
@@ -310,7 +323,7 @@ Function Export-Logs($directory){
         $logs = Get-WinEvent -Path "$outdir\evtx\$id_sample.evtx"
 
         $xml = [xml]((wevtutil query-events "$outdir\evtx\$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
-        $xml.Save("$outdir\xml\output$id_sample.xml")
+        $xml.Save("$outdir\xml\$id_sample.xml")
 
         Print-Logs $logs
     }
@@ -321,7 +334,7 @@ function Load-Module ($m) {
 
     # If module is imported say that and do nothing
     if (Get-Module | Where-Object {$_.Name -eq $m}) {
-        Write-Output "Module $m is already imported."
+        Write-Log -Level "INFO" -Message  "Module $m is already imported."
     }
     else {
         Import-Module "$pwd_base\cmds\$m.ps1"
@@ -340,7 +353,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
         New-Item -ItemType Directory -Path "$outdir\evtx"
     }
     else{
-        Write-Output "Alreadyy present evtx directory"
+        Write-Log -Level $level -Message "Alreadyy present evtx directory"
         return
     }
 
@@ -355,22 +368,22 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     #clearing dns
     ipconfig /flushdns
 
-    Write-Output "Importing cmds"
+    Write-Log -Level $level -Message "Importing cmds"
 	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds
 
-	Write-Output "Importing Powersploit"
+	Write-Log -Level $level -Message "Importing Powersploit"
 	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Powersploit
 
-	Write-Output "All imported"
+	Write-Log -Level $level -Message "All imported"
 	
 
-    Write-Output "Executing sysmon: "
+    Write-Log -Level $level -Message "Executing sysmon: "
     sysmon.exe -accepteula -i $config_file
 
     $lines = Get-ChildItem -Path $path_scripts -File
     Export-Logs($lines)
     
-    Write-Output "Uninstalling sysmon: "
+    Write-Log -Level $level -Message "Uninstalling sysmon: "
     sysmon.exe -u
 }
 

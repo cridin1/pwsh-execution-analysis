@@ -3,7 +3,7 @@ param(
      [string]$output_dir = "output",
 
      [Parameter()]
-     [string]$input_dir = "input-scripts",
+     [string]$input_dir = "data\data\test",
 
      [Parameter()]
      [string]$snapshot = "a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a"

@@ -1,7 +1,7 @@
 param(
     [string]$path_scripts = "input-scripts",
     [string]$outdir = "output",
-    [string]$config_file = "configs\sysmonconfig-excludes-only.xml"
+    [string]$config_file = "sysmon-configs\sysmonconfig-excludes-only.xml"
 )
 
 $pwd_base="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"

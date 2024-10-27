@@ -61,7 +61,7 @@ Start-Sleep -Seconds 10
 
 $commands = Split-Path $input_dir -leaf
 Write-Host "VM Executing the analysis..."
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands > $base_path\log.txt"
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands"
 
 Start-Sleep -Seconds 10
 #saving files
@@ -70,8 +70,6 @@ VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\W
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip
 Expand-Archive -Path "$pwd\output.zip" -Force
 rm "$pwd\output.zip"
-
-VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --target-directory="$pwd\$output_dir\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\log.txt
 
 #save snapshot
 VBoxManage controlvm $VMName acpipowerbutton --verbose

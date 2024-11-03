@@ -328,19 +328,6 @@ Function Export-Logs($directory){
     }
 }
 
-function Load-Module ($m) {
-	$m = [io.path]::GetFileNameWithoutExtension($m)
-
-    # If module is imported say that and do nothing
-    if (Get-Module | Where-Object {$_.Name -eq $m}) {
-        Write-Log -Level "INFO" -Message  "Module $m is already imported."
-    }
-    else {
-        Import-Module "$pwd_base\malicious-cmds\$m.ps1"
-        Get-Module | Where-Object {$_.Name -eq $m}
-    }
-}
-
 
 Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base\output"){
     whoami

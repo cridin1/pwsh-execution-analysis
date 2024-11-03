@@ -250,10 +250,10 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
     } else {
         # Process timed out
         Write-Log -Level 'WARNING' -Message "Process did not complete within the timeout period. Terminating process."
-        $Output = $Process.StandardError.ReadToEnd()
-        $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-Null
         $Process.Kill()
         $Process.WaitForExit()  # Ensure it fully exits after being killed
+        $Output = $Process.StandardError.ReadToEnd()
+        $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-Null
     }
     return $Process
 }
@@ -341,6 +341,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     }
     else{
         Write-Log -Level $level -Message "Alreadyy present evtx directory"
+        Write-Host "Already present evtx directory"
         return
     }
 

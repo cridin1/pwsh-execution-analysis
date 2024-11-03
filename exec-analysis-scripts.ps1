@@ -12,7 +12,7 @@ Import-Module Logging
 $level = 'INFO'
 Set-LoggingDefaultLevel -Level $level
 Add-LoggingTarget -Name File @{
-    Path            = './output/log.txt'                                             
+    Path            = "$pwd_base\output\log.txt"                                             
     PrintBody       = $false             
     PrintException  = $false              
     Append          = $true              
@@ -234,6 +234,7 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
         LoadUserProfile        = $False
         UseShellExecute        = $False
         RedirectStandardOutput = $True
+        RedirectStandardError  = $True
     }
 
     $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam 
@@ -249,11 +250,11 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
     } else {
         # Process timed out
         Write-Log -Level 'WARNING' -Message "Process did not complete within the timeout period. Terminating process."
+        $Output = $Process.StandardError.ReadToEnd()
+        $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-Null
         $Process.Kill()
         $Process.WaitForExit()  # Ensure it fully exits after being killed
     }
-
-
     return $Process
 }
 

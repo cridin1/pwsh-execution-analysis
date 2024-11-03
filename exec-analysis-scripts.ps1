@@ -322,7 +322,7 @@ Function Export-Logs($directory){
         $EvtSession.Dispose()
         $logs = Get-WinEvent -Path "$outdir\evtx\$id_sample.evtx"
 
-        $xml = [xml]((wevtutil query-events "$outdir\evtx\$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","")
+        $xml = [xml]((wevtutil query-events "$outdir\evtx\$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","" -replace "\x1C","" -replace "\x0F", "")
         $xml.Save("$outdir\xml\$id_sample.xml")
 
         Print-Logs $logs

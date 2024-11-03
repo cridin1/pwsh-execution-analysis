@@ -61,6 +61,7 @@ Start-Sleep -Seconds 10
 Write-Host "VM Executing setup script"
 VBOxManage guestcontrol $VMName --username unina --password unina run `
 --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path"
+
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing the analysis..."

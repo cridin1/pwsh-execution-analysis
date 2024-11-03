@@ -272,7 +272,7 @@ Function Export-Logs($directory){
 
         Start-Sleep 1
         $i = $i + 1
-        Write-Progress -PercentComplete ($i/$length*100) -Status "Processing Script" -Activity "$i of $length"
+        Write-Progress -PercentComplete ($i/$length*100) -Status "Processing Script $id_sample" -Activity "$i of $length"
         $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
         
         Write-Log -Level "INFO" -Message  "Executing {$id_sample}: $name"

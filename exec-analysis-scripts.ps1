@@ -234,7 +234,6 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
         LoadUserProfile        = $False
         UseShellExecute        = $False
         RedirectStandardOutput = $True
-        
     }
 
     $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam 
@@ -263,7 +262,9 @@ Function Export-Logs($directory){
     $LogName = "Microsoft-Windows-Sysmon/Operational"
     $Provider = "Microsoft-Windows-Sysmon"
     $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
-    
+    $length = $directory.Length
+
+
     foreach ($input_file in $directory)
     {
         $name = $input_file.FullName
@@ -271,15 +272,14 @@ Function Export-Logs($directory){
 
         Start-Sleep 1
         $i = $i + 1
+        Write-Progress -PercentComplete ($i/$length*100) -Status "Processing Script" -Activity "$i of $length"
         $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
         
         Write-Log -Level "INFO" -Message  "Executing {$id_sample}: $name"
-        Write-Host "Executing {$id_sample}: $name"
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\$id_sample.txt"
         $id = $Process.Id
         Write-Log -Level "INFO" -Message  "Executed {$id_sample} "
-        Write-Host "Executed {$id_sample} "
     
         $XPath="*[System[EventRecordID > $maxRecordId]]"
         try{
@@ -336,7 +336,7 @@ function Load-Module ($m) {
         Write-Log -Level "INFO" -Message  "Module $m is already imported."
     }
     else {
-        Import-Module "$pwd_base\cmds\$m.ps1"
+        Import-Module "$pwd_base\malicious-cmds\$m.ps1"
         Get-Module | Where-Object {$_.Name -eq $m}
     }
 }
@@ -368,7 +368,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     ipconfig /flushdns
 
     Write-Log -Level $level -Message "Importing cmds"
-	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds
+	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\malicious-cmds
 
 	Write-Log -Level $level -Message "Importing Powersploit"
 	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Powersploit

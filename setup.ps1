@@ -30,10 +30,9 @@ if (-not ($env:PATH -like "*$directoryToAdd*")) {
 }
 
 #check if cmds is in modules
-if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\cmds")) {
+if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\malicious-cmds")) {
     Write-Host "Cmds not found, installing"
-
-    cp -r C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\cmds C:\Windows\System32\WindowsPowerShell\v1.0\Modules
+    Copy-Item -r C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\malicious-cmds C:\Windows\System32\WindowsPowerShell\v1.0\Modules
 } else {
     Write-Host "Cmds found, skipping"
 }
@@ -49,8 +48,11 @@ if (-not (Test-Path "C:\Windows\System32\WindowsPowerShell\v1.0\Modules\PowerSpl
     Write-Host "Powersploit found, skipping"
 }
 
+Write-Host "Installing Logging module"
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Install-Module Logging -Force
+
+Write-Host "Setup completed"
 
 pop-location
 

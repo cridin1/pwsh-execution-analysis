@@ -18,7 +18,7 @@ This repository contains scripts and configurations for analyzing PowerShell exe
 
 The provided scripts and configurations are designed to enhance visibility into PowerShell activity on Windows systems. By leveraging PowerShell logging and Sysmon configurations, this analysis tool helps in identifying PowerShell commands and activities. After the recording phase for reference and generated commands, there is an event filtering phase, then for each command precision and recall are computed by determining the correspondence between ground truth events (from the reference command) and target events (from the generated command). 
 
-![Overview](https://github.com/cridin1/pwsh-execution-analysis/blob/main/exec-analysis.png)
+![Overview](https://github.com/cridin1/pwsh-execution-analysis/blob/main/imgs/exec-analysis.png)
 
 PowerShell version: 5.1.19041.1645 (or compatible)
 

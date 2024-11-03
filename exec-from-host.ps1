@@ -3,7 +3,7 @@ param(
      [string]$output_dir = "output",
 
      [Parameter()]
-     [string]$input_dir = "data\data\test",
+     [string]$input_dir = "C:\Users\super\Desktop\tesi_magistrale\zircolite-test\data\data\test",
 
      [Parameter()]
      [string]$snapshot = "a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a"
@@ -52,16 +52,15 @@ while($started -eq $false){
 }
 
 Write-Host "VM Started and copying inputs..."
-VBOxManage guestcontrol $VMName copyto --recursive --username unina --password unina --target-directory="$base_path\" $pwd\$input_dir 2>&1 | Out-String
+VBOxManage guestcontrol $VMName copyto --recursive --username unina --password unina --target-directory="$base_path\inputs" $input_dir 2>&1 | Out-String
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing setup script"
 VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path"
 Start-Sleep -Seconds 10
 
-$commands = Split-Path $input_dir -leaf
 Write-Host "VM Executing the analysis..."
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $commands"
+VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $base_path\inputs"
 
 Start-Sleep -Seconds 10
 #saving files

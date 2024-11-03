@@ -5,7 +5,6 @@ param(
 )
 
 $pwd_base="C:\Users\unina\Desktop\tesi\pwsh-execution-analysis"
-$path_scripts = "$pwd_base\$path_scripts"
 $outdir = "$pwd_base\$outdir"
 $config_file = "$pwd_base\$config_file"
 

@@ -1,9 +1,9 @@
 param(
      [Parameter()]
-     [string]$output_dir = "output",
+     [string]$output_dir = "output2",
 
      [Parameter()]
-     [string]$input_dir = "C:\Users\super\Desktop\tesi_magistrale\zircolite-test\data\data\test",
+     [string]$input_dir = "C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\resume-scripts",
 
      [Parameter()]
      [string]$snapshot = "a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a"
@@ -78,7 +78,7 @@ VBOxManage guestcontrol $VMName --username unina --password unina run `
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose `
 --recursive --target-directory="$pwd\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip
 
-Expand-Archive -Path "$pwd\output.zip" -Force
+Expand-Archive -Path "$pwd\output.zip" -DestinationPath $output_dir -Force
 rm "$pwd\output.zip"
 
 #save snapshot

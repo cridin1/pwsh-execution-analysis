@@ -3,7 +3,7 @@
     ModuleVersion = '1.0'
     GUID = '73007eb8-e713-473b-8209-a0461cbfabec'
     Author = 'Your Name'
-    RootModule = 'cmds'
+    RootModule = 'malicious-cmds.psm1'
     CompanyName = 'You'
     Copyright = '(c)'
     Description = 'Description'

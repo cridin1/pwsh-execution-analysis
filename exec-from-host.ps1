@@ -39,7 +39,9 @@ $started = $false
 while($started -eq $false){
     try{
         Write-Host "Waiting the VM..."
-        $result = VBOxManage guestcontrol $VMName --username unina --password unina run --exe cmd.exe /c "git --git-dir=$base_path\.git --work-tree=$base_path pull"
+        $result = VBOxManage guestcontrol $VMName --username unina --password unina run --exe `
+        cmd.exe /c "git --git-dir=$base_path\.git --work-tree=$base_path pull > $base_path\git-pull.log 2>&1"
+
         $started = (-not ($result -Match "error"))
         Write-Host "VM started? " $started $result
         Start-Sleep -Seconds 10
@@ -52,21 +54,29 @@ while($started -eq $false){
 }
 
 Write-Host "VM Started and copying inputs..."
-VBOxManage guestcontrol $VMName copyto --recursive --username unina --password unina --target-directory="$base_path\inputs" $input_dir 2>&1 | Out-String
+VBOxManage guestcontrol $VMName copyto --recursive --username unina --password unina `
+--target-directory="$base_path\inputs" $input_dir 2>&1 | Out-String
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing setup script"
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path"
+VBOxManage guestcontrol $VMName --username unina --password unina run `
+--exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path"
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing the analysis..."
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $base_path\inputs"
+VBOxManage guestcontrol $VMName --username unina --password unina run `
+--exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $base_path\inputs"
 
 Start-Sleep -Seconds 10
 #saving files
 
-VBOxManage guestcontrol $VMName --username unina --password unina run --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command  "Compress-Archive $base_path\output -DestinationPath $base_path\output.zip"
-VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose --recursive --target-directory="$pwd\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip
+VBOxManage guestcontrol $VMName --username unina --password unina run `
+--exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command `
+"Compress-Archive $base_path\output -DestinationPath $base_path\output.zip"
+
+VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose `
+--recursive --target-directory="$pwd\" C:\Users\unina\Desktop\tesi\pwsh-execution-analysis\output.zip
+
 Expand-Archive -Path "$pwd\output.zip" -Force
 rm "$pwd\output.zip"
 

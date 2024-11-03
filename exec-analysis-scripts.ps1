@@ -332,6 +332,9 @@ Function Export-Logs($directory){
 
 Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base\output"){
     whoami
+
+    Write-Host "Starting analysis: $path_scripts"
+
     if (!(Test-Path "$outdir")) {
         New-Item -ItemType Directory -Path "$outdir"
     }

@@ -65,8 +65,9 @@ VBOxManage guestcontrol $VMName --username unina --password unina run `
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing the analysis..."
+$input_path = "$base_path\inputs"
 VBOxManage guestcontrol $VMName --username unina --password unina run `
---exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $base_path\inputs"
+--exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $input_path"
 
 Start-Sleep -Seconds 10
 #saving files

@@ -4,7 +4,7 @@ import shutil
 
 # get the path of the current input scripts
 path_scripts = os.path.abspath(r"C:\Users\super\Desktop\tesi_magistrale\zircolite-test\data\data\test")
-path_output = os.path.abspath(r"C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\output\output")
+path_output = os.path.abspath(r"C:\Users\super\Desktop\tesi_magistrale\zircolite-test\output\output")
 resume_scripts = r"C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\resume-scripts"
 
 #create new dir for the new samples

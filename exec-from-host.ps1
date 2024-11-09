@@ -71,7 +71,7 @@ VBOxManage guestcontrol $VMName --username unina --password unina run `
 
 Start-Sleep -Seconds 10
 #saving files
-
+Write-Host "VM Zipping output..."
 VBOxManage guestcontrol $VMName --username unina --password unina run `
 --exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command `
 "Compress-Archive $base_path\output -DestinationPath $base_path\output.zip"

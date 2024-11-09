@@ -19,4 +19,8 @@ for elem_ps1 in os.listdir(os.path.join(path_scripts)):
         continue
     else:
         #copy the file
-        shutil.copy(os.path.join(path_scripts,elem_ps1),resume_scripts)
+        try:
+            shutil.copy(os.path.join(path_scripts,elem_ps1),resume_scripts)
+        except Exception as e:
+            print(e)
+            pass

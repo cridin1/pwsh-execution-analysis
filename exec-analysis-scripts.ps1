@@ -240,7 +240,7 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
     $ProcessStartInfo = New-Object -TypeName 'System.Diagnostics.ProcessStartInfo' -Property $ProcessStartInfoParam 
     $Process.StartInfo = $ProcessStartInfo
     $Process.Start()
-
+    $id = $Process.Id
     $Output = $null
 
     if ($Process.WaitForExit($timeout)) {
@@ -249,7 +249,7 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
         $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-Null
     } else {
         # Process timed out
-        Write-Log -Level 'WARNING' -Message "Process did not complete within the timeout period. Terminating process."
+        Write-Log -Level 'WARNING' -Message "Process $id did not complete within the timeout period. Terminating process."
         $Process.Kill()
         $Process.WaitForExit()  # Ensure it fully exits after being killed
         $Output = $Process.StandardError.ReadToEnd()

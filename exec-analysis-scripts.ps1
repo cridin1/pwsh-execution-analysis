@@ -242,6 +242,7 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
     $Process.Start()
     $id = $Process.Id
     $Output = $null
+    Write-Log -Level 'INFO' -Message "Process $id executing....."
 
     if ($Process.WaitForExit($timeout)) {
         # Process exited within the timeout

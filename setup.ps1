@@ -52,6 +52,15 @@ Write-Host "Installing Logging module"
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Install-Module Logging -Force
 
+Write-Host "Enabling Powershell core logging frrom gpo settings"
+
+Copy-item "C:\Program Files\PowerShell\7\PowerShellCoreExecutionPolicy.admx" -Destination "C:\Windows\PolicyDefinitions" -Force
+Copy-item "C:\Program Files\PowerShell\7\PowerShellCoreExecutionPolicy.adml" -Destination "C:\Windows\PolicyDefinitions\en-US" -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\PowerShellCore\ScriptBlockLogging" -Name "EnableScriptBlockLogging" -Value 1 -Force
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\PowerShellCore\ModuleLogging" -Name "EnableModuleLogging" -Value 1 -Force
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Powershell\ModuleLogging" -Name "ModuleNames"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Powershell\ModuleLogging\ModuleNames" -Name "*" -Value "*"
+
 Write-Host "Setup completed"
 
 pop-location

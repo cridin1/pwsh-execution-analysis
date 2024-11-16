@@ -259,11 +259,18 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000)
     return $Process
 }
 
+
+
 Function Export-Logs($directory){
     $i = 0
-    $LogName = "Microsoft-Windows-Sysmon/Operational"
-    $Provider = "Microsoft-Windows-Sysmon"
-    $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
+    $LogName_Sysmon = "Microsoft-Windows-Sysmon/Operational"
+    $Provider_Sysmon = "Microsoft-Windows-Sysmon"
+    $maxRecordId_Sysmon = (Get-WinEvent -Provider $Provider_Sysmon -max 1).RecordID
+
+    $LogName_Powershell = "PowershellCore/Operational"
+    $Provider_Powershell = "PowershellCore"
+    $maxRecordId_Powershell = (Get-WinEvent -Provider $Provider_Powershell -max 1).RecordID
+
     $length = $directory.Length
 
 
@@ -274,22 +281,29 @@ Function Export-Logs($directory){
 
         Start-Sleep 1
         $i = $i + 1
+
         Write-Progress -PercentComplete ($i/$length*100) -Status "Processing Script $id_sample" -Activity "$i of $length"
-        $maxRecordId = (Get-WinEvent -Provider $Provider -max 1).RecordID
+
+        $maxRecordId_Sysmon = (Get-WinEvent -Provider $Provider_Sysmon -max 1).RecordID
+        $maxRecordId_Powershell = (Get-WinEvent -Provider $Provider_Powershell -max 1).RecordID
         
         Write-Log -Level "INFO" -Message  "Executing {$id_sample}: $name"
 
         $Process = Create-PowerShell-Process $name "$outdir\txt\$id_sample.txt"
         $id = $Process.Id
+
         Write-Log -Level "INFO" -Message  "Executed {$id_sample} "
-    
-        $XPath="*[System[EventRecordID > $maxRecordId]]"
+        
+        $XPath_powershell = "*[System[EventRecordID > $maxRecordId_Powershell] and System[Execution[@ProcessID = $id]]]"
+        $XPath="*[System[EventRecordID > $maxRecordId_Sysmon]]"
         try{
-            $XPath_child = "*[System[EventRecordID > $maxRecordId] and EventData[Data[@Name='ParentProcessId'] = $id]]"
-            $child_logs = Get-WinEvent -Provider $Provider -FilterXPath  $XPath_child -ErrorAction Stop | Select-Object -Property @{Name="Process Id";Expression={$_.Properties[3].Value}}
+            $XPath_child = "*[System[EventRecordID > $maxRecordId_Sysmon] and EventData[Data[@Name='ParentProcessId'] = $id]]"
+            
+            $child_logs = Get-WinEvent -Provider $Provider_Sysmon -FilterXPath  $XPath_child -ErrorAction Stop | `
+                          Select-Object -Property @{Name="Process Id";Expression={$_.Properties[3].Value}}
             $ids = $child_logs."Process Id"
             
-            $XPath = "*[System[EventRecordID > $maxRecordId] and EventData[ Data[@Name='ProcessId'] = $id or "
+            $XPath = "*[System[EventRecordID > $maxRecordId_Sysmon] and EventData[ Data[@Name='ProcessId'] = $id or "
             $j = 0
             foreach($id in $ids){
                 if($j -eq 0){
@@ -305,31 +319,38 @@ Function Export-Logs($directory){
         
         }
         catch{
-             $XPath = "*[System[EventRecordID > $maxRecordId] and EventData[Data[@Name='ParentProcessId'] = $id or Data[@Name='ProcessId'] = $id]]"
+             $XPath = "*[System[EventRecordID > $maxRecordId_Sysmon] and EventData[Data[@Name='ParentProcessId'] = $id or Data[@Name='ProcessId'] = $id]]"
         }
- 
+        
+        Write-Log -Level "DEBUG" -Message "{0}" -Arguments $XPath $XPath_powershell
+
         $SourceType = "LogName"
         $EvtSession = [System.Diagnostics.Eventing.Reader.EventLogSession]::New()
         try{
-            $EvtSession.ExportLog($LogName, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\$id_sample.evtx")
+            $EvtSession.ExportLog($LogName_Sysmon, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath, "$outdir\evtx\$id_sample.evtx")
+            $EvtSession.ExportLog($LogName_Powershell, [System.Diagnostics.Eventing.Reader.PathType]::$SourceType, $XPath_powershell, "$outdir\evtx-pwsh\$id_sample.evtx")
         }
         catch{
-            Write-Log -Level "ERROR" -Message "Error on exportation of evtx"
+            Write-Log -Level "ERROR" -Message "Error on exportation of evtx $_"
             $EvtSession.Dispose()
             return
         }
 
-        $EvtSession.ClearLog($LogName)
+        $EvtSession.ClearLog($LogName_Sysmon)
         $EvtSession.Dispose()
-        $logs = Get-WinEvent -Path "$outdir\evtx\$id_sample.evtx"
 
+        $logs = Get-WinEvent -Path "$outdir\evtx\$id_sample.evtx"
         $xml = [xml]((wevtutil query-events "$outdir\evtx\$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","" -replace "\x1C","" -replace "\x0F", "")
         $xml.Save("$outdir\xml\$id_sample.xml")
+    
+        $logs = Get-WinEvent -Path "$outdir\evtx-pwsh\$id_sample.evtx"
+        $xml = [xml]((wevtutil query-events "$outdir\evtx-pwsh\$id_sample.evtx" /logfile /element:root) -replace "\x01","" -replace "\x0f","" -replace "\x02","" -replace "\x1C","" -replace "\x0F", "")
+        $xml.Save("$outdir\xml-pwsh\$id_sample.xml")
+
 
         Print-Logs $logs
     }
 }
-
 
 Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base\output"){
     whoami
@@ -342,6 +363,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
 
     if (!(Test-Path "$outdir\evtx")) {
         New-Item -ItemType Directory -Path "$outdir\evtx"
+        New-Item -ItemType Directory -Path "$outdir\evtx-pwsh"
     }
     else{
         Write-Log -Level $level -Message "Alreadyy present evtx directory"
@@ -355,6 +377,7 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
 
     if (!(Test-Path "$outdir\xml")) {
         New-Item -ItemType Directory -Path "$outdir\xml"
+        New-Item -ItemType Directory -Path "$outdir\xml-pwsh"
     }
 
     #clearing dns

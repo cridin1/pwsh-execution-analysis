@@ -223,7 +223,7 @@ Function Print-Logs($logs){
 
 }
 
-Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 30000){
+Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 90000){
     $Process = New-Object System.Diagnostics.Process
 
     $ProcessStartInfoParam = [ordered]@{

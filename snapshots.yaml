@@ -3,4 +3,5 @@
          Name: all_config_uploaded (UUID: 9c60e767-bfd1-4ecf-a8fe-b6297936b340)
             Name: admin_setted (UUID: 5c51683a-3bf2-4c03-9523-cc621b8e9675)
                Name: last repo (UUID: 471e4cae-2512-4955-86ef-c1ffdadd06b0)
-                  Name: updated-repo (UUID: a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a) *
+                  Name: updated-repo (UUID: a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a)
+                     Name: new-pwsh-version (UUID: 9abcbaf7-3311-45fd-bfca-e7ada9904a81)

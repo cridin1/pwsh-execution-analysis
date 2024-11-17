@@ -54,12 +54,11 @@ Install-Module Logging -Force
 
 Write-Host "Enabling Powershell core logging frrom gpo settings"
 
-Copy-item "C:\Program Files\PowerShell\7\PowerShellCoreExecutionPolicy.admx" -Destination "C:\Windows\PolicyDefinitions" -Force
-Copy-item "C:\Program Files\PowerShell\7\PowerShellCoreExecutionPolicy.adml" -Destination "C:\Windows\PolicyDefinitions\en-US" -Force
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\PowerShellCore\ScriptBlockLogging" -Name "EnableScriptBlockLogging" -Value 1 -Force
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\PowerShellCore\ModuleLogging" -Name "EnableModuleLogging" -Value 1 -Force
-New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Powershell\ModuleLogging" -Name "ModuleNames"
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Powershell\ModuleLogging\ModuleNames" -Name "*" -Value "*"
+reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore" /f
+reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore\ModuleLogging" /v EnableModuleLogging /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore\ModuleLogging\ModuleNames" /v "Microsoft.PowerShell.*" /t REG_SZ /d "Microsoft.PowerShell.*" /f
+reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore\ModuleLogging\ModuleNames" /v "Microsoft.WSMan.Management" /t REG_SZ /d "Microsoft.WSMan.Management" /f
+reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore\ScriptBlockLogging" /v EnableScriptBlockLogging /t REG_DWORD /d 1 /f
 
 Write-Host "Setup completed"
 

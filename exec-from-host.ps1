@@ -1,12 +1,12 @@
 param(
      [Parameter()]
-     [string]$output_dir = "output2",
+     [string]$output_dir = "output3",
 
      [Parameter()]
-     [string]$input_dir = "C:\Users\super\Desktop\tesi_magistrale\pwsh-execution-analysis\resume-scripts",
+     [string]$input_dir = "C:\Users\super\Desktop\tesi_magistrale\zircolite-test\data\data\test",
 
      [Parameter()]
-     [string]$snapshot = "a3ce47cf-77a8-4c4c-a1ff-ba2a114dff7a"
+     [string]$snapshot = "9abcbaf7-3311-45fd-bfca-e7ada9904a81"
 
  )
 
@@ -60,20 +60,20 @@ Start-Sleep -Seconds 10
 
 Write-Host "VM Executing setup script"
 VBOxManage guestcontrol $VMName --username unina --password unina run `
---exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe "$setup_path"
+--exe "C:\Program Files\PowerShell\7\pwsh.exe" "$setup_path"
 
 Start-Sleep -Seconds 10
 
 Write-Host "VM Executing the analysis..."
 $input_path = "$base_path\inputs"
 VBOxManage guestcontrol $VMName --username unina --password unina run `
---exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command "$analysis_path $input_path"
+--exe "C:\Program Files\PowerShell\7\pwsh.exe" /command "$analysis_path $input_path"
 
 Start-Sleep -Seconds 10
 #saving files
 Write-Host "VM Zipping output..."
 VBOxManage guestcontrol $VMName --username unina --password unina run `
---exe C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe /command `
+--exe "C:\Program Files\PowerShell\7\pwsh.exe" /command `
 "Compress-Archive $base_path\output -DestinationPath $base_path\output.zip"
 
 VBOxManage guestcontrol $VMName copyfrom --username unina --password unina --verbose `

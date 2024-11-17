@@ -243,7 +243,7 @@ Function Create-PowerShell-Process ($input_file, $output_file, $timeout = 90000)
     } else {
         # Process timed out
         Write-Log -Level 'WARNING' -Message "Process $id did not complete within the timeout period. Terminating process."
-        $Process.Kill()
+        $Process.Kill($True)
         $Process.WaitForExit()  # Ensure it fully exits after being killed
         $Output = $Process.StandardError.ReadToEnd()
         $Output | Out-File -FilePath $output_file -Encoding ASCII | Out-Null

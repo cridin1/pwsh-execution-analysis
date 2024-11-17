@@ -11,15 +11,7 @@ $config_file = "$pwd_base\$config_file"
 Import-Module Logging
 $level = 'DEBUG'
 Set-LoggingDefaultLevel -Level $level
-Add-LoggingTarget -Name File @{
-    Path            = "$pwd_base\output\log.txt"                                             
-    PrintBody       = $false             
-    PrintException  = $false              
-    Append          = $true              
-    Encoding        = 'ascii'            
-    Level           = $level            
-  
-}
+
 
 Function Parse-Event {
     # Credit: https://github.com/RamblingCookieMonster/PowerShell/blob/master/Get-WinEventData.ps1
@@ -322,7 +314,7 @@ Function Export-Logs($directory){
              $XPath = "*[System[EventRecordID > $maxRecordId_Sysmon] and EventData[Data[@Name='ParentProcessId'] = $id or Data[@Name='ProcessId'] = $id]]"
         }
         
-        Write-Log -Level "DEBUG" -Message "{0}" -Arguments $XPath $XPath_powershell
+        Write-Log -Level "DEBUG" -Message " $XPath $XPath_powershell "
 
         $SourceType = "LogName"
         $EvtSession = [System.Diagnostics.Eventing.Reader.EventLogSession]::New()
@@ -378,6 +370,16 @@ Function Start-Analysis($path_scripts = "$pwd_base\inputs", $outdir = "$pwd_base
     if (!(Test-Path "$outdir\xml")) {
         New-Item -ItemType Directory -Path "$outdir\xml"
         New-Item -ItemType Directory -Path "$outdir\xml-pwsh"
+    }
+
+    Add-LoggingTarget -Name File @{
+        Path            = "$outdir\log.txt"                                             
+        PrintBody       = $false             
+        PrintException  = $false              
+        Append          = $true              
+        Encoding        = 'ascii'            
+        Level           = $level            
+      
     }
 
     #clearing dns

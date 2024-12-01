@@ -59,6 +59,9 @@ reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore\ModuleLoggi
 reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore\ModuleLogging\ModuleNames" /v "Microsoft.WSMan.Management" /t REG_SZ /d "Microsoft.WSMan.Management" /f
 reg add "HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\PowerShellCore\ScriptBlockLogging" /v EnableScriptBlockLogging /t REG_DWORD /d 1 /f
 
+Write-Host "Disabling firewall"
+Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+
 Write-Host "Setup completed"
 
 pop-location

@@ -62,7 +62,7 @@ Write-Host "VM Executing setup script"
 VBOxManage guestcontrol $VMName --username unina --password unina run `
 --exe "C:\Program Files\PowerShell\7\pwsh.exe" "$setup_path"
 
-Start-Sleep -Seconds 10
+Start-Sleep -Seconds 20
 
 Write-Host "VM Executing the analysis..."
 $input_path = "$base_path\inputs"

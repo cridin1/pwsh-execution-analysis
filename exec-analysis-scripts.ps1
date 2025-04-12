@@ -269,6 +269,13 @@ Function Export-Logs($directory){
     foreach ($input_file in $directory)
     {
         $name = $input_file.FullName
+        
+        #if "NOT" is in $name
+        if ($name -match "NOT") {
+            Write-Log -Level "INFO" -Message  "Skipping {$name}"
+            continue
+        }
+
         $id_sample = $input_file.BaseName
 
         Start-Sleep 1
